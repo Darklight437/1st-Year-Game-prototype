@@ -1,0 +1,6 @@
+Generally dont work on someone else's work.
+only one person should edit a file at a time.
+make sure unity is set to use text files instead of binary files before you commit
+1st step of troubleshooting for unity commits is close unity after saving. (unity hates us)
+
+
