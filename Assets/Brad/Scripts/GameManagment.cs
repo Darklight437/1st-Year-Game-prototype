@@ -17,6 +17,9 @@ public class GameManagment : MonoBehaviour
     //reference to the active player
     public Player activePlayer = null;
 
+    //reference to the selected unit
+    public Unit selectedUnit = null;
+
     //reference to the camera movement script
     public CameraMovement cam = null;
 
@@ -94,7 +97,27 @@ public class GameManagment : MonoBehaviour
     */
     public void OnUnitSelected(Unit unit)
     {
-        Debug.Log(unit.gameObject.name);
+        
+        if (selectedUnit == null)
+        {
+            //there are no units selected
+            if (unit.playerID == activePlayer.playerID)
+            {
+                selectedUnit = unit;
+            }
+        }
+        else
+        {
+            //the unit selected was an enemy
+            if (unit.playerID != activePlayer.playerID)
+            {
+                //the player wants to attack an enemy
+                selectedUnit.Attack(unit);
+
+                selectedUnit = null;
+            }
+
+        }
     }
 
 
@@ -109,7 +132,12 @@ public class GameManagment : MonoBehaviour
     */
     public void OnTileSelected(int x, int y)
     {
-        Debug.Log(x.ToString() + ", " + y.ToString());
+        //if a unit was already selected and an empty tile was selected
+        if (selectedUnit != null)
+        {
+            selectedUnit.transform.position = new Vector3(x + 0.5f, selectedUnit.transform.position.y, y + 0.5f);
+            selectedUnit = null;
+        }
     }
 
 
