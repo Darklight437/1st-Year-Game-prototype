@@ -19,8 +19,8 @@ public class GameManagment : MonoBehaviour
     //ID of the active player
     public int turn = 0;
 
-    private float tempTimer = 0.0f;
-    private bool timing = true;
+    //bool indicating if the game is in-between turns
+    public bool transitioning = false;
 
 	// Use this for initialization
 	void Start ()
@@ -40,24 +40,17 @@ public class GameManagment : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        //TEMPORARY
-        if (!timing)
-        {
-            return;
-        }
 
-        tempTimer += Time.deltaTime;
-
-        if (tempTimer > 10.0f)
-        {
-            OnNextTurn();
-            tempTimer = 0.0f;
-        }
 	}
 
 
     public void OnNextTurn()
     {
+        if (transitioning)
+        {
+            return;
+        }
+
         //increment the turn id
         turn++;
         
@@ -73,12 +66,12 @@ public class GameManagment : MonoBehaviour
 
         cam.Goto(m_activePlayer.kingPosition, cam.transform.eulerAngles + new Vector3(0.0f, 180.0f, 0.0f), OnCameraFinished);
 
-        timing = false;
+        transitioning = true;
     }
 
 
     public void OnCameraFinished()
     {
-        timing = true;
+        transitioning = false;
     }
 }

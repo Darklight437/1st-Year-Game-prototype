@@ -6,33 +6,49 @@ using UnityEngine.UI;
 
 public class NextTurnButton : MonoBehaviour
 {
+    //automated reference to the game manager
+    private GameManagment manager = null;
+
     //David
-    public bool RedTurn = true;
     public Color Red;
     public Color Blue;
     private GameObject ColorChangers;
     private Image Panel;
     void Start()
     {
+        manager = GameManagment.FindObjectOfType<GameManagment>();
+
         ColorChangers = GameObject.FindGameObjectWithTag("RedVSBlue");
         //Put an if on whose turn to determine default UI color
         Panel = ColorChangers.GetComponent<Image>();
-        Panel.color = Red;
-    }
 
-   public void Click()
-    {
-        //toggle bool turn
-        
-        if(Panel.color == Red)
+        if (manager.turn == 0)
         {
             Panel.color = Blue;
         }
         else
         {
             Panel.color = Red;
+            
         }
-        
+
+    }
+
+    public void Click()
+    {
+        //toggle bool turn
+        manager.OnNextTurn();
+
+        if (manager.turn == 0)
+        {
+            Panel.color = Blue;
+        }
+        else
+        {
+            Panel.color = Red;
+
+        }
+
     }
 	
 }
