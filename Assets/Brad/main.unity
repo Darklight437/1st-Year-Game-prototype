@@ -442,21 +442,21 @@ MonoBehaviour:
   cameraAngle: 65
   cameraSpeed: 5
   smoothingSpeed: 5
-  transitionTime: 0.5
+  transitionTime: 0
   transitionCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
       time: 0
       value: 0
-      inSlope: 0.10714285
-      outSlope: 0.10714285
+      inSlope: 1
+      outSlope: 1
       tangentMode: 0
     - serializedVersion: 2
       time: 1
       value: 1
-      inSlope: Infinity
-      outSlope: Infinity
+      inSlope: 1
+      outSlope: 1
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

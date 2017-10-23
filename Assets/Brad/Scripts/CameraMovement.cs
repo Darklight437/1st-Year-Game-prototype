@@ -145,8 +145,8 @@ public class CameraMovement : MonoBehaviour
         }
 
         //trig calculations
-        float sn = Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.y);
-        float cs = Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.y);
+        float sn = Mathf.Sin(Mathf.Deg2Rad * -transform.eulerAngles.y);
+        float cs = Mathf.Cos(Mathf.Deg2Rad * -transform.eulerAngles.y);
 
         //rotate the vector by the camera's y rotation
         Vector2 rotatedInput = new Vector2(cs * m_smoothInput.x - sn * m_smoothInput.y, sn * m_smoothInput.x + cs * m_smoothInput.y);
