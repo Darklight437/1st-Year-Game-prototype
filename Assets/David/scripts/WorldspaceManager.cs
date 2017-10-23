@@ -10,12 +10,16 @@ public class WorldspaceManager : MonoBehaviour {
     public GameObject SpcButton;
 
 	// Use this for initialization
-	void Start () {
-		
-	}
+	void Start ()
+    {
+        MoveButton.SetActive(false);
+        AttButton.SetActive(false);
+        SpcButton.SetActive(false);
+    }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
 }
