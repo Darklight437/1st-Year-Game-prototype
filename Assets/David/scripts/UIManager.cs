@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour {
 
+    public enum eUIState {BASE, ACTIVEUNIT, ENDGAME}
+    public eUIState currUIState;
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 		
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+    {
+		//check what UI state is
+        //switch on enum
+        //enable / disable elements of ui & manage UI anims
 	}
 }
