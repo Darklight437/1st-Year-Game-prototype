@@ -2,12 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManagment : MonoBehaviour
+public class Unit : MonoBehaviour
 {
-    //list of references to players
-    public List<Player> players = new List<Player>();
-
-    public int turn = 0;
 
 	// Use this for initialization
 	void Start ()

@@ -28,8 +28,9 @@ public class CameraMovement : MonoBehaviour
     //focal movement limits
     public Rect limits;
 
-    //automated reference to the input
+    //automated references
     private CustomInput input = null;
+    private GameManagment manager = null;
 
     //smoothed vector
     private Vector2 smoothInput = Vector2.zero;
@@ -38,6 +39,7 @@ public class CameraMovement : MonoBehaviour
 	void Start ()
     {
         input = GameObject.FindObjectOfType<CustomInput>();
+        manager = GameObject.FindObjectOfType<GameManagment>();
 	}
 
     void ClampPosition()
