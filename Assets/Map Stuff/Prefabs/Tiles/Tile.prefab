@@ -68,15 +68,18 @@ MonoBehaviour:
   tileEdges: []
   normalTile:
     tileTypes:
-    - {fileID: 1145091410785342, guid: 1dd6a8e099060404d945fe315b12e217, type: 2}
+    - {fileID: 1066996647333548, guid: 499565b820a768241b8ec507a117a478, type: 2}
+    - {fileID: 1387816057587138, guid: c5d2bff5a8b460b49bffd8eac7ebc715, type: 2}
+    - {fileID: 1608670734620068, guid: 55a7aca5ffbb0f745a06ce32552e3634, type: 2}
+    - {fileID: 1683809601712578, guid: bbd6f8061614ef04da095d7d9e10b666, type: 2}
   damageTile:
     tileTypes:
-    - {fileID: 1317071127114958, guid: bdde94e00d8456f40b31a4c65adb6698, type: 2}
+    - {fileID: 1422519149377992, guid: b18938c7d21d9434e9dc3cc3d61221e0, type: 2}
   defenseTile:
     tileTypes:
-    - {fileID: 1745409751603700, guid: 3742c19b50e1d7d4885ccc10a954c4dc, type: 2}
+    - {fileID: 1062882265927204, guid: f9ba9e5d656f7694c921de53fe6b8ccc, type: 2}
   impassableTile:
     tileTypes:
-    - {fileID: 1789181285322358, guid: 360fa5251ec6c194b88a3756dc590a17, type: 2}
+    - {fileID: 1410987491421384, guid: 842d4b57229007347b814eda4d6b47d4, type: 2}
   useTileSet:
     tileTypes: []
