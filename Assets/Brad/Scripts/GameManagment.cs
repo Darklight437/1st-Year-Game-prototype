@@ -7,6 +7,9 @@ public class GameManagment : MonoBehaviour
     //list of references to players
     public List<Player> players = new List<Player>();
 
+    //static reference to the statistics object
+    public static Statistics stats;
+
     //reference to the active player
     private Player m_activePlayer = null;
 
@@ -23,6 +26,15 @@ public class GameManagment : MonoBehaviour
 	void Start ()
     {
         m_activePlayer = players[0];
+
+        //get the size of the players array once
+        int playerCount = players.Count;
+
+        //iterate through the players array, invoking the ID setter
+        for (int i = 0; i < playerCount; i++)
+        {
+            players[i].LinkIDs(i);
+        }
 	}
 	
 	// Update is called once per frame

@@ -20,8 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4073386606429666}
   - component: {fileID: 33030509309121384}
-  - component: {fileID: 135199532549960778}
   - component: {fileID: 23214250753567234}
+  - component: {fileID: 114707028028582382}
+  - component: {fileID: 65319505725857170}
   m_Layer: 0
   m_Name: Melee
   m_TagString: Untagged
@@ -81,8 +82,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1991271546020698}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!135 &135199532549960778
-SphereCollider:
+--- !u!65 &65319505725857170
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -91,5 +92,23 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: -0.25, z: 0}
+--- !u!114 &114707028028582382
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1991271546020698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f031d69f410bf79499e03b81663372e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerID: 0
+  attackRange: 1
+  movementRange: 7
+  armour: 1
+  damage: 10
+  health: 60
+  AOV: 7
