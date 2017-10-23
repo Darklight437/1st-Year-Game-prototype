@@ -1,0 +1,230 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEditor;
+using System;
+
+/*
+* eTileType
+* public enum
+* 
+* this enum holds all the diffrent tile types
+* 
+*/
+[System.Serializable]
+public enum eTileType
+{
+    NORMAL,
+    DAMAGE,
+    DEFENSE,
+    IMPASSABLE,
+    NULL
+}
+
+/*
+* class Tiles
+* inherits MonoBehaviour
+* 
+* this class holds all the tile Info and refrences to all the diffrent tile types
+* 
+* author: Callum Dunstone, Academy of Interactive Entertainment, 2017
+*/
+[System.Serializable]
+public class Tiles : MonoBehaviour
+{
+    //this dictates what tile type this tile is
+    public eTileType tileType;
+    
+    //this is the tiles that are next to it and is connected to
+    //for pathfinding purposes
+    public List<Tiles> tileEdges;
+
+    //these are the classes that hold the diffrent tile varients inside of them
+    //so that when we play the game we have more variaty
+    public NormalTile normalTile;
+    public DamageTile damageTile;
+    public DefenseTile defenseTile;
+    public ImpassableTile impassableTile;
+
+    //this is the set of tile varients we actually want to usee when the game is running
+    //this should make it very easy to change on the fly
+    public TileTypes useTileSet;
+
+    /*
+    * Start
+    * public void function
+    * 
+    * this function is called at the start of the scripts life
+    * in play mode
+    * 
+    * @returns nothing
+    */
+    private void Start()
+    {
+        GenerateRandomTileVariant();
+    }
+
+    /*
+    * SetUsedTileType
+    * public void function
+    * 
+    * this function is used to determin what tile set should be assigned
+    * to useTileSet based on tileType
+    * 
+    * @returns nothing
+    */
+    public void SetUsedTileType()
+    {
+        switch (tileType)
+        {
+            case eTileType.NORMAL:
+                useTileSet = normalTile;
+                break;
+
+            case eTileType.DAMAGE:
+                useTileSet = damageTile;
+                break;
+
+            case eTileType.DEFENSE:
+                useTileSet = defenseTile;
+                break;
+
+            case eTileType.IMPASSABLE:
+                useTileSet = impassableTile;
+                break;
+        }
+    }
+
+    /*
+    * GenerateRandomTileVariant
+    * public void function
+    * 
+    * this function will spawn in a varient of the tile type
+    * stored in useTileSet
+    * 
+    * @returns nothing
+    */
+    public void GenerateRandomTileVariant()
+    {
+        //first delete our current child
+        foreach (Transform child in transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+
+        //make sure we are about to use the right tile set
+        SetUsedTileType();
+
+        //if there is more then one type of tile in the set randomly pick on else just use the first one there
+        //and make sure the tile is positioned in the right position
+        if (useTileSet.tileTypes.Length > 1)
+        {
+            int r = UnityEngine.Random.Range(0, useTileSet.tileTypes.Length);
+            
+            GameObject tileSpawn = Instantiate(useTileSet.tileTypes[r], new Vector3(0, 0, 0), Quaternion.identity);
+            tileSpawn.transform.SetParent(gameObject.transform);
+
+            tileSpawn.transform.localPosition = new Vector3(0, 0, 0);
+        }
+        else
+        {
+            GameObject tileSpawn = Instantiate(useTileSet.tileTypes[0], new Vector3(0, 0, 0), Quaternion.identity);
+            tileSpawn.transform.SetParent(gameObject.transform);
+
+            tileSpawn.transform.localPosition = new Vector3(0, 0, 0);
+        }
+    }
+
+    /*
+    * GenerateBaseTile
+    * public void function
+    * 
+    * this function will spawn in the base varient of a tile
+    * this is used mainly for the map editor as it needs a special type 
+    * of delete obj and we only use the base varient of a tile for simplicitys sake
+    * 
+    * @returns nothing
+    */
+    public void GenerateBaseTile()
+    {
+        //delets the old tile that was showing
+        foreach (Transform child in transform)
+        {
+            DestroyImmediate(child.gameObject);
+        }
+
+        //make sure we are using the right tile set
+        SetUsedTileType();
+
+        //spawns in the base tile varient type and sets up its parent and position correctly
+        GameObject tileSpawn = Instantiate(useTileSet.tileTypes[0], new Vector3(0, 0, 0), Quaternion.identity);
+        tileSpawn.transform.SetParent(gameObject.transform);
+
+        tileSpawn.transform.localPosition = new Vector3(0, 0, 0);
+    }
+}
+
+/*
+* class TileTypes
+* 
+* this class is used to link all tile types up 
+* for visual purposes so that we can use useTileSet from tiles easily and with out problems
+* 
+* author: Callum Dunstone, Academy of Interactive Entertainment, 2017
+*/
+[System.Serializable]
+public class TileTypes
+{
+    //this will hold all the tile varient types for all the diffrent tile types that inherit from this
+    public GameObject[] tileTypes;
+}
+
+/*
+* class Tiles
+* inherits TileTypes
+* 
+* this class holds all the varient types for normal tiles
+* 
+* author: Callum Dunstone, Academy of Interactive Entertainment, 2017
+*/
+[System.Serializable]
+public class NormalTile : TileTypes
+{
+}
+/*
+* class DamageTile
+* inherits TileTypes
+* 
+* this class holds all the varient types for Damage tiles
+* 
+* author: Callum Dunstone, Academy of Interactive Entertainment, 2017
+*/
+[System.Serializable]
+public class DamageTile : TileTypes
+{
+}
+/*
+* class DefenseTile
+* inherits TileTypes
+* 
+* this class holds all the varient types for Defense tiles
+* 
+* author: Callum Dunstone, Academy of Interactive Entertainment, 2017
+*/
+[System.Serializable]
+public class DefenseTile : TileTypes
+{
+}
+/*
+* class ImpassableTile
+* inherits TileTypes
+* 
+* this class holds all the varient types for Impassable tiles
+* 
+* author: Callum Dunstone, Academy of Interactive Entertainment, 2017
+*/
+[System.Serializable]
+public class ImpassableTile : TileTypes
+{
+}
+
