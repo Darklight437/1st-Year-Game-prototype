@@ -4,8 +4,21 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
+    //type for camera movement
+    public enum eCameraState
+    {
+        FREE,
+        TARGET,
+    }
+
+    //delegate type
+    public delegate void VoidFunc();
+
     //reference to the camera
     public Camera cam = null;
+
+    //instance of the custom type
+    private eCameraState m_cameraState = eCameraState.FREE;
 
     //camera parameters
     public float distance = 0.0f;
@@ -20,7 +33,7 @@ public class CameraMovement : MonoBehaviour
     public float smoothingSpeed = 0.0f;
     
     [Range(0.0f, 2.0f)]
-    public float transitionLinearTimr = 0.0f;
+    public float transitionLinearTime = 0.0f;
 
     [Range(0.0f, 2.0f)]
     public float transitionRotationTime = 0.0f;
@@ -32,43 +45,64 @@ public class CameraMovement : MonoBehaviour
     private CustomInput input = null;
     private GameManagment manager = null;
 
-    //smoothed vector
-    private Vector2 smoothInput = Vector2.zero;
+    //----FREE MOVEMENT VARIABLES----
 
-	// Use this for initialization
-	void Start ()
+    //smoothed vector
+    private Vector2 m_smoothInput = Vector2.zero;
+
+    //----TARGET MOVEMENT VARIABLES----
+
+    //3D target vector
+    private Vector3 m_start = Vector3.zero;
+    private Vector3 m_target = Vector3.zero;
+    private float m_movementTimer = 0.0f;
+
+    //callback to invoke when the target is reached
+    private VoidFunc m_targetCallback = null;
+
+    // Use this for initialization
+    void Start ()
     {
         input = GameObject.FindObjectOfType<CustomInput>();
         manager = GameObject.FindObjectOfType<GameManagment>();
 	}
 
+
+    /*
+    * ClampPosition 
+    * 
+    * sets the transform of the camera to be inside the limits rect
+    * 
+    * @returns void
+    */
     void ClampPosition()
     {
         if (transform.position.x < limits.x)
         {
             transform.position = new Vector3(limits.x, transform.position.y, transform.position.z);
-            smoothInput.x = 0.0f;
+            m_smoothInput.x = 0.0f;
         }
 
         if (transform.position.x > limits.x + limits.width)
         {
             transform.position = new Vector3(limits.x + limits.width, transform.position.y, transform.position.z);
-             smoothInput.x = 0.0f;
+            m_smoothInput.x = 0.0f;
         }
 
         if (transform.position.z < limits.y)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, limits.y);
-            smoothInput.y = 0.0f;
+            m_smoothInput.y = 0.0f;
         }
 
         if (transform.position.z > limits.y + limits.height)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, limits.y + limits.height);
-            smoothInput.y = 0.0f;
+            m_smoothInput.y = 0.0f;
         }
 
     }
+
 
     // Update is called once per frame
     void Update ()
@@ -79,30 +113,110 @@ public class CameraMovement : MonoBehaviour
         cam.fieldOfView = FOV;
         transform.eulerAngles = new Vector3(cameraAngle - 90.0f, transform.eulerAngles.y, transform.eulerAngles.z);
 
+        //call the appropriate sub-update
+        switch (m_cameraState)
+        {
+            case eCameraState.FREE: UpdateFreeMovement(); break;
+            case eCameraState.TARGET: UpdateTargetMovement(); break;
+        }
+    }
+
+
+    /*
+    * UpdateFreeMovement 
+    * 
+    * sub-update that gets called when the camera is in FREE mode
+    * 
+    * @returns void
+    */
+    public void UpdateFreeMovement()
+    {
         //smooth the input
-        Vector2 relative = input.keyInput - smoothInput;
+        Vector2 relative = input.keyInput - m_smoothInput;
 
         if (relative.magnitude < smoothingSpeed * Time.deltaTime)
         {
-            smoothInput = input.keyInput;
+            m_smoothInput = input.keyInput;
         }
         else
         {
-            smoothInput += relative.normalized * smoothingSpeed * Time.deltaTime;
+            m_smoothInput += relative.normalized * smoothingSpeed * Time.deltaTime;
         }
 
         //moves the camera if input is given and snaps the y to 0
-        transform.position = new Vector3(transform.position.x + smoothInput.x * cameraSpeed * Time.deltaTime, 0.0f, 
-            transform.position.z + smoothInput.y * cameraSpeed * Time.deltaTime);
+        transform.position = new Vector3(transform.position.x + m_smoothInput.x * cameraSpeed * Time.deltaTime, 0.0f,
+            transform.position.z + m_smoothInput.y * cameraSpeed * Time.deltaTime);
 
         ClampPosition();
+    }
 
+
+    /*
+    * UpdateFreeMovement 
+    * 
+    * sub-update that gets called when the camera is in TARGET mode
+    * 
+    * @returns void
+    */
+    public void UpdateTargetMovement()
+    {
+        m_movementTimer += Time.deltaTime;
+
+        //the timer cannot tick over the maximum
+        if (m_movementTimer >= transitionLinearTime)
+        {
+            m_movementTimer = transitionLinearTime + 0.01f;
+        }
+
+        //apply a simple lerp to the position
+        transform.position = Vector3.Lerp(m_start, m_target, m_movementTimer / transitionLinearTime);
+
+        //check if the movement has finished
+        if (m_movementTimer >= transitionLinearTime)
+        {
+            //set the camera state back to free movement
+            m_cameraState = eCameraState.FREE;
+
+            //only invoke the call-back if one was specified
+            if (m_targetCallback != null)
+            {
+                m_targetCallback.Invoke();
+            }
+
+        }
+    }
+
+
+    /*
+    * Goto 
+    * 
+    * sets up the camera so that it moves towards
+    * a target in future update calls
+    * 
+    * @param Vector3 target - the position to move towards
+    * @param VoidFunc callback - function to call when the target is reached
+    * @returns void
+    */
+    public void Goto(Vector3 target, VoidFunc callback)
+    {
+        //remember the parameters
+        m_cameraState = eCameraState.TARGET;
+        m_targetCallback = callback;
+
+        //set the lerp positions
+        m_start = transform.position;
+        m_target = target;
+
+        //reset the input
+        m_smoothInput = Vector2.zero;
+
+        m_movementTimer = 0.0f;
     }
 
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
 
-        Gizmos.DrawSphere(transform.position, 0.5f);
+        Gizmos.DrawWireSphere(transform.position, 0.5f);
     }
 }

@@ -21,4 +21,25 @@ public class Player : MonoBehaviour
     {
 		
 	}
+
+    public void CalculateKingPosition()
+    {
+        //get the size of the units array once
+        int unitsCount = units.Count;
+
+        //iterate through all of the units, looking for the king
+        for (int i = 0; i < unitsCount; i++)
+        {
+            //get the reference once (performance and readability)
+            Unit unit = units[i];
+
+            //check if the unit is the king
+            if (unit is King)
+            {
+                //set the king position variable of the player
+                kingPosition = new Vector3(unit.transform.position.x, 0.0f, unit.transform.position.z);
+                return;
+            }
+        }
+    }
 }
