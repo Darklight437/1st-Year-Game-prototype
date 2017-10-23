@@ -22,6 +22,37 @@ public class Player : MonoBehaviour
 		
 	}
 
+
+    /*
+    * LinkIDs 
+    * 
+    * sets the local IDs of every unit owned
+    * by this player
+    * 
+    * @param int ID - the ID of the player
+    * @returns void
+    */
+    public void LinkIDs(int ID)
+    {
+        //get the size of the units array once
+        int unitsCount = units.Count;
+
+        //iterate through all of the units, setting their IDs
+        for (int i = 0; i < unitsCount; i++)
+        {
+            units[i].playerID = ID;
+        }
+    }
+
+
+    /*
+    * CalculateKingPosition
+    * 
+    * searches for the king and then sets a local variable
+    * containing it's position
+    * 
+    * @returns voide
+    */
     public void CalculateKingPosition()
     {
         //get the size of the units array once
