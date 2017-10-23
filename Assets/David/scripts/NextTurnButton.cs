@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class NextTurnButton : MonoBehaviour
 {
     //David
+    public bool RedTurn = true;
     public Color Red;
     public Color Blue;
     private GameObject ColorChangers;
