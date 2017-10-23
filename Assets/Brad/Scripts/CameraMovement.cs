@@ -41,7 +41,6 @@ public class CameraMovement : MonoBehaviour
 
     //automated references
     private CustomInput input = null;
-    private GameManagment manager = null;
 
     //----FREE MOVEMENT VARIABLES----
 
@@ -65,7 +64,6 @@ public class CameraMovement : MonoBehaviour
     void Start ()
     {
         input = GameObject.FindObjectOfType<CustomInput>();
-        manager = GameObject.FindObjectOfType<GameManagment>();
 	}
 
 

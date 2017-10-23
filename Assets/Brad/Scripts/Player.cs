@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     //position of the king, this is where the camera will go when the turn switches
     public Vector3 kingPosition = Vector3.zero;
 
+    //ID of the player
+    public int playerID = 0;
+
     // Use this for initialization
     void Start ()
     {
@@ -34,6 +37,8 @@ public class Player : MonoBehaviour
     */
     public void LinkIDs(int ID)
     {
+        playerID = ID;
+
         //get the size of the units array once
         int unitsCount = units.Count;
 
