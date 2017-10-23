@@ -28,6 +28,7 @@ public class GameManagment : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        //TEMPORARY
         if (!timing)
         {
             return;
@@ -45,6 +46,7 @@ public class GameManagment : MonoBehaviour
 
     public void OnNextTurn()
     {
+        //increment the turn id
         turn++;
         
         //wrap around the turn id
@@ -57,7 +59,7 @@ public class GameManagment : MonoBehaviour
         m_activePlayer = players[turn];
         m_activePlayer.CalculateKingPosition();
 
-        cam.Goto(m_activePlayer.kingPosition, OnCameraFinished);
+        cam.Goto(m_activePlayer.kingPosition, cam.transform.eulerAngles + new Vector3(0.0f, 180.0f, 0.0f), OnCameraFinished);
 
         timing = false;
     }

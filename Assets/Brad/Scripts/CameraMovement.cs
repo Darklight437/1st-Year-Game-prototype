@@ -33,10 +33,8 @@ public class CameraMovement : MonoBehaviour
     public float smoothingSpeed = 0.0f;
     
     [Range(0.0f, 2.0f)]
-    public float transitionLinearTime = 0.0f;
-
-    [Range(0.0f, 2.0f)]
-    public float transitionRotationTime = 0.0f;
+    public float transitionTime = 0.0f;
+    public AnimationCurve transitionCurve = null;
 
     //focal movement limits
     public Rect limits;
@@ -55,6 +53,9 @@ public class CameraMovement : MonoBehaviour
     //3D target vector
     private Vector3 m_start = Vector3.zero;
     private Vector3 m_target = Vector3.zero;
+
+    private Vector3 m_eulerStart = Vector3.zero;
+    private Vector3 m_eulerEnd = Vector3.zero;
     private float m_movementTimer = 0.0f;
 
     //callback to invoke when the target is reached
@@ -143,9 +144,16 @@ public class CameraMovement : MonoBehaviour
             m_smoothInput += relative.normalized * smoothingSpeed * Time.deltaTime;
         }
 
+        //trig calculations
+        float sn = Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.y);
+        float cs = Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.y);
+
+        //rotate the vector by the camera's y rotation
+        Vector2 rotatedInput = new Vector2(cs * m_smoothInput.x - sn * m_smoothInput.y, sn * m_smoothInput.x + cs * m_smoothInput.y);
+
         //moves the camera if input is given and snaps the y to 0
-        transform.position = new Vector3(transform.position.x + m_smoothInput.x * cameraSpeed * Time.deltaTime, 0.0f,
-            transform.position.z + m_smoothInput.y * cameraSpeed * Time.deltaTime);
+        transform.position = new Vector3(transform.position.x + rotatedInput.x * cameraSpeed * Time.deltaTime, 0.0f,
+            transform.position.z + rotatedInput.y * cameraSpeed * Time.deltaTime);
 
         ClampPosition();
     }
@@ -163,16 +171,28 @@ public class CameraMovement : MonoBehaviour
         m_movementTimer += Time.deltaTime;
 
         //the timer cannot tick over the maximum
-        if (m_movementTimer >= transitionLinearTime)
+        if (m_movementTimer >= transitionTime)
         {
-            m_movementTimer = transitionLinearTime + 0.01f;
+            //set the timer above the limit
+            m_movementTimer = transitionTime + 0.01f;
+
+            //snap to the target
+            transform.position = m_target;
+            transform.eulerAngles = m_eulerEnd;
+        }
+        else
+        {
+            //evaluate the time curve
+            float x = m_movementTimer / transitionTime;
+            float y = transitionCurve.Evaluate(x);
+
+            //apply a simple lerp to the position
+            transform.position = Vector3.Lerp(m_start, m_target, y);
+            transform.eulerAngles = Vector3.Lerp(m_eulerStart, m_eulerEnd, y);
         }
 
-        //apply a simple lerp to the position
-        transform.position = Vector3.Lerp(m_start, m_target, m_movementTimer / transitionLinearTime);
-
         //check if the movement has finished
-        if (m_movementTimer >= transitionLinearTime)
+        if (m_movementTimer >= transitionTime)
         {
             //set the camera state back to free movement
             m_cameraState = eCameraState.FREE;
@@ -194,18 +214,22 @@ public class CameraMovement : MonoBehaviour
     * a target in future update calls
     * 
     * @param Vector3 target - the position to move towards
+    * @param Vector3 targetEuler - the euler angle target
     * @param VoidFunc callback - function to call when the target is reached
     * @returns void
     */
-    public void Goto(Vector3 target, VoidFunc callback)
+    public void Goto(Vector3 target, Vector3 targetEuler, VoidFunc callback)
     {
         //remember the parameters
         m_cameraState = eCameraState.TARGET;
         m_targetCallback = callback;
 
-        //set the lerp positions
+        //set the lerp positions and euler angles
         m_start = transform.position;
         m_target = target;
+        
+        m_eulerStart = transform.eulerAngles;
+        m_eulerEnd = targetEuler;
 
         //reset the input
         m_smoothInput = Vector2.zero;
