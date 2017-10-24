@@ -34,10 +34,8 @@ public class NextTurnButton : MonoBehaviour
 
     }
 
-    public void Click()
+    void Update()
     {
-        //toggle bool turn
-        manager.OnNextTurn();
 
         if (manager.turn == 0)
         {
@@ -48,6 +46,12 @@ public class NextTurnButton : MonoBehaviour
             Panel.color = Red;
 
         }
+    }
+
+    public void Click()
+    {
+        //toggle bool turn
+        manager.OnNextTurn();
 
     }
 	

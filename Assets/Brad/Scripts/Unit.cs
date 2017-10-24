@@ -17,6 +17,9 @@ public class Unit : MonoBehaviour
     public float health = 1000.0f;
     public float AOV = 1.0f;
 
+    //container of commands to execute
+    public List<UnitCommand> commands = new List<UnitCommand>();
+
     // Use this for initialization
     void Start()
     {
@@ -26,7 +29,10 @@ public class Unit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (commands.Count > 0)
+        {
+            commands[0].Update();
+        }
     }
 
     /*
@@ -65,6 +71,23 @@ public class Unit : MonoBehaviour
 
 
     /*
+    * Execute 
+    * virtual function
+    * 
+    * base function for adding commands to the unit
+    * 
+    * @param GameManagement.eActionType actionType - the type of action to execute
+    * @param int tileX - the x index of the 2D map array
+    * @param int tileY - the y index of the 2D map array
+    * @returns void
+    */
+    public virtual void Execute(GameManagment.eActionType actionType, int tileX, int tileY)
+    {
+
+    }
+
+
+    /*
     * isDead 
     *
     * checks if the unit has positive health
@@ -74,5 +97,46 @@ public class Unit : MonoBehaviour
     public bool isDead()
     {
         return health > 0.0f;
+    }
+
+
+    /*
+    * IsBusy 
+    * 
+    * checks if the unit is still executing UnitCommands
+    * 
+    * @returns bool - the result of the check (positive if still running)
+    */
+    public bool IsBusy()
+    {
+        return commands.Count > 0;
+    }
+
+
+    /*
+    * OnCommandFinish
+    * 
+    * called when the unit's latest command finishes
+    * 
+    * @returns void
+    */
+    public void OnCommandFinish()
+    {
+        //remove the latest command
+        commands.RemoveAt(0);
+    }
+
+
+    /*
+   * OnCommandFailed
+   * 
+   * called when the unit's latest command fails
+   * 
+   * @returns void
+   */
+    public void OnCommandFailed()
+    {
+        //remove all commands as they may depend on the one that just failed being successful
+        commands.Clear();
     }
 }

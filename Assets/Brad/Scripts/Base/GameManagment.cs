@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class GameManagment : MonoBehaviour
 {
+    //custom type for menu buttons
+    public enum eActionType
+    {
+        NULL = 0,
+        ATTACK = 1,
+        MOVEMENT = 2,
+        SPECIAL = 3,
+    }
+
     //function type for parsing a unit
     public delegate void UnitFunc(Unit unit);
 
@@ -29,6 +38,19 @@ public class GameManagment : MonoBehaviour
     //bool indicating if the game is in-between turns
     public bool transitioning = false;
 
+    //reference to the world space manager script
+    public WorldspaceManager worldUI = null;
+
+    //type of action from the world space manager
+    public eActionType actionEvent = eActionType.NULL;
+
+    //flag for the camera selection to respond to
+    public bool uiPressed = false;
+
+    //location of selected tile
+    public int tileX = 0;
+    public int tileY = 0;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -51,6 +73,7 @@ public class GameManagment : MonoBehaviour
 	void Update ()
     {
 
+        
 	}
 
 
@@ -63,10 +86,17 @@ public class GameManagment : MonoBehaviour
     */
     public void OnNextTurn()
     {
-        if (transitioning)
+
+        if (transitioning || activePlayer.IsBusy())
         {
             return;
         }
+
+        //turn off the action menu
+        worldUI.gameObject.GetComponent<Canvas>().enabled = false;
+
+        //deselect the unit
+        selectedUnit = null;
 
         //increment the turn id
         turn++;
@@ -97,26 +127,17 @@ public class GameManagment : MonoBehaviour
     */
     public void OnUnitSelected(Unit unit)
     {
-        
-        if (selectedUnit == null)
-        {
-            //there are no units selected
-            if (unit.playerID == activePlayer.playerID)
-            {
-                selectedUnit = unit;
-            }
-        }
-        else
-        {
-            //the unit selected was an enemy
-            if (unit.playerID != activePlayer.playerID)
-            {
-                //the player wants to attack an enemy
-                selectedUnit.Attack(unit);
 
-                selectedUnit = null;
+        //there are no units selected
+        if (unit.playerID == activePlayer.playerID)
+        {
+            //the player is selecting a different unit, hide the menu
+            if (selectedUnit != unit)
+            {
+                worldUI.gameObject.GetComponent<Canvas>().enabled = false;
             }
 
+            selectedUnit = unit;
         }
     }
 
@@ -132,15 +153,49 @@ public class GameManagment : MonoBehaviour
     */
     public void OnTileSelected(int x, int y)
     {
+
         //if a unit was already selected and an empty tile was selected
         if (selectedUnit != null)
         {
-            selectedUnit.transform.position = new Vector3(x + 0.5f, selectedUnit.transform.position.y, y + 0.5f);
-            selectedUnit = null;
+            tileX = x;
+            tileY = y;
+
+            //set-up the world UI
+            worldUI.transform.position = new Vector3(x + 0.5f, worldUI.transform.position.y, y + 0.5f);
+            worldUI.gameObject.GetComponent<Canvas>().enabled = true;
+
+            //selectedUnit.transform.position = new Vector3(x + 0.5f, selectedUnit.transform.position.y, y + 0.5f);
+            //selectedUnit = null;
         }
     }
 
 
+    /*
+    * OnActionSelected 
+    * 
+    * callback when the world space manager's buttons are clicked
+    * 
+    * @param int actionType - the type of action that was triggered (int representation of the enum)
+    */
+    public void OnActionSelected(int actionType)
+    {
+        //the first entry in eActionType is null
+        actionEvent = (eActionType)(actionType + 1);
+
+        //set the flag for the camera selection system to process
+        uiPressed = true;
+
+        //turn off the action menu
+        worldUI.gameObject.GetComponent<Canvas>().enabled = false;
+
+        //execute the action
+        selectedUnit.Execute(actionEvent, tileX, tileY);
+
+        //deselect the unit
+        selectedUnit = null;
+
+       
+    }
 
     /*
     * OnCameraFinished 
@@ -153,4 +208,8 @@ public class GameManagment : MonoBehaviour
     {
         transitioning = false;
     }
+
+
+
+    
 }

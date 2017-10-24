@@ -78,4 +78,29 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+
+    /*
+    * IsBusy 
+    * 
+    * checks if any unit are still executing commands
+    * 
+    * @returns bool - the result of the check (true if at least one unit is still executing commands)
+    */
+    public bool IsBusy()
+    {
+        //get the size of the units array once
+        int unitsCount = units.Count;
+
+        //iterate through the units array, checking for a busy unit
+        for (int i = 0; i < unitsCount; i++)
+        {
+            if (units[i].IsBusy())
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

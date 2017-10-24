@@ -8,7 +8,9 @@ public class WorldspaceManager : MonoBehaviour {
     public GameObject MoveButton;
     public GameObject AttButton;
     public GameObject SpcButton;
+
     RaycastHit hit;
+    
     // Use this for initialization
     void Start ()
     {
@@ -20,22 +22,25 @@ public class WorldspaceManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, Camera.main.transform.eulerAngles.y, transform.eulerAngles.z);
+
         if (Input.GetMouseButtonDown(0))
         {
            
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100.0f))
             {
-                JumpToTile();
+                //JumpToTile();
                 Debug.Log("hit!");
             }
 
         }
     }
+
     //jumps the worldspace canvas to a location
     void JumpToTile()
     {
-       RectTransform Canvas = gameObject.GetComponent<RectTransform>();
+        RectTransform Canvas = gameObject.GetComponent<RectTransform>();
         Canvas.anchoredPosition3D = hit.transform.position;
     }
 
