@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class GameManagment : MonoBehaviour
 {
+    //function type for parsing a unit
+    public delegate void UnitFunc(Unit unit);
+
     //list of references to players
     public List<Player> players = new List<Player>();
 
     //static reference to the statistics object
-    public static Statistics stats;
+    public static Statistics stats = null;
+    public Statistics statsReference = null;
 
     //reference to the active player
-    private Player m_activePlayer = null;
+    public Player activePlayer = null;
+
+    //reference to the selected unit
+    public Unit selectedUnit = null;
 
     //reference to the camera movement script
     public CameraMovement cam = null;
@@ -25,7 +32,10 @@ public class GameManagment : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        m_activePlayer = players[0];
+        //set the reference
+        GameManagment.stats = statsReference;
+ 
+        activePlayer = players[0];
 
         //get the size of the players array once
         int playerCount = players.Count;
@@ -44,6 +54,13 @@ public class GameManagment : MonoBehaviour
 	}
 
 
+    /*
+    * OnNextTurn 
+    * 
+    * called when the end turn button is pressed
+    * 
+    * @returns void
+    */
     public void OnNextTurn()
     {
         if (transitioning)
@@ -61,15 +78,77 @@ public class GameManagment : MonoBehaviour
         }
 
         //set the active player
-        m_activePlayer = players[turn];
-        m_activePlayer.CalculateKingPosition();
+        activePlayer = players[turn];
+        activePlayer.CalculateKingPosition();
 
-        cam.Goto(m_activePlayer.kingPosition, cam.transform.eulerAngles + new Vector3(0.0f, 180.0f, 0.0f), OnCameraFinished);
+        cam.Goto(activePlayer.kingPosition, cam.transform.eulerAngles + new Vector3(0.0f, 180.0f, 0.0f), OnCameraFinished);
 
         transitioning = true;
     }
 
 
+    /*
+    * OnUnitSelected 
+    * 
+    * callback when a unit is clicked on
+    * 
+    * @param Unit unit - the unit that was clicked
+    * @returns void
+    */
+    public void OnUnitSelected(Unit unit)
+    {
+        
+        if (selectedUnit == null)
+        {
+            //there are no units selected
+            if (unit.playerID == activePlayer.playerID)
+            {
+                selectedUnit = unit;
+            }
+        }
+        else
+        {
+            //the unit selected was an enemy
+            if (unit.playerID != activePlayer.playerID)
+            {
+                //the player wants to attack an enemy
+                selectedUnit.Attack(unit);
+
+                selectedUnit = null;
+            }
+
+        }
+    }
+
+
+    /*
+    * OnTileSelected 
+    * 
+    * callback when an empty tile is clicked on
+    * 
+    * @param int x - the rounded x coordinate of the tile
+    * @param int y - the rounded y coordinate of the tile
+    * @returns void
+    */
+    public void OnTileSelected(int x, int y)
+    {
+        //if a unit was already selected and an empty tile was selected
+        if (selectedUnit != null)
+        {
+            selectedUnit.transform.position = new Vector3(x + 0.5f, selectedUnit.transform.position.y, y + 0.5f);
+            selectedUnit = null;
+        }
+    }
+
+
+
+    /*
+    * OnCameraFinished 
+    * 
+    * callback when the camera has finished it's automatic transition
+    * 
+    * @returns void
+    */
     public void OnCameraFinished()
     {
         transitioning = false;

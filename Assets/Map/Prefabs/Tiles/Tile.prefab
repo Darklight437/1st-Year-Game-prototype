@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1485266572742464}
+  m_IsPrefabParent: 1
+--- !u!1 &1485266572742464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4456066335056252}
+  - component: {fileID: 114180348593068756}
+  - component: {fileID: 65695606988542782}
+  m_Layer: 0
+  m_Name: Tile
+  m_TagString: Tile
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4456066335056252
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1485266572742464}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.9489042, y: -1.9347124, z: 2.6523564}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65695606988542782
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1485266572742464}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.25, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114180348593068756
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1485266572742464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 288b0f185d0c4984ca880ab3427a6877, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileType: 0
+  tileEdges: []
+  normalTile:
+    tileTypes:
+    - {fileID: 1066996647333548, guid: 499565b820a768241b8ec507a117a478, type: 2}
+    - {fileID: 1387816057587138, guid: c5d2bff5a8b460b49bffd8eac7ebc715, type: 2}
+    - {fileID: 1608670734620068, guid: 55a7aca5ffbb0f745a06ce32552e3634, type: 2}
+    - {fileID: 1683809601712578, guid: bbd6f8061614ef04da095d7d9e10b666, type: 2}
+  damageTile:
+    tileTypes:
+    - {fileID: 1422519149377992, guid: b18938c7d21d9434e9dc3cc3d61221e0, type: 2}
+  defenseTile:
+    tileTypes:
+    - {fileID: 1062882265927204, guid: f9ba9e5d656f7694c921de53fe6b8ccc, type: 2}
+  impassableTile:
+    tileTypes:
+    - {fileID: 1410987491421384, guid: 842d4b57229007347b814eda4d6b47d4, type: 2}
+  useTileSet:
+    tileTypes: []

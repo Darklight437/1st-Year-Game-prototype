@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour {
 
-    public enum eUIState {BASE, ACTIVEUNIT, ENDGAME}
+    public enum eUIState {BASE, ACTIVEUNIT, ENDGAME, PAUSEMENU}
     public eUIState currUIState;
 	// Use this for initialization
 	void Start ()
@@ -19,4 +19,8 @@ public class UIManager : MonoBehaviour {
         //switch on enum
         //enable / disable elements of ui & manage UI anims
 	}
+    void BaseState()
+    {
+
+    }
 }
