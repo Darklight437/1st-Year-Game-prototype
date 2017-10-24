@@ -92,5 +92,6 @@ MonoBehaviour:
     - {fileID: 1144284700724588, guid: a3b7eb0788b23e44897ab8c04e3cf1e6, type: 2}
   useTileSet:
     tileTypes: []
+  unit: {fileID: 0}
   parent: {fileID: 0}
   pos: {x: 0, y: 0, z: 0}

@@ -137,6 +137,12 @@ public class GameManagment : MonoBehaviour
                 worldUI.gameObject.GetComponent<Canvas>().enabled = false;
             }
 
+            //David
+            /*  going to set a state of the UI manager here in the future
+             * 
+             *  enum UI state = selected;
+             */
+
             selectedUnit = unit;
         }
     }
