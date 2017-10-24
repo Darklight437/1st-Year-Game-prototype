@@ -68,30 +68,28 @@ MonoBehaviour:
   tileEdges: []
   normalTile:
     tileTypes:
-    - {fileID: 1417983349618894, guid: 4ebf9d9e00c5b05499f63a73e8a96804, type: 2}
-    - {fileID: 1255308690376600, guid: f056ee5e1b4119348b7dd6e8155cf0db, type: 2}
-    - {fileID: 1182777390298294, guid: f33d1a35ae02ca84c9b99a85d5f4577f, type: 2}
-    - {fileID: 1835112048746992, guid: f34a484187e39d840aa4e947d6df494b, type: 2}
+    - {fileID: 1695736773553374, guid: 16f49af4d7307e64696a335419400dbc, type: 2}
+    - {fileID: 1218276688348930, guid: 04d69f771464d17498c15bbdb0ee236f, type: 2}
+    - {fileID: 1691426315828382, guid: 82216a339d81b604bb5423024b420eb4, type: 2}
+    - {fileID: 1751165655880250, guid: 0fd675f61cdc32945a99b3df2198f3af, type: 2}
   damageTile:
     tileTypes:
-    - {fileID: 1133243524299188, guid: 2b44bbffc372df84cac39f1e4ddaacf7, type: 2}
-    - {fileID: 1832967545177798, guid: a1a436b71328b314e918edeb45ce2631, type: 2}
-    - {fileID: 1753389131639526, guid: 962a4c3b2e1c1e546b5d8f795fb821c4, type: 2}
-    - {fileID: 1971682780951620, guid: 2519975c20e26a34f8b846f903404807, type: 2}
+    - {fileID: 1384679321466098, guid: 75489a03c7897a14ba8911a3c4f2a3f0, type: 2}
+    - {fileID: 1818250784526924, guid: 09238b6e5259a564183ec9c9ca534064, type: 2}
+    - {fileID: 1487201925547498, guid: c7ac3d4f8f72bc448b1236a9058c4350, type: 2}
+    - {fileID: 1757668793966472, guid: afbf8108b97caed41bc88db88df7cc87, type: 2}
   defenseTile:
     tileTypes:
-    - {fileID: 1569909926572588, guid: e7ba8ee5a857cfa4787fe904bdcbd506, type: 2}
-    - {fileID: 1019899444031724, guid: 9c3e77abe88178f4ba117d32eaea5246, type: 2}
-    - {fileID: 1272399475918590, guid: 79e21e54821c11f418c718c347a36fc1, type: 2}
-    - {fileID: 1531164013988158, guid: 7278daa54530ecd488101f735cc70234, type: 2}
+    - {fileID: 1576851533187428, guid: 93a6f2b39e43da849b6d7e1a8cb13d64, type: 2}
+    - {fileID: 1758013974494798, guid: e31d0d6d5ad821a489fadfbcc80f9726, type: 2}
+    - {fileID: 1697595317617740, guid: 75e7a522622e8cf41ae63a2905861449, type: 2}
+    - {fileID: 1296555819097346, guid: b87cec316024b0142aa51b5376e5caa4, type: 2}
   impassableTile:
     tileTypes:
-    - {fileID: 1532942009636012, guid: de0c644aef4043e4ba2fc5d857ab8bcc, type: 2}
-    - {fileID: 1932210136258554, guid: 088bf0b7dd523e44b9640501208f0e1c, type: 2}
-    - {fileID: 1454483311416738, guid: 3150266d467b79e4e82e3c3dc7f03fa9, type: 2}
-    - {fileID: 1367324729159532, guid: af341e1b364ff99499d451aade13e2d2, type: 2}
-  pathTile:
-    tileTypes: []
+    - {fileID: 1939529407588016, guid: d40ce2015dc32734ca783ea00f81872b, type: 2}
+    - {fileID: 1778706558510896, guid: 8580a5eb129690044abc5e6c2b4be03e, type: 2}
+    - {fileID: 1321389459630050, guid: c2d829ab97367644187f833c34044d73, type: 2}
+    - {fileID: 1144284700724588, guid: a3b7eb0788b23e44897ab8c04e3cf1e6, type: 2}
   useTileSet:
     tileTypes: []
   parent: {fileID: 0}
