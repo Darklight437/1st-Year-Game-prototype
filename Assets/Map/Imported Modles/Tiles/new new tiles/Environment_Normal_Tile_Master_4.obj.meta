@@ -1,7 +1,5 @@
 fileFormatVersion: 2
 guid: f5bcfadbb51a96e40ab8193626d7e88e
-timeCreated: 1508816385
-licenseType: Pro
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
@@ -12,6 +10,7 @@ ModelImporter:
     2300000: Normal_Tile_Master_1_1
     3300000: Normal_Tile_Master_1_1
     4300000: Normal_Tile_Master_1_1
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -81,7 +80,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

@@ -1,7 +1,5 @@
 fileFormatVersion: 2
 guid: dbc7cf02d17a68d47882341045c9d9e1
-timeCreated: 1508816383
-licenseType: Pro
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
@@ -12,6 +10,7 @@ ModelImporter:
     2300000: Impassable_Tile_Master_1_4
     3300000: Impassable_Tile_Master_1_4
     4300000: Impassable_Tile_Master_1_4
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -81,7 +80,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

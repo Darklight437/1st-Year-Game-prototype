@@ -1,7 +1,5 @@
 fileFormatVersion: 2
 guid: f6af01d0e56acc7488e488a1cc14a089
-timeCreated: 1508816386
-licenseType: Pro
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
@@ -12,6 +10,7 @@ ModelImporter:
     2300000: Defence_Tile_Master_1_3
     3300000: Defence_Tile_Master_1_3
     4300000: Defence_Tile_Master_1_3
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -81,7 +80,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

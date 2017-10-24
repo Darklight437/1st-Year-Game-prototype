@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Map/Imported Modles/Tiles/new new tiles.meta
 guid: 3bd4286ca8f640f4da51aab58717430b
 folderAsset: yes
 timeCreated: 1508816366
+=======
+guid: e91a867f2dd365a4bb313c2195857cff
+folderAsset: yes
+timeCreated: 1508817039
+>>>>>>> d361d3aab7be35591f1731add5b0f8406f865074:Assets/Map/Imported Modles/Tiles/new new tiles.meta
 licenseType: Pro
 DefaultImporter:
   userData: 

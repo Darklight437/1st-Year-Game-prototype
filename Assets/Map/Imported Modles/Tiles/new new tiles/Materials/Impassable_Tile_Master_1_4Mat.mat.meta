@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 52fd9ff4aadb1cc42a7621e016304e1a
 timeCreated: 1508816383
+=======
+guid: bdb82bc78e01ded479a8cf249ce883ce
+timeCreated: 1508817054
+>>>>>>> d361d3aab7be35591f1731add5b0f8406f865074
 licenseType: Pro
 NativeFormatImporter:
   mainObjectFileID: 2100000
