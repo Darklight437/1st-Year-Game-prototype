@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: 9d5e3f51be5d7e44da84932597016a71
-timeCreated: 1508810576
+guid: 780660055ab530747927c2ec66abd8af
+timeCreated: 1508817053
 licenseType: Pro
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Impassable_Tile_Master_1_4
+    100002: Normal_Tile_Master_1_4
     400000: //RootNode
-    400002: Impassable_Tile_Master_1_4
-    2300000: Impassable_Tile_Master_1_4
-    3300000: Impassable_Tile_Master_1_4
-    4300000: Impassable_Tile_Master_1_4
+    400002: Normal_Tile_Master_1_4
+    2300000: Normal_Tile_Master_1_4
+    3300000: Normal_Tile_Master_1_4
+    4300000: Normal_Tile_Master_1_4
   materials:
     importMaterials: 1
     materialName: 0

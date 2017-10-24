@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: 9f4aa8e28091c514ca6a2de7ad37a4da
-timeCreated: 1508810576
+guid: 3eeb5570d34ffc7428298d2ec54cd76b
+timeCreated: 1508817053
 licenseType: Pro
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Trap_Tile_Master_1_3
+    100002: Trap_Tile_Master_1_1
     400000: //RootNode
-    400002: Trap_Tile_Master_1_3
-    2300000: Trap_Tile_Master_1_3
-    3300000: Trap_Tile_Master_1_3
-    4300000: Trap_Tile_Master_1_3
+    400002: Trap_Tile_Master_1_1
+    2300000: Trap_Tile_Master_1_1
+    3300000: Trap_Tile_Master_1_1
+    4300000: Trap_Tile_Master_1_1
   materials:
     importMaterials: 1
     materialName: 0

@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: 2301c55c4bdf7394fa674ae9ba187692
-timeCreated: 1508810574
+guid: 3b9f4f7b3daf1a64285433c2e251d5ad
+timeCreated: 1508817052
 licenseType: Pro
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Normal_Tile_Master_1_1
+    100002: Normal_Tile_Master_1_2
     400000: //RootNode
-    400002: Normal_Tile_Master_1_1
-    2300000: Normal_Tile_Master_1_1
-    3300000: Normal_Tile_Master_1_1
-    4300000: Normal_Tile_Master_1_1
+    400002: Normal_Tile_Master_1_2
+    2300000: Normal_Tile_Master_1_2
+    3300000: Normal_Tile_Master_1_2
+    4300000: Normal_Tile_Master_1_2
   materials:
     importMaterials: 1
     materialName: 0

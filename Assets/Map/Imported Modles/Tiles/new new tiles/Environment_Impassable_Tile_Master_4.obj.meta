@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: 6ea3afd72e247504291bf60796f6417a
-timeCreated: 1508810575
+guid: 41897f32fa056ff4eb3702a804f4d9d9
+timeCreated: 1508817053
 licenseType: Pro
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: Defence_Tile_Master_1_3
-    100002: //RootNode
-    400000: Defence_Tile_Master_1_3
-    400002: //RootNode
-    2300000: Defence_Tile_Master_1_3
-    3300000: Defence_Tile_Master_1_3
-    4300000: Defence_Tile_Master_1_3
+    100000: //RootNode
+    100002: Impassable_Tile_Master_1_1
+    400000: //RootNode
+    400002: Impassable_Tile_Master_1_1
+    2300000: Impassable_Tile_Master_1_1
+    3300000: Impassable_Tile_Master_1_1
+    4300000: Impassable_Tile_Master_1_1
   materials:
     importMaterials: 1
     materialName: 0
