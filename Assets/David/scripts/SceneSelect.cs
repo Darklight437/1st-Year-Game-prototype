@@ -12,7 +12,7 @@ public class SceneSelect : MonoBehaviour {
 
     public void SceneTest()
     {
-        if (SceneManager.GetActiveScene().buildIndex == (int)eChangeSceneTo.MENU)
+        if (SceneManager.GetActiveScene().buildIndex != (int)NextScene)
         {
             SceneManager.LoadScene(((int)NextScene));
         }
