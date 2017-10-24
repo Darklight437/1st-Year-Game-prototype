@@ -1,0 +1,203 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="Power fist_data" version="1.3.0" audacityversion="2.1.2" sel0="0.0000000000" sel1="0.0000000000" vpos="896" h="0.0000000000" zoom="330.8358337533" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags>
+		<tag name="Software" value="Lavf52.64.2"/>
+	</tags>
+	<wavetrack name="Engine_ShortMovement_02" channel="2" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="90449">
+				<waveblock start="0">
+					<simpleblockfile filename="e000058f.au" len="90449" min="-0.602148" max="0.628834" rms="0.145658"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Kawasaki Ninja H2 BOV Sound" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="1.82684717">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="67220">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000f5a.au" len="67220" min="-0.825755" max="0.487773" rms="0.09605"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Kawasaki Ninja H2 BOV Sound" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="1.82684717">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="67220">
+				<waveblock start="0">
+					<simpleblockfile filename="e000024b.au" len="67220" min="-0.826463" max="0.474213" rms="0.096707"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Metal crash drop on wood surface_BLASTWAVEFX_14309" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="70732">
+				<waveblock start="0">
+					<simpleblockfile filename="e000088e.au" len="975" min="-0.002647" max="0.002769" rms="0.000079"/>
+				</waveblock>
+				<waveblock start="975">
+					<simpleblockfile filename="e00003ce.au" len="69757" min="-0.00842" max="0.008535" rms="0.000466"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="3.01489321">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="61748">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000622.au" len="61748" min="-0.886668" max="0.867253" rms="0.119971"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Metal crash drop on wood surface_BLASTWAVEFX_14309" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="70732">
+				<waveblock start="0">
+					<simpleblockfile filename="e000051d.au" len="975" min="-0.002214" max="0.002509" rms="0.000078"/>
+				</waveblock>
+				<waveblock start="975">
+					<simpleblockfile filename="e00008e4.au" len="69757" min="-0.008454" max="0.008559" rms="0.000466"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="3.01489321">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="61748">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000a03.au" len="61748" min="-0.925702" max="0.969378" rms="0.144599"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Pine wind whooshes JO" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="2.58803637">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="31813">
+				<waveblock start="0">
+					<simpleblockfile filename="e00003c7.au" len="31813" min="-0.567873" max="0.589622" rms="0.073103"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Pine wind whooshes JO" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="2.58803637">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="31813">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000015.au" len="31813" min="-0.471074" max="0.52908" rms="0.072502"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Sinematic - Sub Sonic Bass Drops_14" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="1" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="5562">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000eca.au" len="5562" min="-0.003562" max="0.004033" rms="0.000264"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="1.65943330">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="666">
+				<waveblock start="0">
+					<simpleblockfile filename="e00007a7.au" len="666" min="-0.02268" max="0.027808" rms="0.001223"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="2.76875406">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="130344">
+				<waveblock start="0">
+					<simpleblockfile filename="e000001a.au" len="130344" min="-0.939606" max="0.929524" rms="0.261028"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="1.72585157">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="45992">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000a23.au" len="45992" min="-0.9178" max="0.892183" rms="0.284387"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Sinematic - Sub Sonic Bass Drops_14" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="1" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="5562">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000c80.au" len="5562" min="-0.004894" max="0.004498" rms="0.000284"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="1.65943330">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="666">
+				<waveblock start="0">
+					<simpleblockfile filename="e000032d.au" len="666" min="-0.014454" max="0.019901" rms="0.000838"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="2.76875406">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="130344">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000c75.au" len="130344" min="-0.929663" max="1.005726" rms="0.259193"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="1.72585157">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="45992">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000b4a.au" len="45992" min="-0.92887" max="0.928908" rms="0.29774"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Mechanism -  Designed Steam Gas Explosion-002" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="0.354813" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="2666">
+				<waveblock start="0">
+					<simpleblockfile filename="e000075b.au" len="2666" min="-0.007686" max="0.000982" rms="0.000392"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="1.49024503">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="102166">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000def.au" len="102166" min="-1.254817" max="1.249463" rms="0.261231"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Mechanism -  Designed Steam Gas Explosion-002" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="0.354813" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="2666">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000007.au" len="2666" min="-0.004811" max="0.0004" rms="0.000369"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="1.49024503">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="102166">
+				<waveblock start="0">
+					<simpleblockfile filename="e00003bc.au" len="102166" min="-1.283361" max="1.201565" rms="0.243795"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>
