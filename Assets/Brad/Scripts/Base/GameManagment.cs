@@ -38,7 +38,7 @@ public class GameManagment : MonoBehaviour
     //bool indicating if the game is in-between turns
     public bool transitioning = false;
 
-    //reference to the world space manager script
+    //reference to the world space UI manager script
     public WorldspaceManager worldUI = null;
 
     //type of action from the world space manager
@@ -136,6 +136,12 @@ public class GameManagment : MonoBehaviour
             {
                 worldUI.gameObject.GetComponent<Canvas>().enabled = false;
             }
+
+            //David
+            /*  going to set a state of the UI manager here in the future
+             * 
+             *  enum UI state = selected;
+             */
 
             selectedUnit = unit;
         }

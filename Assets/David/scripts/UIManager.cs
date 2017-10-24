@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour {
 
-    //the enum & implementation of states for the UI
+    //enum of states for the UI
     public enum eUIState {BASE, ACTIVEUNIT, ENDGAME, PAUSEMENU}
     public eUIState currUIState;
 
@@ -17,7 +17,7 @@ public class UIManager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-		//find all the UI canvasses
+		
 
 	}
 	
@@ -28,17 +28,32 @@ public class UIManager : MonoBehaviour {
         //switch on enum
         //enable / disable elements of ui & manage UI anims
 
+        //clear ui to base state
         if (currUIState == eUIState.BASE)
         {
+            resetUI();
+
             if(Input.GetKeyDown(KeyCode.Escape))
             {
                 currUIState = eUIState.PAUSEMENU;
+                stateSwitch();
+                return;
+            }
+        }
+        if(currUIState == eUIState.PAUSEMENU)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                currUIState = eUIState.BASE;
+                stateSwitch();
+                return;
             }
         }
 
 
+
         stateSwitch();
-	}
+    }
 
     //will check which UI elements should be active
     void stateSwitch()
