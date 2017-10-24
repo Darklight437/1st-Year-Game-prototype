@@ -25,9 +25,7 @@ public class MapEditorScript : MonoBehaviour
     public uint mapLength;
     public uint mapWidth;
 
-    //a refrence to the active map we are editing, tad obsolete as this was primairly used
-    //as a refrence when all tile types where seperate objs and i was deleting and replacing them
-    //still used for the paint all function
+    //a refrence to the active map we are editing, used for paint all and update tile functions
     public GameObject world;
 
     //boolean for weather or not paint mode is on or off
@@ -216,5 +214,38 @@ public class MapEditorScript : MonoBehaviour
                 }
             }
         }
+    }
+
+    /*
+    * UpdateTilePrefabs
+    * public void function
+    * 
+    * this function goes through our world and gathers up all of its old tile prefabs
+    * it then goes through them all copying them with the latest uptodate prefabs and
+    * replaces them so old maps can be updated with the new tiles
+    * 
+    * @returns nothing
+    */
+    public void UpdateTilePrefabs()
+    {
+        List<Tiles> mapTiles = world.GetComponent<Map>().mapTiles;
+
+        List<Tiles> newTiles = new List<Tiles>();
+
+        foreach (Tiles tile in mapTiles)
+        {
+            GameObject mapTile = Instantiate(tileObj, tile.transform.position, Quaternion.identity);
+
+            mapTile.GetComponent<Tiles>().tileType = tile.tileType;
+            mapTile.GetComponent<Tiles>().GenerateBaseTile();
+
+            mapTile.transform.SetParent(world.transform);
+
+            newTiles.Add(mapTile.GetComponent<Tiles>());
+
+            DestroyImmediate(tile.gameObject);
+        }
+
+        world.GetComponent<Map>().mapTiles = newTiles;
     }
 }

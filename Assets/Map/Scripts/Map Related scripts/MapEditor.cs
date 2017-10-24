@@ -45,6 +45,12 @@ public class MapEditor : Editor
             myScript.TogglePaint();
         }
 
+        //this will go through a map and update its tiles with the latest tile prefab
+        if (GUILayout.Button("Update Tile Prefab"))
+        {
+            myScript.UpdateTilePrefabs();
+        }
+
         //these buttons will only display if paint mode is on
         if (myScript.enablePaint)
         {
