@@ -76,6 +76,7 @@ public class MoveCommand : UnitCommand
                 //the path failed
                 startingTile.unit = unit;
                 failedCallback();
+                return;
             }
         }
 
@@ -103,6 +104,7 @@ public class MoveCommand : UnitCommand
         else
         {
             successCallback();
+            return;
         }
     }
 }
