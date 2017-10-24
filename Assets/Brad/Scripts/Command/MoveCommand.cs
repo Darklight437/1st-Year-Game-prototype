@@ -16,7 +16,7 @@ public class MoveCommand : UnitCommand
     public Map map = null;
 
     //list of tiles to follow
-    private List<Tiles> m_tilePath = new List<Tiles>();
+    private List<Tiles> m_tilePath = null;
 
 
     public void Start()
@@ -41,13 +41,6 @@ public class MoveCommand : UnitCommand
 
         //find the map component
         map = GameObject.FindObjectOfType<Map>();
-
-        //get the start and end of the path
-        Tiles startingTile = map.GetTileAtPos(u.transform.position);
-        Tiles endingTile = map.GetTileAtPos(new Vector3(x, 0.0f, y));
-
-        //get the tile path to follow
-        m_tilePath = AStar.g_AStarInstance.GetAStarPath(startingTile, endingTile);
     }
 
 
@@ -61,6 +54,31 @@ public class MoveCommand : UnitCommand
     */
     public override void Update()
     {
+        if (m_tilePath == null)
+        {
+            //get the start and end of the path
+            Tiles startingTile = map.GetTileAtPos(unit.transform.position);
+            Tiles endingTile = map.GetTileAtPos(new Vector3(tileX, 0.0f, tileY));
+
+            startingTile.unit = null;
+
+            //get the tile path to follow
+            m_tilePath = AStar.g_AStarInstance.GetAStarPath(startingTile, endingTile);
+
+            //the path is clear
+            if (m_tilePath.Count > 0)
+            {
+                startingTile.unit = null;
+                endingTile.unit = unit;
+            }
+            else
+            {
+                //the path failed
+                startingTile.unit = unit;
+                failedCallback();
+            }
+        }
+
         //check if there is still a path to follow
         if (m_tilePath.Count > 0)
         {

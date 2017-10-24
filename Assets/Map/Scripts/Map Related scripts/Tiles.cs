@@ -50,6 +50,9 @@ public class Tiles : MonoBehaviour
     //this should make it very easy to change on the fly
     public TileTypes useTileSet;
 
+    //unit that is on the tile
+    public Unit unit = null;
+
     //tile values for pathfinding purposes 
     private float m_gcost;
     public float GCost
@@ -90,6 +93,11 @@ public class Tiles : MonoBehaviour
     {
         get
         {
+            if (unit != null)
+            {
+                return false;
+            }
+
             switch (tileType)
             {
                 case eTileType.NORMAL:

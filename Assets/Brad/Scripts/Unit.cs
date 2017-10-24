@@ -23,7 +23,11 @@ public class Unit : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        
+        //get the tile that the unit is standing on
+        Tiles currentTile = GameObject.FindObjectOfType<Map>().GetTileAtPos(transform.position);
+
+        //set the unit space to this
+        currentTile.unit = this;
     }
 
     // Update is called once per frame
