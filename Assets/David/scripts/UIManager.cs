@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour {
 
-    //the enum & implementation of states for the UI
+    //enum of states for the UI
     public enum eUIState {BASE, ACTIVEUNIT, ENDGAME, PAUSEMENU}
     public eUIState currUIState;
 
@@ -17,7 +17,7 @@ public class UIManager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-		//find all the UI canvasses
+		
 
 	}
 	
