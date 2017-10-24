@@ -12,7 +12,18 @@ using UnityEngine;
 */
 public class MoveCommand : UnitCommand
 {
+    //reference to the map
+    public Map map = null;
 
+    //list of tiles to follow
+    private List<Tiles> m_tilePath = new List<Tiles>();
+
+
+    public void Start()
+    {
+       
+    }
+    
 
     /*
     * MoveCommand()
@@ -27,7 +38,18 @@ public class MoveCommand : UnitCommand
     */
     public MoveCommand(Unit u, VoidFunc scb, VoidFunc fcb, int x, int y) : base(u, scb, fcb, x, y)
     {
+
+        //find the map component
+        map = GameObject.FindObjectOfType<Map>();
+
+        //get the start and end of the path
+        Tiles startingTile = map.GetTileAtPos(u.transform.position);
+        Tiles endingTile = map.GetTileAtPos(new Vector3(x, 0.0f, y));
+
+        //get the tile path to follow
+        m_tilePath = AStar.g_AStarInstance.GetAStarPath(startingTile, endingTile);
     }
+
 
     /*
     * Update
@@ -39,19 +61,30 @@ public class MoveCommand : UnitCommand
     */
     public override void Update()
     {
-        //the 3D target of the movement
-        Vector3 target = new Vector3(tileX + 0.5f, 0.5f, tileY + 0.5f);
-
-        Vector3 relative = target - unit.transform.position;
-
-        if (relative.magnitude < 0.5f * Time.deltaTime)
+        //check if there is still a path to follow
+        if (m_tilePath.Count > 0)
         {
-            unit.transform.position = target;
-            successCallback();
+            //get the next position to go to
+            Tiles nextTile = m_tilePath[0];
+
+            //the 3D target of the movement
+            Vector3 target = new Vector3(nextTile.pos.x, 0.5f, nextTile.pos.z);
+
+            Vector3 relative = target - unit.transform.position;
+
+            if (relative.magnitude < 3.0f * Time.deltaTime)
+            {
+                unit.transform.position = target;
+                m_tilePath.RemoveAt(0);
+            }
+            else
+            {
+                unit.transform.position += relative.normalized * 3.0f * Time.deltaTime;
+            }
         }
         else
         {
-            unit.transform.position += relative.normalized * 0.5f * Time.deltaTime;
+            successCallback();
         }
     }
 }

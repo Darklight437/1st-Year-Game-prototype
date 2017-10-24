@@ -44,20 +44,21 @@ public class CameraSelection : MonoBehaviour
                     //get the unit component (null if there isn't one)
                     Unit unit = hitObject.GetComponent<Unit>();
 
-                    //get the grid component (null if there isn't one)
-                    Grid grid = hitObject.GetComponent<Grid>();
+                    //get the tiles component (null if there isn't one)
+                    Tiles tiles = hitObject.GetComponent<Tiles>();
 
                     if (unit != null)
                     {
                         manager.OnUnitSelected(unit);
                     }
 
-                    if (grid != null)
+                    if (tiles != null)
                     {
                         //declare the position variables
                         int x, y;
 
-                        grid.CalculatePosition(hitInfo.point, out x, out y);
+                        x = (int)tiles.pos.x;
+                        y = (int)tiles.pos.z;
 
                         manager.OnTileSelected(x, y);
                     }

@@ -77,4 +77,30 @@ public class Map : MonoBehaviour
             }
         }
     }
+
+    /*
+    * GetTileAtPos
+    * public (Vector3 pos) function
+    * 
+    * this finds the tile at the passed int world location, it will round off the 
+    * pos passed in x and z to the nearest int and set y to zero then search through 
+    * the mapTiles in order to find the corrosponding tile in the world once it finds the tile it
+    * returns it else it will retrun a null
+    * 
+    * @returns Tile
+    */
+    public Tiles GetTileAtPos(Vector3 pos)
+    {
+        Vector3 location = new Vector3(Mathf.RoundToInt(pos.x), 0, Mathf.RoundToInt(pos.z));
+
+        foreach (Tiles tile in mapTiles)
+        {
+            if (tile.pos == location)
+            {
+                return tile;
+            }
+        }
+        
+        return null;
+    }
 }
