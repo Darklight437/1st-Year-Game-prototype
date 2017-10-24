@@ -364,6 +364,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8f5885687ae8b14da3d70e157172e98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoveButton: {fileID: 1466908165162780}
+  AttButton: {fileID: 1607046983765860}
+  SpcButton: {fileID: 1881907848323174}
 --- !u!114 &114555192542459320
 MonoBehaviour:
   m_ObjectHideFlags: 1

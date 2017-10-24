@@ -1,16 +1,17 @@
 fileFormatVersion: 2
-guid: 96b3381b1cc35fc478dcf3ee4ba7ebd4
+guid: a8d8aa58310571a489a8bb435ea6f0ad
+timeCreated: 1508804387
+licenseType: Pro
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: Backpack
-    100002: //RootNode
-    400000: Backpack
-    400002: //RootNode
-    2300000: Backpack
-    3300000: Backpack
-    4300000: Backpack
-    9500000: //RootNode
+    100000: //RootNode
+    100002: pCylinder2
+    400000: //RootNode
+    400002: pCylinder2
+    2300000: pCylinder2
+    3300000: pCylinder2
+    4300000: pCylinder2
   materials:
     importMaterials: 1
     materialName: 0
@@ -80,7 +81,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
