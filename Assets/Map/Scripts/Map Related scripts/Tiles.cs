@@ -18,7 +18,6 @@ public enum eTileType
     DAMAGE,
     DEFENSE,
     IMPASSABLE,
-    PATH,
     NULL
 }
 
@@ -46,7 +45,6 @@ public class Tiles : MonoBehaviour
     public DamageTile damageTile;
     public DefenseTile defenseTile;
     public ImpassableTile impassableTile;
-    public PathTile pathTile;
 
     //this is the set of tile varients we actually want to usee when the game is running
     //this should make it very easy to change on the fly
@@ -102,8 +100,6 @@ public class Tiles : MonoBehaviour
                     return true;
                 case eTileType.IMPASSABLE:
                     return false;
-                case eTileType.PATH:
-                    return true;
                 case eTileType.NULL:
                     return false;
             }
@@ -160,10 +156,6 @@ public class Tiles : MonoBehaviour
 
             case eTileType.IMPASSABLE:
                 useTileSet = impassableTile;
-                break;
-
-            case eTileType.PATH:
-                useTileSet = pathTile;
                 break;
         }
     }
@@ -302,19 +294,4 @@ public class DefenseTile : TileTypes
 [System.Serializable]
 public class ImpassableTile : TileTypes
 {
-}
-
-/*
-* class ImpassableTile
-* inherits TileTypes
-* 
-* this class holds all the varient types for the Path tiles
-* used for Debugging
-* 
-* author: Callum Dunstone, Academy of Interactive Entertainment, 2017
-*/
-[System.Serializable]
-public class PathTile : TileTypes
-{
-
 }
