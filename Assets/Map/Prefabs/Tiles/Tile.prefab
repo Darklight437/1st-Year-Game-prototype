@@ -81,5 +81,10 @@ MonoBehaviour:
   impassableTile:
     tileTypes:
     - {fileID: 1410987491421384, guid: 842d4b57229007347b814eda4d6b47d4, type: 2}
+  pathTile:
+    tileTypes:
+    - {fileID: 1180904716080118, guid: 2eebda4537d566142aaf6305a849abff, type: 2}
   useTileSet:
     tileTypes: []
+  parent: {fileID: 0}
+  pos: {x: 0, y: 0, z: 0}

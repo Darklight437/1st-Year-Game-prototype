@@ -18,6 +18,7 @@ public enum eTileType
     DAMAGE,
     DEFENSE,
     IMPASSABLE,
+    PATH,
     NULL
 }
 
@@ -45,10 +46,77 @@ public class Tiles : MonoBehaviour
     public DamageTile damageTile;
     public DefenseTile defenseTile;
     public ImpassableTile impassableTile;
+    public PathTile pathTile;
 
     //this is the set of tile varients we actually want to usee when the game is running
     //this should make it very easy to change on the fly
     public TileTypes useTileSet;
+
+    //tile values for pathfinding purposes 
+    private float m_gcost;
+    public float GCost
+    {
+        get
+        {
+            return m_gcost;
+        }
+        set
+        {
+            m_gcost = value;
+        }
+    }
+
+    private float m_hcost;
+    public float HCost
+    {
+        get
+        {
+            return m_hcost;
+        }
+        set
+        {
+            m_hcost = value;
+        }
+    }
+
+    public float FCost
+    {
+        get
+        {
+            return (m_gcost + m_hcost);
+        }
+    }
+
+    //determins if this tile is passible
+    public bool IsPassible
+    {
+        get
+        {
+            switch (tileType)
+            {
+                case eTileType.NORMAL:
+                    return true;
+                case eTileType.DAMAGE:
+                    return true;
+                case eTileType.DEFENSE:
+                    return true;
+                case eTileType.IMPASSABLE:
+                    return false;
+                case eTileType.PATH:
+                    return true;
+                case eTileType.NULL:
+                    return false;
+            }
+
+            return false;
+        }
+    }
+
+    //this is the tiles parent for pathfinding purposes
+    public Tiles parent;
+    
+    //the tiles world position for debugging purposes
+    public Vector3 pos;
 
     /*
     * Start
@@ -62,6 +130,7 @@ public class Tiles : MonoBehaviour
     private void Start()
     {
         GenerateRandomTileVariant();
+        pos = gameObject.transform.position;
     }
 
     /*
@@ -91,6 +160,10 @@ public class Tiles : MonoBehaviour
 
             case eTileType.IMPASSABLE:
                 useTileSet = impassableTile;
+                break;
+
+            case eTileType.PATH:
+                useTileSet = pathTile;
                 break;
         }
     }
@@ -191,6 +264,7 @@ public class TileTypes
 public class NormalTile : TileTypes
 {
 }
+
 /*
 * class DamageTile
 * inherits TileTypes
@@ -203,6 +277,7 @@ public class NormalTile : TileTypes
 public class DamageTile : TileTypes
 {
 }
+
 /*
 * class DefenseTile
 * inherits TileTypes
@@ -215,6 +290,7 @@ public class DamageTile : TileTypes
 public class DefenseTile : TileTypes
 {
 }
+
 /*
 * class ImpassableTile
 * inherits TileTypes
@@ -228,3 +304,17 @@ public class ImpassableTile : TileTypes
 {
 }
 
+/*
+* class ImpassableTile
+* inherits TileTypes
+* 
+* this class holds all the varient types for the Path tiles
+* used for Debugging
+* 
+* author: Callum Dunstone, Academy of Interactive Entertainment, 2017
+*/
+[System.Serializable]
+public class PathTile : TileTypes
+{
+
+}
