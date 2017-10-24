@@ -31,7 +31,6 @@ public class WorldspaceManager : MonoBehaviour {
             if (Physics.Raycast(ray, out hit, 100.0f))
             {
                 //JumpToTile();
-                Debug.Log("hit!");
             }
 
         }
