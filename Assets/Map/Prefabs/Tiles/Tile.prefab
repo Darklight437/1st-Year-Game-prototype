@@ -26,7 +26,7 @@ GameObject:
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4456066335056252
 Transform:
@@ -68,18 +68,31 @@ MonoBehaviour:
   tileEdges: []
   normalTile:
     tileTypes:
-    - {fileID: 1066996647333548, guid: 499565b820a768241b8ec507a117a478, type: 2}
-    - {fileID: 1387816057587138, guid: c5d2bff5a8b460b49bffd8eac7ebc715, type: 2}
-    - {fileID: 1608670734620068, guid: 55a7aca5ffbb0f745a06ce32552e3634, type: 2}
-    - {fileID: 1683809601712578, guid: bbd6f8061614ef04da095d7d9e10b666, type: 2}
+    - {fileID: 1417983349618894, guid: 4ebf9d9e00c5b05499f63a73e8a96804, type: 2}
+    - {fileID: 1255308690376600, guid: f056ee5e1b4119348b7dd6e8155cf0db, type: 2}
+    - {fileID: 1182777390298294, guid: f33d1a35ae02ca84c9b99a85d5f4577f, type: 2}
+    - {fileID: 1835112048746992, guid: f34a484187e39d840aa4e947d6df494b, type: 2}
   damageTile:
     tileTypes:
-    - {fileID: 1422519149377992, guid: b18938c7d21d9434e9dc3cc3d61221e0, type: 2}
+    - {fileID: 1133243524299188, guid: 2b44bbffc372df84cac39f1e4ddaacf7, type: 2}
+    - {fileID: 1832967545177798, guid: a1a436b71328b314e918edeb45ce2631, type: 2}
+    - {fileID: 1753389131639526, guid: 962a4c3b2e1c1e546b5d8f795fb821c4, type: 2}
+    - {fileID: 1971682780951620, guid: 2519975c20e26a34f8b846f903404807, type: 2}
   defenseTile:
     tileTypes:
-    - {fileID: 1062882265927204, guid: f9ba9e5d656f7694c921de53fe6b8ccc, type: 2}
+    - {fileID: 1569909926572588, guid: e7ba8ee5a857cfa4787fe904bdcbd506, type: 2}
+    - {fileID: 1019899444031724, guid: 9c3e77abe88178f4ba117d32eaea5246, type: 2}
+    - {fileID: 1272399475918590, guid: 79e21e54821c11f418c718c347a36fc1, type: 2}
+    - {fileID: 1531164013988158, guid: 7278daa54530ecd488101f735cc70234, type: 2}
   impassableTile:
     tileTypes:
-    - {fileID: 1410987491421384, guid: 842d4b57229007347b814eda4d6b47d4, type: 2}
+    - {fileID: 1532942009636012, guid: de0c644aef4043e4ba2fc5d857ab8bcc, type: 2}
+    - {fileID: 1932210136258554, guid: 088bf0b7dd523e44b9640501208f0e1c, type: 2}
+    - {fileID: 1454483311416738, guid: 3150266d467b79e4e82e3c3dc7f03fa9, type: 2}
+    - {fileID: 1367324729159532, guid: af341e1b364ff99499d451aade13e2d2, type: 2}
+  pathTile:
+    tileTypes: []
   useTileSet:
     tileTypes: []
+  parent: {fileID: 0}
+  pos: {x: 0, y: 0, z: 0}

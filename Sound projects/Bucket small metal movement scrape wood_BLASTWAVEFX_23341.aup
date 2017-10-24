@@ -1,0 +1,135 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="Bucket small metal movement scrape wood_BLASTWAVEFX_23341_data" version="1.3.0" audacityversion="2.1.2" sel0="0.2550496443" sel1="0.2550496443" vpos="0" h="0.0000000000" zoom="317.5852302064" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags>
+		<tag name="Software" value="Lavf52.64.2"/>
+	</tags>
+	<wavetrack name="Bucket small metal movement scrape wood_BLASTWAVEFX_23341" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="46080">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000f24.au" len="46080" min="-0.895902" max="0.806587" rms="0.117003"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="1">
+				<controlpoint t="1.044875283447" val="1.000000000000"/>
+			</envelope>
+		</waveclip>
+		<waveclip offset="2.61723356">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="93981">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000315.au" len="93981" min="-1.020496" max="1.017803" rms="0.17425"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="1.04489796">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="69340">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000aad.au" len="69340" min="-0.734245" max="0.598214" rms="0.077122"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="1">
+				<controlpoint t="0.000000000000" val="1.000000000000"/>
+			</envelope>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Bucket small metal movement scrape wood_BLASTWAVEFX_23341" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="34099">
+				<waveblock start="0">
+					<simpleblockfile filename="e00000d2.au" len="34099" min="-0.259853" max="0.255894" rms="0.033447"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="1.25275342">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="60174">
+				<waveblock start="0">
+					<simpleblockfile filename="e00005e9.au" len="60174" min="-0.734252" max="0.59826" rms="0.108719"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="2.61724321">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="93981">
+				<waveblock start="0">
+					<simpleblockfile filename="e00005ab.au" len="93981" min="-0.999423" max="1.022312" rms="0.182219"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="0.77322961">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="21147">
+				<waveblock start="0">
+					<simpleblockfile filename="e00004e9.au" len="21147" min="-0.895902" max="0.806587" rms="0.112459"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Whistle-Male-Forties-Fail-Medium Distant" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="1" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="4.28825617">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="19669">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000185.au" len="694" min="-0.000014" max="0.000012" rms="0.0"/>
+				</waveblock>
+				<waveblock start="694">
+					<simpleblockfile filename="e0000bc7.au" len="18975" min="-0.001162" max="0.001809" rms="0.000144"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="4.04578877">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="1666">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000c11.au" len="555" min="-0.00054" max="0.000049" rms="0.000026"/>
+				</waveblock>
+				<waveblock start="555">
+					<simpleblockfile filename="e0000e4d.au" len="1111" min="-0.000148" max="0.000068" rms="0.000004"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="0.89739690">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="92187">
+				<waveblock start="0">
+					<simpleblockfile filename="e00009a8.au" len="92187" min="-0.16286" max="0.166637" rms="0.024932"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Whistle-Male-Forties-Fail-Medium Distant" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="1" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="4.28825617">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="19669">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000151.au" len="694" min="-0.000025" max="0.000009" rms="0.000001"/>
+				</waveblock>
+				<waveblock start="694">
+					<simpleblockfile filename="e00001df.au" len="18975" min="-0.00133" max="0.001715" rms="0.000145"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="4.04578877">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="1666">
+				<waveblock start="0">
+					<simpleblockfile filename="e00000e0.au" len="555" min="-0.000512" max="0.000036" rms="0.000018"/>
+				</waveblock>
+				<waveblock start="555">
+					<simpleblockfile filename="e0000f27.au" len="1111" min="-0.000129" max="0.000128" rms="0.000004"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="0.89739690">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="92187">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000d37.au" len="92187" min="-0.171921" max="0.152203" rms="0.027477"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>

@@ -50,6 +50,70 @@ public class Tiles : MonoBehaviour
     //this should make it very easy to change on the fly
     public TileTypes useTileSet;
 
+    //tile values for pathfinding purposes 
+    private float m_gcost;
+    public float GCost
+    {
+        get
+        {
+            return m_gcost;
+        }
+        set
+        {
+            m_gcost = value;
+        }
+    }
+
+    private float m_hcost;
+    public float HCost
+    {
+        get
+        {
+            return m_hcost;
+        }
+        set
+        {
+            m_hcost = value;
+        }
+    }
+
+    public float FCost
+    {
+        get
+        {
+            return (m_gcost + m_hcost);
+        }
+    }
+
+    //determins if this tile is passible
+    public bool IsPassible
+    {
+        get
+        {
+            switch (tileType)
+            {
+                case eTileType.NORMAL:
+                    return true;
+                case eTileType.DAMAGE:
+                    return true;
+                case eTileType.DEFENSE:
+                    return true;
+                case eTileType.IMPASSABLE:
+                    return false;
+                case eTileType.NULL:
+                    return false;
+            }
+
+            return false;
+        }
+    }
+
+    //this is the tiles parent for pathfinding purposes
+    public Tiles parent;
+    
+    //the tiles world position for debugging purposes
+    public Vector3 pos;
+
     /*
     * Start
     * public void function
@@ -62,6 +126,7 @@ public class Tiles : MonoBehaviour
     private void Start()
     {
         GenerateRandomTileVariant();
+        pos = gameObject.transform.position;
     }
 
     /*
@@ -191,6 +256,7 @@ public class TileTypes
 public class NormalTile : TileTypes
 {
 }
+
 /*
 * class DamageTile
 * inherits TileTypes
@@ -203,6 +269,7 @@ public class NormalTile : TileTypes
 public class DamageTile : TileTypes
 {
 }
+
 /*
 * class DefenseTile
 * inherits TileTypes
@@ -215,6 +282,7 @@ public class DamageTile : TileTypes
 public class DefenseTile : TileTypes
 {
 }
+
 /*
 * class ImpassableTile
 * inherits TileTypes
@@ -227,4 +295,3 @@ public class DefenseTile : TileTypes
 public class ImpassableTile : TileTypes
 {
 }
-
