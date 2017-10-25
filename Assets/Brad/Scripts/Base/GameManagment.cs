@@ -23,11 +23,20 @@ public class GameManagment : MonoBehaviour
     public static Statistics stats = null;
     public Statistics statsReference = null;
 
+    //reference to the map
+    public Map map = null;
+
     //reference to the active player
     public Player activePlayer = null;
 
     //reference to the selected unit
     public Unit selectedUnit = null;
+
+    //reference to the starting tile (first selection)
+    public Tiles startTile = null;
+
+    //reference to the ending tile (second selection)
+    public Tiles endTile = null;
 
     //reference to the camera movement script
     public CameraMovement cam = null;
@@ -46,10 +55,6 @@ public class GameManagment : MonoBehaviour
 
     //flag for the camera selection to respond to
     public bool uiPressed = false;
-
-    //location of selected tile
-    public int tileX = 0;
-    public int tileY = 0;
 
 	// Use this for initialization
 	void Start ()
@@ -139,9 +144,9 @@ public class GameManagment : MonoBehaviour
 
             //David
             /*  going to set a state of the UI manager here in the future
-             * 
-             *  enum UI state = selected;
-             */
+            * 
+            *  enum UI state = selected;
+            */
 
             selectedUnit = unit;
         }
@@ -151,27 +156,95 @@ public class GameManagment : MonoBehaviour
     /*
     * OnTileSelected 
     * 
-    * callback when an empty tile is clicked on
+    * callback when a tile is clicked on
     * 
-    * @param int x - the rounded x coordinate of the tile
-    * @param int y - the rounded y coordinate of the tile
+    * @param Tiles tile - the tile that was selected
     * @returns void
     */
-    public void OnTileSelected(int x, int y)
+    public void OnTileSelected(Tiles tile)
     {
 
+       
         //if a unit was already selected and an empty tile was selected
         if (selectedUnit != null)
         {
-            tileX = x;
-            tileY = y;
+            //the unit cannot select another unit on the same team
+            if (tile.unit == null || selectedUnit.playerID != tile.unit.playerID)
+            {
 
-            //set-up the world UI
-            worldUI.transform.position = new Vector3(x + 0.5f, worldUI.transform.position.y, y + 0.5f);
-            worldUI.gameObject.GetComponent<Canvas>().enabled = true;
+                endTile = tile;
 
-            //selectedUnit.transform.position = new Vector3(x + 0.5f, selectedUnit.transform.position.y, y + 0.5f);
-            //selectedUnit = null;
+                //set-up the world UI
+                worldUI.transform.position = new Vector3(endTile.pos.x, worldUI.transform.position.y, endTile.pos.z);
+                worldUI.gameObject.GetComponent<Canvas>().enabled = true;
+
+                //get the tile position of the unit
+                Vector3 unitTilePos = selectedUnit.transform.position - Vector3.up * selectedUnit.transform.position.y;
+
+                //get the position of the selected tile
+                Vector3 tilePos = tile.pos;
+
+                //relative vector to the tile
+                Vector3 relative = tilePos - unitTilePos;
+
+                float manhattanDistanceSqr = Mathf.Abs(relative.x) + Mathf.Abs(relative.z);
+                manhattanDistanceSqr *= manhattanDistanceSqr;
+
+                //reset the buttons
+                worldUI.AttButton.SetActive(false);
+                worldUI.MoveButton.SetActive(false);
+                worldUI.SpcButton.SetActive(false);
+
+                //because A* will consider this not passable
+                startTile.unit = null;
+
+                //get the path using A*
+                List<Tiles> path = AStar.g_AStarInstance.GetAStarPath(startTile, endTile);
+
+                //reassign the unit reference
+                startTile.unit = selectedUnit;
+
+                //get the squared steps in the path
+                float pathDistanceSqr = path.Count;
+                pathDistanceSqr *= pathDistanceSqr;
+
+                //can the unit attack the tile
+                if (manhattanDistanceSqr <= selectedUnit.attackRange * selectedUnit.attackRange)
+                {
+                    worldUI.AttButton.SetActive(true);
+                }
+
+                //can the unit move to the tile, also a movement range of 0 means the path couldn't be found
+                if (pathDistanceSqr <= selectedUnit.movementRange * selectedUnit.movementRange && pathDistanceSqr > 0.0f)
+                {
+                    worldUI.MoveButton.SetActive(true);
+                }
+
+                //can the unit apply a special move to the tile
+                if (manhattanDistanceSqr <= selectedUnit.attackRange * selectedUnit.attackRange)
+                {
+                    worldUI.SpcButton.SetActive(true);
+                }
+
+
+            }
+
+            //call the unit handling function if a unit was found on the tile
+            if (tile.unit != null)
+            {
+                startTile = tile;
+                endTile = null;
+                OnUnitSelected(tile.unit);
+            }
+        }
+        else
+        {
+            //call the unit handling function if a unit was found on the tile
+            if (tile.unit != null)
+            {
+                startTile = tile;
+                OnUnitSelected(tile.unit);
+            }
         }
     }
 
@@ -195,12 +268,15 @@ public class GameManagment : MonoBehaviour
         worldUI.gameObject.GetComponent<Canvas>().enabled = false;
 
         //execute the action
-        selectedUnit.Execute(actionEvent, tileX, tileY);
+        selectedUnit.Execute(actionEvent, startTile, endTile);
 
         //deselect the unit
         selectedUnit = null;
 
-       
+        //deselect the tiles
+        startTile = null;
+        endTile = null;
+
     }
 
     /*

@@ -23,7 +23,7 @@ public class MoveCommand : UnitCommand
     {
        
     }
-    
+
 
     /*
     * MoveCommand()
@@ -33,10 +33,10 @@ public class MoveCommand : UnitCommand
     * @param Unit u - the unit that made this command
     * @param VoidFunc scb - the callback to use when finished
     * @param VoidFunc fcb - the callback to use when failed
-    * @param int x - the x coordinate of the target tile
-    * @param int y - the y coordinate of the target tile
+    * @param Tiles st - the first tile selected
+    * @param Tiles et - the last tile selected
     */
-    public MoveCommand(Unit u, VoidFunc scb, VoidFunc fcb, int x, int y) : base(u, scb, fcb, x, y)
+    public MoveCommand(Unit u, VoidFunc scb, VoidFunc fcb, Tiles st, Tiles et) : base(u, scb, fcb, st, et)
     {
 
         //find the map component
@@ -58,18 +58,17 @@ public class MoveCommand : UnitCommand
         {
             //get the start and end of the path
             Tiles startingTile = map.GetTileAtPos(unit.transform.position);
-            Tiles endingTile = map.GetTileAtPos(new Vector3(tileX, 0.0f, tileY));
 
             startingTile.unit = null;
 
             //get the tile path to follow
-            m_tilePath = AStar.g_AStarInstance.GetAStarPath(startingTile, endingTile);
+            m_tilePath = AStar.g_AStarInstance.GetAStarPath(startingTile, endTile);
 
             //the path is clear
             if (m_tilePath.Count > 0)
             {
                 startingTile.unit = null;
-                endingTile.unit = unit;
+                endTile.unit = unit;
             }
             else
             {

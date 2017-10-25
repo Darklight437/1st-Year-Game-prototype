@@ -22,16 +22,16 @@ public class Ranger : Unit
     * adds a command of the specified type to the unit
     * 
     * @param GameManagement.eActionType actionType - the type of action to execute
-    * @param int tileX - the x index of the 2D map array
-    * @param int tileY - the y index of the 2D map array
+    * @param Tiles st - the first tile selected
+    * @param Tiles et - the last tile selected
     * @returns void
     */
-    public override void Execute(GameManagment.eActionType actionType, int tileX, int tileY)
+    public override void Execute(GameManagment.eActionType actionType, Tiles st, Tiles et)
     {
         //movement command
         if (actionType == GameManagment.eActionType.MOVEMENT)
         {
-            MoveCommand mc = new MoveCommand(this, OnCommandFinish, OnCommandFailed, tileX, tileY);
+            MoveCommand mc = new MoveCommand(this, OnCommandFinish, OnCommandFailed, st, et);
 
             commands.Add(mc);
         }

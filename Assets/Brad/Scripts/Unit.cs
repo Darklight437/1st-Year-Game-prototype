@@ -81,11 +81,11 @@ public class Unit : MonoBehaviour
     * base function for adding commands to the unit
     * 
     * @param GameManagement.eActionType actionType - the type of action to execute
-    * @param int tileX - the x index of the 2D map array
-    * @param int tileY - the y index of the 2D map array
+    * @param Tiles st - the first tile selected
+    * @param Tiles et - the last tile selected
     * @returns void
     */
-    public virtual void Execute(GameManagment.eActionType actionType, int tileX, int tileY)
+    public virtual void Execute(GameManagment.eActionType actionType, Tiles st, Tiles et)
     {
 
     }
