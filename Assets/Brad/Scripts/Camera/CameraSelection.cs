@@ -41,26 +41,12 @@ public class CameraSelection : MonoBehaviour
                     //get the object that the raycast hit
                     GameObject hitObject = hitInfo.collider.gameObject;
 
-                    //get the unit component (null if there isn't one)
-                    Unit unit = hitObject.GetComponent<Unit>();
-
                     //get the tiles component (null if there isn't one)
                     Tiles tiles = hitObject.GetComponent<Tiles>();
 
-                    if (unit != null)
-                    {
-                        manager.OnUnitSelected(unit);
-                    }
-
                     if (tiles != null)
                     {
-                        //declare the position variables
-                        int x, y;
-
-                        x = (int)tiles.pos.x;
-                        y = (int)tiles.pos.z;
-
-                        manager.OnTileSelected(x, y);
+                        manager.OnTileSelected(tiles);
                     }
                 }
             }

@@ -13,20 +13,24 @@ using UnityEngine;
 public class AttackCommand : UnitCommand
 {
 
+    //reference to the map
+    public Map map = null;
 
     /*
     * AttackCommand()
     * 
-    * constructor, specifies the target tile and callback
+    * constructor, specifies the target tile and callbacks
     * 
     * @param Unit u - the unit that made this command
     * @param VoidFunc scb - the callback to use when finished
     * @param VoidFunc fcb - the callback to use when failed
-    * @param int x - the x coordinate of the target tile
-    * @param int y - the y coordinate of the target tile
+    * @param Tiles st - the first tile selected
+    * @param Tiles et - the last tile selected
     */
-    public AttackCommand(Unit u, VoidFunc scb, VoidFunc fcb, int x, int y) : base(u, scb, fcb, x, y)
+    public AttackCommand(Unit u, VoidFunc scb, VoidFunc fcb, Tiles st, Tiles et) : base(u, scb, fcb, st, et)
     {
+        //find the map component
+        map = GameObject.FindObjectOfType<Map>();
     }
 
 
