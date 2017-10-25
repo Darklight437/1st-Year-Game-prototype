@@ -18,7 +18,8 @@ public enum eTileType
     DAMAGE,
     DEFENSE,
     IMPASSABLE,
-    NULL
+    NULL,
+    DEBUGGING
 }
 
 /*
@@ -45,6 +46,9 @@ public class Tiles : MonoBehaviour
     public DamageTile damageTile;
     public DefenseTile defenseTile;
     public ImpassableTile impassableTile;
+
+    //these tile set is used for debbuging purposes
+    public DebuggingTile debuggingTile;
 
     //this is the set of tile varients we actually want to usee when the game is running
     //this should make it very easy to change on the fly
@@ -110,6 +114,8 @@ public class Tiles : MonoBehaviour
                     return false;
                 case eTileType.NULL:
                     return false;
+                case eTileType.DEBUGGING:
+                    return true;
             }
 
             return false;
@@ -164,6 +170,10 @@ public class Tiles : MonoBehaviour
 
             case eTileType.IMPASSABLE:
                 useTileSet = impassableTile;
+                break;
+
+            case eTileType.DEBUGGING:
+                useTileSet = debuggingTile;
                 break;
         }
     }
@@ -301,5 +311,18 @@ public class DefenseTile : TileTypes
 */
 [System.Serializable]
 public class ImpassableTile : TileTypes
+{
+}
+
+/*
+* class DebuggingTile
+* inherits TileTypes
+* 
+* this class tile set is used for debugging purposes
+* 
+* author: Callum Dunstone, Academy of Interactive Entertainment, 2017
+*/
+[System.Serializable]
+public class DebuggingTile : TileTypes
 {
 }
