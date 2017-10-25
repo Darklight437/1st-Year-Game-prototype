@@ -108,15 +108,15 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &84277989
+--- !u!1 &764287653
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 84277991}
-  - component: {fileID: 84277990}
+  - component: {fileID: 764287655}
+  - component: {fileID: 764287654}
   m_Layer: 0
   m_Name: Directional light
   m_TagString: Untagged
@@ -124,12 +124,12 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!108 &84277990
+--- !u!108 &764287654
 Light:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 84277989}
+  m_GameObject: {fileID: 764287653}
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
@@ -174,115 +174,61 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!4 &84277991
+--- !u!4 &764287655
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 84277989}
-  m_LocalRotation: {x: 0.3636067, y: -0, z: -0, w: 0.9315526}
-  m_LocalPosition: {x: 282.72, y: -2.25, z: -1.6777955}
+  m_GameObject: {fileID: 764287653}
+  m_LocalRotation: {x: 0.40745243, y: -0, z: -0, w: 0.9132265}
+  m_LocalPosition: {x: 4.1333866, y: -0.16490269, z: 4.2718716}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 42.644, y: 0, z: 0}
-<<<<<<< HEAD
---- !u!1001 &926888971
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4307901080251888, guid: 73a52290324d6a0478051b22e7312b60, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4307901080251888, guid: 73a52290324d6a0478051b22e7312b60, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4307901080251888, guid: 73a52290324d6a0478051b22e7312b60, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4307901080251888, guid: 73a52290324d6a0478051b22e7312b60, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4307901080251888, guid: 73a52290324d6a0478051b22e7312b60, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4307901080251888, guid: 73a52290324d6a0478051b22e7312b60, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4307901080251888, guid: 73a52290324d6a0478051b22e7312b60, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4307901080251888, guid: 73a52290324d6a0478051b22e7312b60, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1947687936179446, guid: 73a52290324d6a0478051b22e7312b60, type: 2}
-      propertyPath: m_Name
-      value: World GameObject
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 73a52290324d6a0478051b22e7312b60, type: 2}
-  m_IsPrefabParent: 0
---- !u!1 &1315293344 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1947687936179446, guid: 73a52290324d6a0478051b22e7312b60,
-    type: 2}
-  m_PrefabInternal: {fileID: 926888971}
-=======
->>>>>>> 7afa0880f56c46d341221edcd8f14530886bfde6
---- !u!1 &1991536523
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 48.090004, y: 0, z: 0}
+--- !u!1 &838048303
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 1991536525}
-  - component: {fileID: 1991536524}
+  - component: {fileID: 838048305}
+  - component: {fileID: 838048304}
   m_Layer: 0
-  m_Name: Map Editor
+  m_Name: MapEditor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1991536524
+--- !u!114 &838048304
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1991536523}
+  m_GameObject: {fileID: 838048303}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a35c4e882912bf34d9ce3a55b4975987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tileObj: {fileID: 1485266572742464, guid: 98af3a9fdcada874e9e1bb69049905f2, type: 2}
-  mapLength: 27
-  mapWidth: 39
-  world: {fileID: 1315293344}
+  mapLength: 11
+  mapWidth: 11
+  world: {fileID: 0}
   enablePaint: 1
---- !u!4 &1991536525
+--- !u!4 &838048305
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1991536523}
+  m_GameObject: {fileID: 838048303}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 4.1333866, y: -0.16490269, z: 4.2718716}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
