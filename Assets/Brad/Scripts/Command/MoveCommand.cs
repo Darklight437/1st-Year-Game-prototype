@@ -62,7 +62,7 @@ public class MoveCommand : UnitCommand
             startingTile.unit = null;
 
             //get the tile path to follow
-            m_tilePath = AStar.g_AStarInstance.GetAStarPath(startingTile, endTile);
+            m_tilePath = AStar.GetAStarPath(startingTile, endTile);
 
             //the path is clear
             if (m_tilePath.Count > 0)

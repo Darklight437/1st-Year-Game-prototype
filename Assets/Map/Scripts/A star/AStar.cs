@@ -9,24 +9,8 @@ using UnityEngine;
 * 
 * author: Callum Dunstone, Academy of Interactive Entertainment, 2017
 */
-public class AStar
+public static class AStar
 {
-    //a private static instance of our A* script
-    private static AStar g_aStar;
-
-    //this returns the private static instance of our A* script
-    public static AStar g_AStarInstance
-    {
-        get
-        {
-            if (g_aStar == null)
-            {
-                g_aStar = new AStar();
-            }
-            return g_aStar;
-        }
-    }
-
     /*
     * GetAStarPath
     * public List<Tiles> function (Tiles startTile, Tiles endTile)
@@ -36,7 +20,7 @@ public class AStar
     * 
     * @returns List<Tiles>
     */
-    public List<Tiles> GetAStarPath(Tiles startTile, Tiles endTile)
+    public static List<Tiles> GetAStarPath(Tiles startTile, Tiles endTile)
     {
         //check to see if one of the tiles passed in does not exist or is not passible meaning they can not move to/from
         if (startTile == null || endTile == null || startTile.IsPassible == false || endTile.IsPassible == false)
@@ -125,7 +109,7 @@ public class AStar
     * 
     * @returns List<Tiles>
     */
-    public List<Tiles> RetracePath(Tiles startTile, Tiles endTile)
+    public static List<Tiles> RetracePath(Tiles startTile, Tiles endTile)
     {
         List<Tiles> path = new List<Tiles>();
 
@@ -157,7 +141,7 @@ public class AStar
     * 
     * @returns bool
     */
-    public bool FindInContainer(List<Tiles> list, Tiles toFind)
+    public static bool FindInContainer(List<Tiles> list, Tiles toFind)
     {
         foreach (Tiles tiles in list)
         {
@@ -178,7 +162,7 @@ public class AStar
     * 
     * @returns int
     */
-    public int GetDistance(Tiles tileA, Tiles tileB)
+    public static int GetDistance(Tiles tileA, Tiles tileB)
     {
         int disX = Mathf.RoundToInt(Mathf.Abs(tileA.transform.position.x - tileB.transform.position.x));
         int disY = Mathf.RoundToInt(Mathf.Abs(tileA.transform.position.y - tileB.transform.position.y));

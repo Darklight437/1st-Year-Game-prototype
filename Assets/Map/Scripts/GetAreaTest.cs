@@ -58,7 +58,7 @@ public class GetAreaTest : MonoBehaviour
             }
 
             moveableTiles.Clear();
-            moveableTiles = GetArea.g_GetAreaInstance.GetAreaOfMoveable(tile, moveable);
+            moveableTiles = GetArea.GetAreaOfMoveable(tile, moveable);
 
             //redraw walkable area for easy visual checking
             foreach (Tiles tile in moveableTiles)

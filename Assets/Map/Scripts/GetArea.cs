@@ -9,24 +9,8 @@ using UnityEngine;
 * 
 * author: Callum Dunstone, Academy of Interactive Entertainment, 2017
 */
-public class GetArea
+public static class GetArea
 {
-    //a private static instance of our GetArea script
-    private static GetArea g_getArea;
-
-    //this returns the private static instance of our GetArea script
-    public static GetArea g_GetAreaInstance
-    {
-        get
-        {
-            if (g_getArea == null)
-            {
-                g_getArea = new GetArea();
-            }
-            return g_getArea;
-        }
-    }
-
     /*
     * GetAreaOfMoveable
     * public List<Tiles> function (Tiles start, int radius)
@@ -36,7 +20,7 @@ public class GetArea
     * 
     * @returns List<Tiles>
     */
-    public List<Tiles> GetAreaOfMoveable(Tiles start, int radius)
+    public static List<Tiles> GetAreaOfMoveable(Tiles start, int radius)
     {
         List<Tiles> openSet = new List<Tiles>();
         List<Tiles> closedSet = new List<Tiles>();
@@ -84,7 +68,7 @@ public class GetArea
     * 
     * @returns bool
     */
-    public bool FindInContainer(List<Tiles> list, Tiles toFind)
+    public static bool FindInContainer(List<Tiles> list, Tiles toFind)
     {
         foreach (Tiles tiles in list)
         {

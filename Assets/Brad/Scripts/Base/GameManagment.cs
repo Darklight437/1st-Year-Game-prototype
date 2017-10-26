@@ -199,7 +199,7 @@ public class GameManagment : MonoBehaviour
                 startTile.unit = null;
 
                 //get the path using A*
-                List<Tiles> path = AStar.g_AStarInstance.GetAStarPath(startTile, endTile);
+                List<Tiles> path = AStar.GetAStarPath(startTile, endTile);
 
                 //reassign the unit reference
                 startTile.unit = selectedUnit;

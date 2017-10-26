@@ -92,7 +92,7 @@ MonoBehaviour:
     - {fileID: 1144284700724588, guid: a3b7eb0788b23e44897ab8c04e3cf1e6, type: 2}
   debuggingTile:
     tileTypes:
-    - {fileID: 1609902547974002, guid: 0d29503e9b1458b4fb614ee1c272ccdb, type: 2}
+    - {fileID: 1609902547974002, guid: 0359e4542b7c2af43818f66191aaaab5, type: 2}
   useTileSet:
     tileTypes: []
   unit: {fileID: 0}
