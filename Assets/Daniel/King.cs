@@ -33,6 +33,22 @@ public class King : Unit
 
             commands.Add(mc);
         }
+        //attack command
+        else if (actionType == GameManagment.eActionType.ATTACK)
+        {
+            AttackCommand ac = new AttackCommand(this, OnCommandFinish, OnCommandFailed, st, et);
+
+            commands.Add(ac);
+        }
+        //dying command
+        else if (actionType == GameManagment.eActionType.DEATH)
+        {
+            DeathCommand dc = new DeathCommand(this, null, null, st, null);
+
+            dc.deathTimer = 1.0f;
+
+            commands.Add(dc);
+        }
     }
 
 }

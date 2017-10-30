@@ -41,7 +41,6 @@ public class CameraSelection : MonoBehaviour
                 {
                     //get the object that the raycast hit
                     GameObject hitObject = hitInfo.collider.gameObject;
-                    Debug.Log(hitObject.name);
 
                     //get the tiles component (null if there isn't one)
                     Tiles tiles = hitObject.GetComponent<Tiles>();
@@ -51,8 +50,6 @@ public class CameraSelection : MonoBehaviour
                         manager.OnTileSelected(tiles);
                     }
                 }
-
-                Debug.Log(tileLayer.value);
             }
         }
 	}

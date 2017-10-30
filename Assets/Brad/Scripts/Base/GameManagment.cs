@@ -11,6 +11,7 @@ public class GameManagment : MonoBehaviour
         ATTACK = 1,
         MOVEMENT = 2,
         SPECIAL = 3,
+        DEATH = 4,
     }
 
     //function type for parsing a unit
@@ -107,8 +108,12 @@ public class GameManagment : MonoBehaviour
         //turn off the action menu
         worldUI.gameObject.GetComponent<Canvas>().enabled = false;
 
-        //turn off the unit selection glow
-        selectedUnit.GetComponent<Renderer>().material.shader = Shader.Find("Custom/DefaultShader");
+        if (selectedUnit != null)
+        {
+            //turn off the unit selection glow
+            selectedUnit.GetComponent<Renderer>().material.shader = Shader.Find("Custom/DefaultShader");
+        }
+
         //deselect the unit
         selectedUnit = null;
         
@@ -157,6 +162,11 @@ public class GameManagment : MonoBehaviour
     */
     public void OnUnitSelected(Unit unit)
     {
+
+        if (selectedUnit != null)
+        {
+            selectedUnit.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Custom/DefaultShader");
+        }
         
         //there are no units selected
         if (unit.playerID == activePlayer.playerID)
@@ -165,9 +175,7 @@ public class GameManagment : MonoBehaviour
             if (selectedUnit != unit)
             {
                 worldUI.gameObject.GetComponent<Canvas>().enabled = false;
-            }
-
-            
+            }            
 
 
             selectedUnit = unit;
@@ -253,7 +261,7 @@ public class GameManagment : MonoBehaviour
             }
 
             //call the unit handling function if a unit was found on the tile
-            if (tile.unit != null)
+            else if (tile.unit != null)
             {
                 startTile = tile;
                 endTile = null;
@@ -292,6 +300,8 @@ public class GameManagment : MonoBehaviour
 
         //execute the action
         selectedUnit.Execute(actionEvent, startTile, endTile);
+
+        selectedUnit.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Custom/DefaultShader");
 
         //deselect the unit
         selectedUnit = null;

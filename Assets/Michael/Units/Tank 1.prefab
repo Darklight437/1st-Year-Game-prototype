@@ -55,7 +55,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 04ed4436c243a4b49b5117eac29aa984, type: 2}
+  - {fileID: 2100000, guid: b590243d76e976f4399f199411eb6a0d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,3 +99,5 @@ MonoBehaviour:
   damage: 6
   health: 100
   AOV: 12
+  aovOBJ: []
+  sightPrefab: {fileID: 0}
