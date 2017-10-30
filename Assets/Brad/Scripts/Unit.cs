@@ -20,6 +20,12 @@ public class Unit : MonoBehaviour
     //container of commands to execute
     public List<UnitCommand> commands = new List<UnitCommand>();
 
+    //holds all the GameObjects that makes up the units area of vision
+    public List<GameObject> aovOBJ = new List<GameObject>();
+
+    //the game prefab that is used to make up the units area of sight
+    public GameObject sightPrefab;
+
     // Use this for initialization
     void Start()
     {
@@ -28,6 +34,9 @@ public class Unit : MonoBehaviour
 
         //set the unit space to this
         currentTile.unit = this;
+
+        //create the gameobjs that make up the units area of vision
+        CreateAOVOBJ();
     }
 
     // Update is called once per frame
@@ -36,6 +45,18 @@ public class Unit : MonoBehaviour
         if (commands.Count > 0)
         {
             commands[0].Update();
+        }
+    }
+
+    private void CreateAOVOBJ()
+    {
+        for (int i = 0; i <= AOV; i++)
+        {
+            GameObject obj = Instantiate(sightPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            obj.transform.parent = transform;
+            obj.transform.localPosition = new Vector3(0, 0, 0);
+            obj.transform.localScale = new Vector3((i * 2) + 1, 1, (AOV * 2) + 1 - (i * 2));
+            aovOBJ.Add(obj);
         }
     }
 

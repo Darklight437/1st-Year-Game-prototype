@@ -8,6 +8,8 @@ public class CameraSelection : MonoBehaviour
     private GameManagment manager = null;
     private CustomInput input = null;
 
+    public LayerMask tileLayer;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -36,10 +38,11 @@ public class CameraSelection : MonoBehaviour
                 RaycastHit hitInfo;
 
                 //check if the raycast hit anything
-                if (Physics.Raycast(mouseRay, out hitInfo))
+                if (Physics.Raycast(mouseRay, out hitInfo, tileLayer.value))
                 {
                     //get the object that the raycast hit
                     GameObject hitObject = hitInfo.collider.gameObject;
+                    Debug.Log(hitObject.name);
 
                     //get the tiles component (null if there isn't one)
                     Tiles tiles = hitObject.GetComponent<Tiles>();
