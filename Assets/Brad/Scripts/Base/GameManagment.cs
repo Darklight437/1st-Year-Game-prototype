@@ -11,6 +11,7 @@ public class GameManagment : MonoBehaviour
         ATTACK = 1,
         MOVEMENT = 2,
         SPECIAL = 3,
+        DEATH = 4,
     }
 
     //function type for parsing a unit
@@ -260,7 +261,7 @@ public class GameManagment : MonoBehaviour
             }
 
             //call the unit handling function if a unit was found on the tile
-            if (tile.unit != null)
+            else if (tile.unit != null)
             {
                 startTile = tile;
                 endTile = null;

@@ -92,6 +92,19 @@ public class Unit : MonoBehaviour
 
         //the armour scalar affects the damage output
         health -= damage * (1 - armourScalar);
+
+        Debug.Log(gameObject.name + " was attacked for " + (damage * (1 - armourScalar)).ToString() + " damage.");
+
+        //has the unit died from the hit
+        if (health <= 0.0f)
+        {
+            health = 0.0f;
+
+            //get the tile that the unit is standing on
+            Tiles currentTile = GameObject.FindObjectOfType<Map>().GetTileAtPos(transform.position);
+
+            Execute(GameManagment.eActionType.DEATH, currentTile, null);
+        }
     }
 
 

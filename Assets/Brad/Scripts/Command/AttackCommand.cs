@@ -50,6 +50,11 @@ public class AttackCommand : UnitCommand
         if (defendingUnit != null)
         {
             unit.Attack(defendingUnit);
+            successCallback();
+        }
+        else
+        {
+            failedCallback();
         }
     }
 }
