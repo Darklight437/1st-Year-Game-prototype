@@ -14,8 +14,12 @@ public class Unit : MonoBehaviour
     public int armour = 0;
 
     public float damage = 0.0f;
+    public float maxHealth = 1000.0f;
     public float health = 1000.0f;
     public float AOV = 1.0f;
+
+
+
 
     //container of commands to execute
     public List<UnitCommand> commands = new List<UnitCommand>();
@@ -25,6 +29,10 @@ public class Unit : MonoBehaviour
 
     //the game prefab that is used to make up the units area of sight
     public GameObject sightPrefab;
+
+    //David
+    //the Health bar canvas reference
+    public GameObject hpBar = null;
 
     // Use this for initialization
     void Start()
