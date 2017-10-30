@@ -38,6 +38,8 @@ public class Medic : Unit
         {
             AttackCommand ac = new AttackCommand(this, OnCommandFinish, OnCommandFailed, st, et);
 
+            ac.attackTimer = attackTime;
+
             commands.Add(ac);
         }
         //dying command
@@ -45,7 +47,7 @@ public class Medic : Unit
         {
             DeathCommand dc = new DeathCommand(this, null, null, st, null);
 
-            dc.deathTimer = 1.0f;
+            dc.deathTimer = deathTime;
 
             commands.Add(dc);
         }

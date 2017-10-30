@@ -17,6 +17,12 @@ public class Unit : MonoBehaviour
     public float health = 1000.0f;
     public float AOV = 1.0f;
 
+    //time it takes the unit to apply damage after "attacking"
+    public float attackTime = 1.0f;
+
+    //time it takes the unit to be completely deleted after "dying"
+    public float deathTime = 1.0f;
+
     //container of commands to execute
     public List<UnitCommand> commands = new List<UnitCommand>();
 
