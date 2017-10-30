@@ -77,6 +77,8 @@ public class GameManagment : MonoBehaviour
         {
             players[i].LinkIDs(i);
         }
+
+        //TurnUnitsOff();
 	}
 	
 	// Update is called once per frame
@@ -110,9 +112,6 @@ public class GameManagment : MonoBehaviour
         //deselect the unit
         selectedUnit = null;
         
-
-
-
         //increment the turn id
         turn++;
         
@@ -129,6 +128,22 @@ public class GameManagment : MonoBehaviour
         cam.Goto(activePlayer.kingPosition, cam.transform.eulerAngles + new Vector3(0.0f, 180.0f, 0.0f), OnCameraFinished);
 
         transitioning = true;
+
+        //TurnUnitsOff();
+    }
+
+    public void TurnUnitsOff()
+    {
+        for (int i = 0; i < players.Count; i++)
+        {
+            if (players[i] != activePlayer)
+            {
+                for (int u = 0; u < players[i].units.Count; u++)
+                {
+                    activePlayer.units[u].gameObject.SetActive(false);
+                }
+            }
+        }
     }
 
 
