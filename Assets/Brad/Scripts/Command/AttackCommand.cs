@@ -44,6 +44,12 @@ public class AttackCommand : UnitCommand
     */
     public override void Update()
     {
-        
+        Unit defendingUnit = endTile.unit;
+
+        //if the defending unit exists
+        if (defendingUnit != null)
+        {
+            unit.Attack(defendingUnit);
+        }
     }
 }
