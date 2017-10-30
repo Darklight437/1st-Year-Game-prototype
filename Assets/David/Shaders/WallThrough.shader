@@ -5,8 +5,6 @@ Shader "Custom/WallThrough" {
         _Color("Main Color", Color) = (.5,.5,.5,1)
         _OutlineColor("Outline Color", Color) = (0,0,0,1)
         _Outline("Outline width", Range(0.0, 0.6)) = .005
-        _Glossiness("Smoothness", Range(0,1)) = 0.5
-        _Metallic("Metallic", Range(0,1)) = 0.0
         _MainTex("Base (RGB)", 2D) = "white" { }
     _BumpMap("Bumpmap", 2D) = "bump" {}
     
@@ -132,8 +130,7 @@ Shader "Custom/WallThrough" {
     void surf(Input IN, inout SurfaceOutput o) {
         o.Albedo = tex2D(_MainTex, IN.uv_MainTex).rgb * _Color;
         o.Normal = UnpackNormal(tex2D(_BumpMap, IN.uv_BumpMap));
-        o.Metallic = _Metallic;
-        o.Smoothness = _Glossiness;
+
     }
     ENDCG
 
