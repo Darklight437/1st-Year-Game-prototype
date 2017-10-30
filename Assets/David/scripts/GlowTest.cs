@@ -28,7 +28,7 @@ public class GlowTest : MonoBehaviour {
         }
         else
         {
-            testModel.GetComponent<Renderer>().material.SetFloat("_Outline", 0.3f);
+            testModel.GetComponent<Renderer>().material.SetFloat("_Outline", 0.25f);
         }
         UnitActive = !UnitActive;
 
