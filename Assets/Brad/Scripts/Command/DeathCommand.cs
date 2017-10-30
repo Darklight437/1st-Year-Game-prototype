@@ -3,23 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /*
-* class AttackCommand
+* class DeathCommand
 * child class of UnitCommand
 * 
-* executes a Unit's attack routine
+* executes a Unit's dying routine
 * 
 * author: Bradley Booth, Academy of Interactive Entertainment, 2017
 */
-public class AttackCommand : UnitCommand
+public class DeathCommand : UnitCommand
 {
 
-    //reference to the map
-    public Map map = null;
+    public float deathTimer = 0.0f;
+
+    public void Start()
+    {
+
+    }
+
 
     /*
-    * AttackCommand()
+    * DeathCommand()
     * 
-    * constructor, specifies the target tile and callbacks
+    * constructor, specifies the target tile and callback
     * 
     * @param Unit u - the unit that made this command
     * @param VoidFunc scb - the callback to use when finished
@@ -27,10 +32,11 @@ public class AttackCommand : UnitCommand
     * @param Tiles st - the first tile selected
     * @param Tiles et - the last tile selected
     */
-    public AttackCommand(Unit u, VoidFunc scb, VoidFunc fcb, Tiles st, Tiles et) : base(u, scb, fcb, st, et)
+    public DeathCommand(Unit u, VoidFunc scb, VoidFunc fcb, Tiles st, Tiles et) : base(u, scb, fcb, st, et)
     {
-        //find the map component
-        map = GameObject.FindObjectOfType<Map>();
+        //disconnect the unit from the grid
+        startTile.unit = null;
+       
     }
 
 
@@ -44,17 +50,12 @@ public class AttackCommand : UnitCommand
     */
     public override void Update()
     {
-        Unit defendingUnit = endTile.unit;
+        deathTimer -= Time.deltaTime;
 
-        //if the defending unit exists
-        if (defendingUnit != null)
+        if (deathTimer <= 0.0f)
         {
-            unit.Attack(defendingUnit);
-            successCallback();
-        }
-        else
-        {
-            failedCallback();
+            deathTimer = 0.0f;
+            GameObject.Destroy(unit.gameObject);
         }
     }
 }
