@@ -78,7 +78,7 @@ public class GameManagment : MonoBehaviour
             players[i].LinkIDs(i);
         }
 
-        TurnUnitsOff();
+        //TurnUnitsOff();
 	}
 	
 	// Update is called once per frame
@@ -129,7 +129,7 @@ public class GameManagment : MonoBehaviour
 
         transitioning = true;
 
-        TurnUnitsOff();
+        //TurnUnitsOff();
     }
 
     public void TurnUnitsOff()
