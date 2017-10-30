@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class GlowTest : MonoBehaviour {
 
-    public GameObject testModel;
+    public GameObject testModel = null;
+    //private Color clear = Color.
+     public bool UnitActive = false;
 	// Use this for initialization
 	void Start ()
     {
@@ -20,6 +22,17 @@ public class GlowTest : MonoBehaviour {
 
     public void GlowLikeABastard()
     {
-        testModel.GetComponent<Renderer>().material.shader = Shader.Find("Self-Illumin/Outlined Diffuse");
+        if(UnitActive)
+        {
+            testModel.GetComponent<Renderer>().material.shader = Shader.Find("Custom/DefaultShader");
+        }
+        else
+        {
+            testModel.GetComponent<Renderer>().material.shader = Shader.Find("Custom/WallThrough");
+        }
+        UnitActive = !UnitActive;
+
+
+
     }
 }

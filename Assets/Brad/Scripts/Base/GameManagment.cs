@@ -50,6 +50,11 @@ public class GameManagment : MonoBehaviour
     //reference to the world space UI manager script
     public WorldspaceManager worldUI = null;
 
+    //David's
+    //reference to Main UI manager script
+    //will probably need this later, not active right now
+    //public UIManager UIManager = null;
+
     //type of action from the world space manager
     public eActionType actionEvent = eActionType.NULL;
 
@@ -100,8 +105,13 @@ public class GameManagment : MonoBehaviour
         //turn off the action menu
         worldUI.gameObject.GetComponent<Canvas>().enabled = false;
 
+        //turn off the unit selection glow
+        selectedUnit.GetComponent<Renderer>().material.SetFloat("_Outline", 0);
         //deselect the unit
         selectedUnit = null;
+        
+
+
 
         //increment the turn id
         turn++;
@@ -132,7 +142,7 @@ public class GameManagment : MonoBehaviour
     */
     public void OnUnitSelected(Unit unit)
     {
-
+        
         //there are no units selected
         if (unit.playerID == activePlayer.playerID)
         {
@@ -142,13 +152,11 @@ public class GameManagment : MonoBehaviour
                 worldUI.gameObject.GetComponent<Canvas>().enabled = false;
             }
 
-            //David
-            /*  going to set a state of the UI manager here in the future
-            * 
-            *  enum UI state = selected;
-            */
+            
+
 
             selectedUnit = unit;
+            selectedUnit.gameObject.GetComponent<Renderer>().material.SetFloat("_Outline", 0.25f);
         }
     }
 
