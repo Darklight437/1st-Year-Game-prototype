@@ -820,3 +820,5 @@ MonoBehaviour:
   damage: 10
   health: 30
   AOV: 8
+  aovOBJ: []
+  sightPrefab: {fileID: 0}
