@@ -68,30 +68,30 @@ MonoBehaviour:
   tileEdges: []
   normalTile:
     tileTypes:
-    - {fileID: 1033967240143296, guid: 16f49af4d7307e64696a335419400dbc, type: 2}
-    - {fileID: 1643665868042158, guid: 04d69f771464d17498c15bbdb0ee236f, type: 2}
-    - {fileID: 1840825337537724, guid: 82216a339d81b604bb5423024b420eb4, type: 2}
-    - {fileID: 1936199297052628, guid: 0fd675f61cdc32945a99b3df2198f3af, type: 2}
+    - {fileID: 1792605141412732, guid: 16f49af4d7307e64696a335419400dbc, type: 2}
+    - {fileID: 1434409500384260, guid: 04d69f771464d17498c15bbdb0ee236f, type: 2}
+    - {fileID: 1424031855745760, guid: 82216a339d81b604bb5423024b420eb4, type: 2}
+    - {fileID: 1358685685710976, guid: 0fd675f61cdc32945a99b3df2198f3af, type: 2}
   damageTile:
     tileTypes:
-    - {fileID: 1621875230850714, guid: 75489a03c7897a14ba8911a3c4f2a3f0, type: 2}
-    - {fileID: 1576801827864168, guid: 09238b6e5259a564183ec9c9ca534064, type: 2}
-    - {fileID: 1252644687474548, guid: c7ac3d4f8f72bc448b1236a9058c4350, type: 2}
-    - {fileID: 1369345648148980, guid: afbf8108b97caed41bc88db88df7cc87, type: 2}
+    - {fileID: 1447997278276182, guid: 75489a03c7897a14ba8911a3c4f2a3f0, type: 2}
+    - {fileID: 1885911090151716, guid: 09238b6e5259a564183ec9c9ca534064, type: 2}
+    - {fileID: 1363315286499882, guid: c7ac3d4f8f72bc448b1236a9058c4350, type: 2}
+    - {fileID: 1682130711162128, guid: afbf8108b97caed41bc88db88df7cc87, type: 2}
   defenseTile:
     tileTypes:
-    - {fileID: 1335837255393114, guid: 93a6f2b39e43da849b6d7e1a8cb13d64, type: 2}
-    - {fileID: 1005593044694408, guid: e31d0d6d5ad821a489fadfbcc80f9726, type: 2}
+    - {fileID: 1518323320155566, guid: 93a6f2b39e43da849b6d7e1a8cb13d64, type: 2}
+    - {fileID: 1365037062172386, guid: e31d0d6d5ad821a489fadfbcc80f9726, type: 2}
   impassableTile:
     tileTypes:
-    - {fileID: 1847713071310526, guid: d40ce2015dc32734ca783ea00f81872b, type: 2}
-    - {fileID: 1919116259114264, guid: 8580a5eb129690044abc5e6c2b4be03e, type: 2}
-    - {fileID: 1784838707798572, guid: c2d829ab97367644187f833c34044d73, type: 2}
-    - {fileID: 1310122961207556, guid: a3b7eb0788b23e44897ab8c04e3cf1e6, type: 2}
-    - {fileID: 1293999274825448, guid: b17e140dd1f2cd04b9f2207aebe3ee60, type: 2}
-    - {fileID: 1710156341844740, guid: 4dac16e2806dba44396701a4b5a1a962, type: 2}
-    - {fileID: 1625478250355244, guid: 231b8602f987c694596dd74d5d07c765, type: 2}
-    - {fileID: 1021141650279840, guid: 6187e7b79bd36cf43b2fea6807f4ba93, type: 2}
+    - {fileID: 1503472653267594, guid: d40ce2015dc32734ca783ea00f81872b, type: 2}
+    - {fileID: 1314047969639684, guid: 8580a5eb129690044abc5e6c2b4be03e, type: 2}
+    - {fileID: 1981401347072542, guid: c2d829ab97367644187f833c34044d73, type: 2}
+    - {fileID: 1746053371011422, guid: a3b7eb0788b23e44897ab8c04e3cf1e6, type: 2}
+    - {fileID: 1195085024903772, guid: 02120ba107b5dcd45afe232a31c9d4e3, type: 2}
+    - {fileID: 1535303644535088, guid: 945ad9d73db2b99448c84dd2852bc32d, type: 2}
+    - {fileID: 1602920121012876, guid: bff9cd833f4f93c42a1489314e19d793, type: 2}
+    - {fileID: 1241029615536990, guid: 8f1b59195d4fa104e92786e3181877c3, type: 2}
   debuggingTile:
     tileTypes:
     - {fileID: 0}
