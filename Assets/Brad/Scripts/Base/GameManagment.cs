@@ -106,7 +106,7 @@ public class GameManagment : MonoBehaviour
         worldUI.gameObject.GetComponent<Canvas>().enabled = false;
 
         //turn off the unit selection glow
-        selectedUnit.GetComponent<Renderer>().material.SetFloat("_Outline", 0);
+        selectedUnit.GetComponent<Renderer>().material.shader = Shader.Find("Custom/DefaultShader");
         //deselect the unit
         selectedUnit = null;
         
@@ -156,7 +156,7 @@ public class GameManagment : MonoBehaviour
 
 
             selectedUnit = unit;
-            selectedUnit.gameObject.GetComponent<Renderer>().material.SetFloat("_Outline", 0.25f);
+            selectedUnit.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Custom/WallThrough");
         }
     }
 
