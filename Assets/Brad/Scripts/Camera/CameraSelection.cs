@@ -36,9 +36,8 @@ public class CameraSelection : MonoBehaviour
 
                 //data from the raycast
                 RaycastHit hitInfo;
-
                 //check if the raycast hit anything
-                if (Physics.Raycast(mouseRay, out hitInfo, tileLayer.value))
+                if (Physics.Raycast(mouseRay.origin, mouseRay.direction, out hitInfo, float.MaxValue, tileLayer.value))
                 {
                     //get the object that the raycast hit
                     GameObject hitObject = hitInfo.collider.gameObject;
@@ -52,6 +51,8 @@ public class CameraSelection : MonoBehaviour
                         manager.OnTileSelected(tiles);
                     }
                 }
+
+                Debug.Log(tileLayer.value);
             }
         }
 	}
