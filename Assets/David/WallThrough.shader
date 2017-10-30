@@ -22,6 +22,9 @@ Shader "Custom/WallThrough" {
         float4 color : COLOR;
     };
 
+    half _Glossiness;
+    half _Metallic;
+
     uniform float _Outline;
     uniform float4 _OutlineColor;
 
@@ -122,6 +125,8 @@ Shader "Custom/WallThrough" {
     void surf(Input IN, inout SurfaceOutput o) {
         o.Albedo = tex2D(_MainTex, IN.uv_MainTex).rgb * _Color;
         o.Normal = UnpackNormal(tex2D(_BumpMap, IN.uv_BumpMap));
+        o.Metallic = _Metallic;
+        o.Smoothness = _Glossiness;
     }
     ENDCG
 
