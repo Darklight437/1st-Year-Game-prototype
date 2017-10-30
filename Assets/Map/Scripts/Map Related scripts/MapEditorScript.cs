@@ -50,6 +50,8 @@ public class MapEditorScript : MonoBehaviour
         world.tag = "World";
         Map map = world.AddComponent<Map>();
         map.mapTiles = new List<Tiles>();
+        map.width = (int)mapWidth;
+        map.height = (int)mapLength;
 
         //nestd for loop to instantiate the map
         for (int x = 0; x < mapLength; x++)

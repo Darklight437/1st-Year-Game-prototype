@@ -15,6 +15,13 @@ public class Map : MonoBehaviour
     //list of all the tiles
     public List<Tiles> mapTiles;
 
+    //maps width and height
+    public int width;
+    public int height;
+
+    //the fog of war
+    public GameObject FOW;
+
     /*
     * Start
     * public void function
