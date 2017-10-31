@@ -227,7 +227,10 @@ public class Tiles : MonoBehaviour
         //first delete our current child
         foreach (Transform child in transform)
         {
-            GameObject.Destroy(child.gameObject);
+            if (child.tag != "Walkable")
+            {
+                GameObject.Destroy(child.gameObject);
+            }
         }
 
         //make sure we are about to use the right tile set
