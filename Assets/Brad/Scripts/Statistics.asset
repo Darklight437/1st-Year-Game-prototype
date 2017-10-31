@@ -16,16 +16,19 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: -1.875
       inSlope: 0
-      outSlope: 12.5
+      outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
       time: 4
-      value: 50
+      value: 48.125
       inSlope: 12.5
-      outSlope: 0
+      outSlope: 12.5
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
+  tileHealthGained: 500
+  trapTileDamage: 500
+  defensiveTileReduction: 0.25

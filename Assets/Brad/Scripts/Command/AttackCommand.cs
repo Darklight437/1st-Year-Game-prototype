@@ -13,6 +13,8 @@ using UnityEngine;
 public class AttackCommand : UnitCommand
 {
 
+    public float attackTimer = 0.0f;
+
     //reference to the map
     public Map map = null;
 
@@ -44,6 +46,29 @@ public class AttackCommand : UnitCommand
     */
     public override void Update()
     {
-        
+        //count-down the attack timer
+        attackTimer -= Time.deltaTime;
+
+        if (attackTimer < 0.0f)
+        {
+            attackTimer = 0.0f;
+        }
+        else
+        {
+            return;
+        }
+
+        Unit defendingUnit = endTile.unit;
+
+        //if the defending unit exists
+        if (defendingUnit != null)
+        {
+            unit.Attack(defendingUnit);
+            successCallback();
+        }
+        else
+        {
+            failedCallback();
+        }
     }
 }

@@ -24,11 +24,11 @@ public class GlowTest : MonoBehaviour {
     {
         if(UnitActive)
         {
-            testModel.GetComponent<Renderer>().material.SetFloat("_Outline", 0);
+            testModel.GetComponent<Renderer>().material.shader = Shader.Find("Custom/DefaultShader");
         }
         else
         {
-            testModel.GetComponent<Renderer>().material.SetFloat("_Outline", 0.3f);
+            testModel.GetComponent<Renderer>().material.shader = Shader.Find("Custom/WallThrough");
         }
         UnitActive = !UnitActive;
 

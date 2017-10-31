@@ -11,6 +11,7 @@ public class GameManagment : MonoBehaviour
         ATTACK = 1,
         MOVEMENT = 2,
         SPECIAL = 3,
+        DEATH = 4,
     }
 
     //function type for parsing a unit
@@ -32,6 +33,9 @@ public class GameManagment : MonoBehaviour
     //reference to the selected unit
     public Unit selectedUnit = null;
 
+    //list of all walkable tiles that the slected unit can walk to
+    public List<Tiles> movableTiles = new List<Tiles>();
+
     //reference to the starting tile (first selection)
     public Tiles startTile = null;
 
@@ -49,6 +53,11 @@ public class GameManagment : MonoBehaviour
 
     //reference to the world space UI manager script
     public WorldspaceManager worldUI = null;
+
+    //David's
+    //reference to Main UI manager script
+    //will probably need this later, not active right now
+    //public UIManager UIManager = null;
 
     //type of action from the world space manager
     public eActionType actionEvent = eActionType.NULL;
@@ -72,6 +81,8 @@ public class GameManagment : MonoBehaviour
         {
             players[i].LinkIDs(i);
         }
+
+        TurnUnitsOff();
 	}
 	
 	// Update is called once per frame
@@ -97,11 +108,35 @@ public class GameManagment : MonoBehaviour
             return;
         }
 
+        //remove all dead units
+        foreach (Player p in players)
+        {
+            //iterate through all units, removing null references
+            for (int i = 0; i < p.units.Count; i++)
+            {
+                if (p.units[i] == null)
+                {
+                    p.units.RemoveAt(i);
+                    i--;
+                }
+            }
+        }
+
         //turn off the action menu
         worldUI.gameObject.GetComponent<Canvas>().enabled = false;
 
+        if (selectedUnit != null)
+        {
+            //turn off the unit selection glow
+            selectedUnit.GetComponent<Renderer>().material.shader = Shader.Find("Custom/DefaultShader");
+        }
+
         //deselect the unit
         selectedUnit = null;
+        
+        //stop showing walkable tiles if thy where showing
+        ToggleWalkableTilesFalse();
+        movableTiles.Clear();
 
         //increment the turn id
         turn++;
@@ -119,6 +154,50 @@ public class GameManagment : MonoBehaviour
         cam.Goto(activePlayer.kingPosition, cam.transform.eulerAngles + new Vector3(0.0f, 180.0f, 0.0f), OnCameraFinished);
 
         transitioning = true;
+
+        TurnUnitsOff();
+    }
+
+    /*
+   * TurnUnitsOff 
+   * 
+   * is called when player end there turns and goes through and turns off
+   * all the non active player units and turns on all active player units
+   * for FOW reasons
+   * 
+   * @param non
+   * @returns void
+   * @author Callum Dunstone
+   */
+    public void TurnUnitsOff()
+    {
+        //go through all non active players and turn off there units
+        for (int i = 0; i < players.Count; i++)
+        {
+            if (players[i] != activePlayer)
+            {
+                for (int u = 0; u < players[i].units.Count; u++)
+                {
+
+                    players[i].units[u].GetComponent<Renderer>().enabled = false;
+                    foreach (Transform tran in players[i].units[u].transform)
+                    {
+                        tran.gameObject.SetActive(false);
+                    }
+                }
+            }
+        }
+
+        //go through all active player units and make sure they are active
+        foreach (Unit unit in activePlayer.units)
+        {
+            unit.GetComponent<Renderer>().enabled = true;
+
+            foreach (Transform tran in unit.transform)
+            {
+                tran.gameObject.SetActive(true);
+            }
+        }
     }
 
 
@@ -133,6 +212,11 @@ public class GameManagment : MonoBehaviour
     public void OnUnitSelected(Unit unit)
     {
 
+        if (selectedUnit != null)
+        {
+            selectedUnit.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Custom/DefaultShader");
+        }
+        
         //there are no units selected
         if (unit.playerID == activePlayer.playerID)
         {
@@ -142,16 +226,64 @@ public class GameManagment : MonoBehaviour
                 worldUI.gameObject.GetComponent<Canvas>().enabled = false;
             }
 
-            //David
-            /*  going to set a state of the UI manager here in the future
-            * 
-            *  enum UI state = selected;
-            */
+            //stop showing walkable tiles if thy where showing
+            ToggleWalkableTilesFalse();
+            movableTiles.Clear();
 
             selectedUnit = unit;
+            selectedUnit.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Custom/WallThrough");
+
+            //gather and show new walkable tiles
+            List<Tiles> holder = GetArea.GetAreaOfMoveable(map.GetTileAtPos(selectedUnit.transform.position), selectedUnit.movementRange);
+            foreach (Tiles tile in holder)
+            {
+                movableTiles.Add(tile);
+            }
+            ToggleWalkableTilesActive();
         }
     }
 
+    /*
+    * ToggleWalkableTilesActive 
+    * 
+    * tells all tiles held in movableTiles to show that they are
+    * movable
+    * 
+    * @param non
+    * @returns void
+    * @author Callum Dunstone
+    */
+    public void ToggleWalkableTilesActive()
+    {
+        foreach (Tiles tile in movableTiles)
+        {
+            if (tile.walkableHighLight.gameObject.activeSelf == false)
+            {
+                tile.walkableHighLight.gameObject.SetActive(true);
+            }
+        }
+    }
+
+    /*
+    * ToggleWalkableTilesFalse 
+    * 
+    * tells all tiles held in movableTiles to stop showing that they are
+    * walable
+    * 
+    * @param non
+    * @returns void
+    * @author Callum Dunstone
+    */
+    public void ToggleWalkableTilesFalse()
+    {
+        foreach (Tiles tile in movableTiles)
+        {
+            if (tile.walkableHighLight.gameObject.activeSelf == true)
+            {
+                tile.walkableHighLight.gameObject.SetActive(false);
+            }
+        }
+    }
 
     /*
     * OnTileSelected 
@@ -230,7 +362,7 @@ public class GameManagment : MonoBehaviour
             }
 
             //call the unit handling function if a unit was found on the tile
-            if (tile.unit != null)
+            else if (tile.unit != null)
             {
                 startTile = tile;
                 endTile = null;
@@ -270,8 +402,14 @@ public class GameManagment : MonoBehaviour
         //execute the action
         selectedUnit.Execute(actionEvent, startTile, endTile);
 
+        selectedUnit.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Custom/DefaultShader");
+
         //deselect the unit
         selectedUnit = null;
+
+        //stop showing walkable tiles
+        ToggleWalkableTilesFalse();
+        movableTiles.Clear();
 
         //deselect the tiles
         startTile = null;
@@ -289,6 +427,17 @@ public class GameManagment : MonoBehaviour
     public void OnCameraFinished()
     {
         transitioning = false;
+
+        //damage each unit at the start of the turn if it is standing on a trap tile
+        foreach (Unit u in activePlayer.units)
+        {
+            Tiles currentTile = map.GetTileAtPos(u.transform.position);
+            
+            if (currentTile.tileType == eTileType.DAMAGE)
+            {
+                u.Defend(GameManagment.stats.trapTileDamage);
+            }
+        }
     }
 
 

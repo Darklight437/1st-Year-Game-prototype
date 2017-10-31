@@ -13,7 +13,8 @@ using UnityEngine;
 */
 public class Ranger : Unit
 {
-
+    //the amount of tiles away an attack can reach
+    public float splashRange = 3.0f;
 
     /*
     * Execute 
@@ -34,6 +35,25 @@ public class Ranger : Unit
             MoveCommand mc = new MoveCommand(this, OnCommandFinish, OnCommandFailed, st, et);
 
             commands.Add(mc);
+        }
+        //attack command
+        else if (actionType == GameManagment.eActionType.ATTACK)
+        {
+            SpreadAttackCommand ac = new SpreadAttackCommand(this, OnCommandFinish, OnCommandFailed, st, et);
+
+            ac.attackTimer = attackTime;
+            ac.attackRadius = splashRange;
+
+            commands.Add(ac);
+        }
+        //dying command
+        else if (actionType == GameManagment.eActionType.DEATH)
+        {
+            DeathCommand dc = new DeathCommand(this, OnCommandFinish, null, st, null);
+
+            dc.deathTimer = deathTime;
+
+            commands.Add(dc);
         }
     }
 }

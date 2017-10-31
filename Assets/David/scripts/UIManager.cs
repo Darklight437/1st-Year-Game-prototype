@@ -65,7 +65,11 @@ public class UIManager : MonoBehaviour {
                 break;
 
             case eUIState.ACTIVEUNIT:
+                /*  find out the active unit from GameManager
+                 *  do this
+                 *  unit.GetComponent<Renderer>().material.SetFloat("_Outline", 0.25f);
 
+                 */
                 break;
 
 

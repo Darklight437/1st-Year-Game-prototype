@@ -1,19 +1,7 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Map/Imported Modles/Tiles/new new tiles/Textures.meta
-<<<<<<< HEAD
-guid: e001b525972e2144bbdd62f75c49f4d3
+guid: 12797036c41d4414ab0bee4e8d5e8a4e
 folderAsset: yes
-timeCreated: 1508816366
-=======
-guid: 393e80e7356739f4b9062ade34f15bfb
-folderAsset: yes
-timeCreated: 1508817039
->>>>>>> d361d3aab7be35591f1731add5b0f8406f865074
-=======
-guid: ad7501d961bb41f4dba07f4f752b9cfa
-folderAsset: yes
-timeCreated: 1508819923
->>>>>>> 140cf68f76cf7ca5038db380cc4279cf62a5287c:Assets/Map/Imported Modles/Textures.meta
+timeCreated: 1509402144
 licenseType: Pro
 DefaultImporter:
   userData: 
