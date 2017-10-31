@@ -36,7 +36,6 @@ public class DeathCommand : UnitCommand
     {
         //disconnect the unit from the grid
         startTile.unit = null;
-       
     }
 
 
@@ -55,6 +54,8 @@ public class DeathCommand : UnitCommand
         if (deathTimer <= 0.0f)
         {
             deathTimer = 0.0f;
+
+            successCallback();
             GameObject.Destroy(unit.gameObject);
         }
     }

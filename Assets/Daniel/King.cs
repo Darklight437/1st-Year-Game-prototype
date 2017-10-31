@@ -45,7 +45,7 @@ public class King : Unit
         //dying command
         else if (actionType == GameManagment.eActionType.DEATH)
         {
-            DeathCommand dc = new DeathCommand(this, null, null, st, null);
+            DeathCommand dc = new DeathCommand(this, OnCommandFinish, null, st, null);
 
             dc.deathTimer = deathTime;
 

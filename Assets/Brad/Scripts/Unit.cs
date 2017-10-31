@@ -109,24 +109,55 @@ public class Unit : MonoBehaviour
     public virtual void Defend(float damage)
     {
         //calculate the damage reduction
-        float armourScalar = GameManagment.stats.armourCurve.Evaluate(damage) * 0.01f;
+        float armourScalar = 1 - GameManagment.stats.armourCurve.Evaluate(damage) * 0.01f;
+
+        //get the tile that the unit is standing on
+        Tiles currentTile = GameObject.FindObjectOfType<Map>().GetTileAtPos(transform.position);
+
+        //defensive tiles reduce damage further
+        if (currentTile.tileType == eTileType.DEFENSE)
+        {
+            armourScalar *= GameManagment.stats.defensiveTileReduction;
+        }
 
         //the armour scalar affects the damage output
-        health -= damage * (1 - armourScalar);
+        health -= damage * armourScalar;
 
-        Debug.Log(gameObject.name + " was attacked for " + (damage * (1 - armourScalar)).ToString() + " damage.");
+        Debug.Log(gameObject.name + " was attacked for " + (damage * armourScalar).ToString() + " damage.");
 
         //has the unit died from the hit
         if (health <= 0.0f)
         {
             health = 0.0f;
-
-            //get the tile that the unit is standing on
-            Tiles currentTile = GameObject.FindObjectOfType<Map>().GetTileAtPos(transform.position);
-
             Execute(GameManagment.eActionType.DEATH, currentTile, null);
         }
     }
+
+
+
+    /*
+    * Heal 
+    * virtual function
+    * 
+    * recieves healing
+    * 
+    * @param float points - the amount of health healed
+    * @return void
+    */
+    public virtual void Heal(float points)
+    {
+        //add the points
+        health += points;
+        
+        //clamp the max health
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+
+        Debug.Log(gameObject.name + " was healed for " + points.ToString() + " health.");
+    }
+
 
 
     /*
@@ -168,7 +199,7 @@ public class Unit : MonoBehaviour
     */
     public bool IsBusy()
     {
-        return commands.Count > 0;
+        return commands.Count > 0 && health > 0.0f;
     }
 
 

@@ -20,7 +20,7 @@ public class SpreadAttackCommand : UnitCommand
     public Map map = null;
 
     /*
-    * AttackCommand()
+    * SpreadAttackCommand()
     * 
     * constructor, specifies the target tile and callbacks
     * 
@@ -62,7 +62,7 @@ public class SpreadAttackCommand : UnitCommand
         int maxDistance = Mathf.CeilToInt(attackRadius);
 
         //get the surrounding tiles, considering obstacles
-        List<Tiles> area = GetArea.GetAreaOfMoveable(endTile, maxDistance);
+        List<Tiles> area = GetArea.GetAreaOfAttack(endTile, maxDistance);
 
         //get the size of the area tiles list
         int areaSize = area.Count;

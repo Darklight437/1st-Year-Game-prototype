@@ -6,7 +6,6 @@ public class CameraSelection : MonoBehaviour
 {
     //automated reference to the manager and input
     private GameManagment manager = null;
-    private CustomInput input = null;
 
     public LayerMask tileLayer;
 
@@ -14,7 +13,6 @@ public class CameraSelection : MonoBehaviour
 	void Start ()
     {
         manager = GameObject.FindObjectOfType<GameManagment>();
-        input = GameObject.FindObjectOfType<CustomInput>();
 	}
 	
 	// Update is called once per frame
