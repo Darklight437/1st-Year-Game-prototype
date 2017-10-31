@@ -13,6 +13,7 @@ public class Unit : MonoBehaviour
     public int movementRange = 0;
     public int attackRange = 0;
     public int armour = 0;
+    public int baseArmour = 0;
 
     public float damage = 0.0f;
     public float maxHealth = 1000.0f;
@@ -59,6 +60,8 @@ public class Unit : MonoBehaviour
 
         //create the gameobjs that make up the units area of vision
         CreateAOVOBJ();
+
+        baseArmour = armour;
     }
 
     // Update is called once per frame
@@ -112,20 +115,12 @@ public class Unit : MonoBehaviour
     */
     public virtual void Defend(float damage)
     {
-        //armour to add (only added if this unit is inside a defensive tile
-        int additionalArmour = 0;
 
         //get the tile that the unit is standing on
         Tiles currentTile = GameObject.FindObjectOfType<Map>().GetTileAtPos(transform.position);
 
-        //defensive tiles reduce damage further
-        if (currentTile.tileType == eTileType.DEFENSE)
-        {
-            additionalArmour++;
-        }
-
         //calculate the damage reduction
-        float armourScalar = 1 - GameManagment.stats.armourCurve.Evaluate(armour + additionalArmour) * 0.01f;
+        float armourScalar = 1 - GameManagment.stats.armourCurve.Evaluate(armour) * 0.01f;
 
         //the armour scalar affects the damage output
         health -= damage * armourScalar;

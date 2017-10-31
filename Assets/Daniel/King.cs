@@ -12,6 +12,14 @@ using UnityEngine;
 */
 public class King : Unit
 {
+    //how close a unit has to be to be considered in damage boosting
+    public int adjacentUnitRange = 3;
+
+    //the amount of damage boosted when close enough to the king
+    public float flatDamageRatio = 0.1f;
+
+    //percentages of king damage addition givenn
+    public float[] kingDamageRatios = new float[3] { 0.05f, 0.1f, 0.15f };
 
     /*
     * Execute 

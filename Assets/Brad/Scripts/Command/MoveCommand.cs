@@ -113,6 +113,17 @@ public class MoveCommand : UnitCommand
         }
         else
         {
+            if (endTile.tileType == eTileType.DEFENSE)
+            {
+                //defensive buff
+                unit.armour++;
+            }
+            else
+            {
+                //remove the defensive buff
+                unit.armour = unit.baseArmour;
+            }
+
             successCallback();
             return;
         }
