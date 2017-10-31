@@ -6,16 +6,6 @@ public class Sight : MonoBehaviour
 {
     //refrence to the unit this sight belongs to
     public Unit myUnit;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
     
     public void OnTriggerStay(Collider other)
     {

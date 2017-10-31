@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using System;
 
 /*
@@ -53,6 +52,11 @@ public class Tiles : MonoBehaviour
     //this is the set of tile varients we actually want to usee when the game is running
     //this should make it very easy to change on the fly
     public TileTypes useTileSet;
+
+    //the prefab we will spawn to show what tiles are walkable
+    public GameObject walkablePrefab;
+    //the gameobject that is used to show walkable that we can toggle on and off
+    public GameObject walkableHighLight;
 
     //unit that is on the tile
     public Unit unit = null;
@@ -141,6 +145,12 @@ public class Tiles : MonoBehaviour
     {
         GenerateRandomTileVariant();
         pos = gameObject.transform.position;
+
+        GameObject obj = Instantiate(walkablePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        obj.transform.SetParent(gameObject.transform);
+        walkableHighLight = obj;
+        obj.transform.localPosition = new Vector3(0, 0, 0);
+        obj.gameObject.SetActive(false);
     }
 
     /*
