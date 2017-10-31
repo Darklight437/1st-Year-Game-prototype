@@ -9,8 +9,8 @@ public class Unit : MonoBehaviour
     public int playerID = 0;
 
     //attributes
-    public int attackRange = 0;
     public int movementRange = 0;
+    public int attackRange = 0;
     public int armour = 0;
 
     public float damage = 0.0f;
@@ -84,11 +84,12 @@ public class Unit : MonoBehaviour
     * calculates the damage done to a target
     * 
     * @param Unit target - the unit to apply the damage to
+    * @param float multiplier - multiplys the damage
     * @returns void
     */
-    public virtual void Attack(Unit target)
+    public virtual void Attack(Unit target, float multiplier = 1.0f)
     {
-        target.Defend(damage);
+        target.Defend(damage * multiplier);
     }
 
 
