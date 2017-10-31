@@ -18,9 +18,9 @@ public class Unit : MonoBehaviour
     public float health = 1000.0f;
     public float AOV = 1.0f;
 
-    //David's
+    //hi there BB
+	//David's
     //random Comment
-
     //time it takes the unit to apply damage after "attacking"
     public float attackTime = 1.0f;
 
@@ -35,6 +35,8 @@ public class Unit : MonoBehaviour
 
     //the game prefab that is used to make up the units area of sight
     public GameObject sightPrefab;
+
+    //good bye BB
 
     //David
     //the Health bar canvas reference
