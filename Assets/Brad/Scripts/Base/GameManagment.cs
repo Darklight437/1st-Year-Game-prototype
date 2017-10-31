@@ -103,6 +103,11 @@ public class GameManagment : MonoBehaviour
     public void OnNextTurn()
     {
 
+        if (transitioning || activePlayer.IsBusy())
+        {
+            return;
+        }
+
         //remove all dead units
         foreach (Player p in players)
         {
@@ -115,11 +120,6 @@ public class GameManagment : MonoBehaviour
                     i--;
                 }
             }
-        }
-
-        if (transitioning || activePlayer.IsBusy())
-        {
-            return;
         }
 
         //turn off the action menu
@@ -427,6 +427,17 @@ public class GameManagment : MonoBehaviour
     public void OnCameraFinished()
     {
         transitioning = false;
+
+        //damage each unit at the start of the turn if it is standing on a trap tile
+        foreach (Unit u in activePlayer.units)
+        {
+            Tiles currentTile = map.GetTileAtPos(u.transform.position);
+            
+            if (currentTile.tileType == eTileType.DAMAGE)
+            {
+                u.Defend(GameManagment.stats.trapTileDamage);
+            }
+        }
     }
 
 
