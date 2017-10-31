@@ -11,6 +11,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/David/TestScene.unity
     guid: d125b17d287b64b469a3a2ac60e58f95
-  - enabled: 1
-    path: Assets/Michael/main.unity
+  - enabled: 0
+    path: 
     guid: b0704c7b3eb190741bcd256783c7c8d4
