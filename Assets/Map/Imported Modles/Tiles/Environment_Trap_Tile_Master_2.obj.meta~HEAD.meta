@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: cdf763ab35faf844594ee5ef5d155536
 timeCreated: 1509407757
+=======
+guid: 49508516029e4e04ab494b07c95be6e4
+timeCreated: 1509407575
+>>>>>>> e47cec78f693098d26c8ff40a6aa33c52af3dc4a
 licenseType: Pro
 DefaultImporter:
   userData: 

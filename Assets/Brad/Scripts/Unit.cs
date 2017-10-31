@@ -18,8 +18,14 @@ public class Unit : MonoBehaviour
     public float health = 1000.0f;
     public float AOV = 1.0f;
 
+    //hi there BB
+	//David's
+    //random Comment
+    //time it takes the unit to apply damage after "attacking"
+    public float attackTime = 1.0f;
 
-
+    //time it takes the unit to be completely deleted after "dying"
+    public float deathTime = 1.0f;
 
     //container of commands to execute
     public List<UnitCommand> commands = new List<UnitCommand>();
@@ -29,6 +35,8 @@ public class Unit : MonoBehaviour
 
     //the game prefab that is used to make up the units area of sight
     public GameObject sightPrefab;
+
+    //good bye BB
 
     //David
     //the Health bar canvas reference
@@ -65,6 +73,7 @@ public class Unit : MonoBehaviour
             obj.transform.localPosition = new Vector3(0, 0, 0);
             obj.transform.localScale = new Vector3((i * 2) + 1, 1, (AOV * 2) + 1 - (i * 2));
             aovOBJ.Add(obj);
+            obj.GetComponent<Sight>().myUnit = this;
         }
     }
 
