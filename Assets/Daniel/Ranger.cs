@@ -13,7 +13,8 @@ using UnityEngine;
 */
 public class Ranger : Unit
 {
-
+    //the amount of tiles away an attack can reach
+    public float splashRange = 3.0f;
 
     /*
     * Execute 
@@ -38,9 +39,10 @@ public class Ranger : Unit
         //attack command
         else if (actionType == GameManagment.eActionType.ATTACK)
         {
-            AttackCommand ac = new AttackCommand(this, OnCommandFinish, OnCommandFailed, st, et);
+            SpreadAttackCommand ac = new SpreadAttackCommand(this, OnCommandFinish, OnCommandFailed, st, et);
 
             ac.attackTimer = attackTime;
+            ac.attackRadius = splashRange;
 
             commands.Add(ac);
         }

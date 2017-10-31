@@ -36,7 +36,6 @@ public class DeathCommand : UnitCommand
     {
         //disconnect the unit from the grid
         startTile.unit = null;
-       
     }
 
 
