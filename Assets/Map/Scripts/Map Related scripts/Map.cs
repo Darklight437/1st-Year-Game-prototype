@@ -18,10 +18,7 @@ public class Map : MonoBehaviour
     //maps width and height
     public int width;
     public int height;
-
-    //the fog of war
-    public GameObject FOW;
-
+    
     /*
     * Start
     * public void function
