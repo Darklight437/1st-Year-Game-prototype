@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Unit : MonoBehaviour
 {
@@ -18,9 +19,7 @@ public class Unit : MonoBehaviour
     public float health = 1000.0f;
     public float AOV = 1.0f;
 
-    //hi there BB
-	//David's
-    //random Comment
+
     //time it takes the unit to apply damage after "attacking"
     public float attackTime = 1.0f;
 
@@ -39,8 +38,11 @@ public class Unit : MonoBehaviour
     //good bye BB
 
     //David
-    //the Health bar canvas reference
-    public GameObject hpBar = null;
+    //the Health bar image reference
+    public RectTransform hpBar = null;
+
+    //thehealth bar number reference
+    public Text hpNum = null;
 
     // Use this for initialization
     void Start()
@@ -62,6 +64,7 @@ public class Unit : MonoBehaviour
         {
             commands[0].Update();
         }
+        HealthUpdate();
     }
 
     private void CreateAOVOBJ()
@@ -182,6 +185,7 @@ public class Unit : MonoBehaviour
     }
 
 
+
     /*
    * OnCommandFailed
    * 
@@ -193,5 +197,24 @@ public class Unit : MonoBehaviour
     {
         //remove all commands as they may depend on the one that just failed being successful
         commands.Clear();
+    }
+
+    /*  
+    *   HealthUpdate
+    *   
+    *   runs each update to show the health of the unit in a bar & text
+    *   
+    *   @returns void
+    */  
+    public virtual void HealthUpdate()
+    {
+        Vector3 tempVect = hpBar.localScale;
+
+        tempVect.x = health / maxHealth;
+
+        hpBar.localScale = tempVect;
+
+        hpNum.text = (int)health + " / " + (int)maxHealth;
+
     }
 }
