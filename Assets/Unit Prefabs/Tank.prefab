@@ -97,5 +97,10 @@ MonoBehaviour:
   movementRange: 3
   armour: 3
   damage: 6
-  health: 100
+  maxHealth: 100000
+  health: 10000
   AOV: 12
+  aovOBJ: []
+  sightPrefab: {fileID: 1915189985047014, guid: e9d606d4ec06a2d49a22931b679b76cc,
+    type: 2}
+  hpBar: {fileID: 0}
