@@ -108,8 +108,8 @@ public class Unit : MonoBehaviour
     */
     public virtual void Defend(float damage)
     {
-        //calculate the damage reduction
-        float armourScalar = 1 - GameManagment.stats.armourCurve.Evaluate(damage) * 0.01f;
+        //armour to add (only added if this unit is inside a defensive tile
+        int additionalArmour = 0;
 
         //get the tile that the unit is standing on
         Tiles currentTile = GameObject.FindObjectOfType<Map>().GetTileAtPos(transform.position);
@@ -117,8 +117,11 @@ public class Unit : MonoBehaviour
         //defensive tiles reduce damage further
         if (currentTile.tileType == eTileType.DEFENSE)
         {
-            armourScalar *= GameManagment.stats.defensiveTileReduction;
+            additionalArmour++;
         }
+
+        //calculate the damage reduction
+        float armourScalar = 1 - GameManagment.stats.armourCurve.Evaluate(armour + additionalArmour) * 0.01f;
 
         //the armour scalar affects the damage output
         health -= damage * armourScalar;
