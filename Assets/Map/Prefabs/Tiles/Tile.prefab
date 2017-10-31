@@ -97,6 +97,9 @@ MonoBehaviour:
     - {fileID: 0}
   useTileSet:
     tileTypes: []
+  walkablePrefab: {fileID: 1604266773287276, guid: addc9d6aaa62332489a1597f31c3cb83,
+    type: 2}
+  walkableHighLight: {fileID: 0}
   unit: {fileID: 0}
   parent: {fileID: 0}
   pos: {x: 0, y: 0, z: 0}

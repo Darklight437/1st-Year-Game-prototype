@@ -29,3 +29,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+  tileHealthGained: 500
+  trapTileDamage: 500
+  defensiveTileReduction: 0.25
