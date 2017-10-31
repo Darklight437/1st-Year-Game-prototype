@@ -14,8 +14,17 @@ public class Unit : MonoBehaviour
     public int armour = 0;
 
     public float damage = 0.0f;
+    public float maxHealth = 1000.0f;
     public float health = 1000.0f;
     public float AOV = 1.0f;
+
+    //hi there BB
+
+    //time it takes the unit to apply damage after "attacking"
+    public float attackTime = 1.0f;
+
+    //time it takes the unit to be completely deleted after "dying"
+    public float deathTime = 1.0f;
 
     //container of commands to execute
     public List<UnitCommand> commands = new List<UnitCommand>();
@@ -25,6 +34,12 @@ public class Unit : MonoBehaviour
 
     //the game prefab that is used to make up the units area of sight
     public GameObject sightPrefab;
+
+    //good bye BB
+
+    //David
+    //the Health bar canvas reference
+    public GameObject hpBar = null;
 
     // Use this for initialization
     void Start()
@@ -93,6 +108,19 @@ public class Unit : MonoBehaviour
 
         //the armour scalar affects the damage output
         health -= damage * (1 - armourScalar);
+
+        Debug.Log(gameObject.name + " was attacked for " + (damage * (1 - armourScalar)).ToString() + " damage.");
+
+        //has the unit died from the hit
+        if (health <= 0.0f)
+        {
+            health = 0.0f;
+
+            //get the tile that the unit is standing on
+            Tiles currentTile = GameObject.FindObjectOfType<Map>().GetTileAtPos(transform.position);
+
+            Execute(GameManagment.eActionType.DEATH, currentTile, null);
+        }
     }
 
 
