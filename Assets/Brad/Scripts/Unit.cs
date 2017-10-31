@@ -73,6 +73,7 @@ public class Unit : MonoBehaviour
             obj.transform.localPosition = new Vector3(0, 0, 0);
             obj.transform.localScale = new Vector3((i * 2) + 1, 1, (AOV * 2) + 1 - (i * 2));
             aovOBJ.Add(obj);
+            obj.GetComponent<Sight>().myUnit = this;
         }
     }
 
