@@ -14,7 +14,4 @@ public class Statistics : ScriptableObject
     //amount of damage a trap tile does when stepped on
     public float trapTileDamage = 100.0f;
 
-    //percentage to reduce damage by when standing on a defensive tile
-    public float defensiveTileReduction = 0.25f;
-
 }
