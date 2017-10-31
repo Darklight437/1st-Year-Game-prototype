@@ -20,7 +20,7 @@ public class SpreadAttackCommand : UnitCommand
     public Map map = null;
 
     /*
-    * AttackCommand()
+    * SpreadAttackCommand()
     * 
     * constructor, specifies the target tile and callbacks
     * 

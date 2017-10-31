@@ -92,6 +92,11 @@ public class MoveCommand : UnitCommand
 
             if (relative.magnitude < 3.0f * Time.deltaTime)
             {
+                //this is a healing tile, heal the unit
+                if (nextTile.IsHealing)
+                {
+                    unit.Heal(GameManagment.stats.tileHealthGained);
+                }
                 //this is a trap tile, it could kill the unit
                 if (nextTile.tileType == eTileType.DAMAGE)
                 {

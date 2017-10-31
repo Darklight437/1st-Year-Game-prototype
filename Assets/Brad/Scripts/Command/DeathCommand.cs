@@ -54,6 +54,8 @@ public class DeathCommand : UnitCommand
         if (deathTimer <= 0.0f)
         {
             deathTimer = 0.0f;
+
+            successCallback();
             GameObject.Destroy(unit.gameObject);
         }
     }

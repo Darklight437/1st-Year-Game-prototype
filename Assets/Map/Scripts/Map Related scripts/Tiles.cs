@@ -57,6 +57,9 @@ public class Tiles : MonoBehaviour
     //unit that is on the tile
     public Unit unit = null;
 
+    //check if a tile is healing
+    private bool m_isHealing = false;
+
     //tile values for pathfinding purposes 
     private float m_gcost;
     public float GCost
@@ -119,6 +122,28 @@ public class Tiles : MonoBehaviour
             }
 
             return false;
+        }
+    }
+
+    //determines if this tile has healing effects on it
+    public bool IsHealing
+    {
+        get
+        {
+            //reset the healing on the tile
+            if (m_isHealing)
+            {
+                m_isHealing = false;
+                return true;
+            }
+
+            return false;
+
+        }
+
+        set
+        {
+            m_isHealing = value;
         }
     }
 

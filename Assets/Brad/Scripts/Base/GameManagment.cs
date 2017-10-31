@@ -100,6 +100,20 @@ public class GameManagment : MonoBehaviour
     public void OnNextTurn()
     {
 
+        //remove all dead units
+        foreach (Player p in players)
+        {
+            //iterate through all units, removing null references
+            for (int i = 0; i < p.units.Count; i++)
+            {
+                if (p.units[i] == null)
+                {
+                    p.units.RemoveAt(i);
+                    i--;
+                }
+            }
+        }
+
         if (transitioning || activePlayer.IsBusy())
         {
             return;
@@ -145,6 +159,7 @@ public class GameManagment : MonoBehaviour
             {
                 for (int u = 0; u < players[i].units.Count; u++)
                 {
+
                     players[i].units[u].GetComponent<Renderer>().enabled = false;
                     foreach (Transform tran in players[i].units[u].transform)
                     {
