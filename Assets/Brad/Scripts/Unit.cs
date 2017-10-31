@@ -41,8 +41,12 @@ public class Unit : MonoBehaviour
     //the Health bar image reference
     public RectTransform hpBar = null;
 
-    //thehealth bar number reference
+    //the health bar number reference
     public Text hpNum = null;
+
+    //reference to the UI armour bar
+    public SpriteRenderer armourBar = null;
+
 
     // Use this for initialization
     void Start()
@@ -243,6 +247,36 @@ public class Unit : MonoBehaviour
     */  
     public virtual void HealthUpdate()
     {
+
+
+        Vector2 shield1 = new Vector2(2.44f, 2.5f);
+        Vector2 shield2 = new Vector2(4.89f, 2.5f);
+        Vector2 shield3 = new Vector2(7.3f, 2.5f);
+        Vector2 shield4 = new Vector2(9.78f, 2.5f);
+
+        switch(armour)
+        {
+            case 0:
+                armourBar.size = new Vector2(0f, 2.5f);
+                break;
+
+            case 1:
+                armourBar.size = shield1;
+                break;
+
+            case 2:
+                armourBar.size = shield2;
+                break;
+
+            case 3:
+                armourBar.size = shield3;
+                break;
+
+            case 4:
+                armourBar.size = shield4;
+                break;
+        }
+
         Vector3 tempVect = hpBar.localScale;
 
         tempVect.x = health / maxHealth;
