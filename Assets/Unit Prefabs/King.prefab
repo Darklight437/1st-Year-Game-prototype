@@ -22,7 +22,9 @@ GameObject:
   - component: {fileID: 33796888941536522}
   - component: {fileID: 23011364787896416}
   - component: {fileID: 114872421475661040}
-  m_Layer: 0
+  - component: {fileID: 54786090538877538}
+  - component: {fileID: 135262871312866536}
+  m_Layer: 10
   m_Name: King
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,6 +83,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1819990178570322}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54786090538877538
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1819990178570322}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &114872421475661040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -96,11 +113,25 @@ MonoBehaviour:
   attackRange: 1
   movementRange: 2
   armour: 1
-  damage: 10
+  damage: 1000
   maxHealth: 10000
   health: 3000
   AOV: 8
+  attackTime: 1
+  deathTime: 1
   aovOBJ: []
   sightPrefab: {fileID: 1915189985047014, guid: e9d606d4ec06a2d49a22931b679b76cc,
     type: 2}
   hpBar: {fileID: 0}
+--- !u!135 &135262871312866536
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1819990178570322}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
