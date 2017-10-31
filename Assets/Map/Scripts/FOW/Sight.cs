@@ -16,15 +16,7 @@ public class Sight : MonoBehaviour
 	void Update () {
 		
 	}
-
-    //public void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.GetComponent<Renderer>().enabled == false)
-    //    {
-    //        other.GetComponent<Renderer>().enabled = true;
-    //    }
-    //}
-
+    
     public void OnTriggerStay(Collider other)
     {
         if (other.GetComponent<Renderer>().enabled == false)
