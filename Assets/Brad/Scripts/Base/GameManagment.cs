@@ -78,7 +78,7 @@ public class GameManagment : MonoBehaviour
             players[i].LinkIDs(i);
         }
 
-        //TurnUnitsOff();
+        TurnUnitsOff();
 	}
 	
 	// Update is called once per frame
@@ -133,7 +133,7 @@ public class GameManagment : MonoBehaviour
 
         transitioning = true;
 
-        //TurnUnitsOff();
+        TurnUnitsOff();
     }
 
     public void TurnUnitsOff()
@@ -144,8 +144,22 @@ public class GameManagment : MonoBehaviour
             {
                 for (int u = 0; u < players[i].units.Count; u++)
                 {
-                    activePlayer.units[u].gameObject.SetActive(false);
+                    players[i].units[u].GetComponent<Renderer>().enabled = false;
+                    foreach (Transform tran in players[i].units[u].transform)
+                    {
+                        tran.gameObject.SetActive(false);
+                    }
                 }
+            }
+        }
+
+        foreach (Unit unit in activePlayer.units)
+        {
+            unit.GetComponent<Renderer>().enabled = true;
+
+            foreach (Transform tran in unit.transform)
+            {
+                tran.gameObject.SetActive(true);
             }
         }
     }
