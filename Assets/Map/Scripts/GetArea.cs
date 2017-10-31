@@ -53,6 +53,8 @@ public static class GetArea
                     }
                 }
             }
+
+            Debug.Log(i);
         }
 
         return closedSet;

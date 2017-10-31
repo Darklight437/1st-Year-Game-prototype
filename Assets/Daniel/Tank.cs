@@ -47,11 +47,20 @@ public class Tank : Unit
         //dying command
         else if (actionType == GameManagment.eActionType.DEATH)
         {
-            DeathCommand dc = new DeathCommand(this, null, null, st, null);
+            DeathCommand dc = new DeathCommand(this, OnCommandFinish, null, st, null);
 
             dc.deathTimer = deathTime;
 
             commands.Add(dc);
+        }
+        //ability command (special attack)
+        else if (actionType == GameManagment.eActionType.SPECIAL)
+        {
+            TileModifierCommand tmc = new TileModifierCommand(this, OnCommandFinish, null, st, et);
+
+            tmc.modifyType = TileModifierCommand.eModifyType.DEFENSE;
+
+            commands.Add(tmc);
         }
     }
 }
