@@ -63,6 +63,8 @@ public class AttackCommand : UnitCommand
         //if the defending unit exists
         if (defendingUnit != null)
         {
+            unit.hasAttacked = true;
+
             unit.Attack(defendingUnit);
             successCallback();
         }
