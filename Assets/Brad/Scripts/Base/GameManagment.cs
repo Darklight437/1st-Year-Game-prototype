@@ -36,6 +36,9 @@ public class GameManagment : MonoBehaviour
     //list of all walkable tiles that the slected unit can walk to
     public List<Tiles> movableTiles = new List<Tiles>();
 
+    //list of all attackable tiles
+    public List<Tiles> attackableTiles = new List<Tiles>();
+
     //reference to the starting tile (first selection)
     public Tiles startTile = null;
 
@@ -142,10 +145,9 @@ public class GameManagment : MonoBehaviour
 
         //deselect the unit
         selectedUnit = null;
-        
+
         //stop showing walkable tiles if thy where showing
-        ToggleWalkableTilesFalse();
-        movableTiles.Clear();
+        ToggleTileModifiersFalse();
 
         //increment the turn id
         turn++;
@@ -236,20 +238,25 @@ public class GameManagment : MonoBehaviour
             }
 
             //stop showing walkable tiles if thy where showing
-            ToggleWalkableTilesFalse();
-            movableTiles.Clear();
+            ToggleTileModifiersFalse();
 
             selectedUnit = unit;
             selectedUnit.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Custom/WallThrough");
 
             //gather and show new walkable tiles
             List<Tiles> holder = GetArea.GetAreaOfMoveable(map.GetTileAtPos(selectedUnit.transform.position), selectedUnit.movementPoints);
+            List<Tiles> holder2 = GetArea.GetAreaOfAttack(map.GetTileAtPos(selectedUnit.transform.position), selectedUnit.attackRange);
 
             foreach (Tiles tile in holder)
             {
                 movableTiles.Add(tile);
             }
-            ToggleWalkableTilesActive();
+
+            foreach (Tiles tile in holder2)
+            {
+                attackableTiles.Add(tile);
+            }
+            ToggleTileModifiersActive();
         }
     }
 
@@ -265,13 +272,21 @@ public class GameManagment : MonoBehaviour
     * @returns void
     * @author Callum Dunstone
     */
-    public void ToggleWalkableTilesActive()
+    public void ToggleTileModifiersActive()
     {
         foreach (Tiles tile in movableTiles)
         {
             if (tile.walkableHighLight.gameObject.activeSelf == false)
             {
                 tile.walkableHighLight.gameObject.SetActive(true);
+            }
+        }
+
+        foreach (Tiles tile in attackableTiles)
+        {
+            if(tile.attackRangeHighLight.gameObject.activeSelf == false)
+            {
+                tile.attackRangeHighLight.gameObject.SetActive(true);
             }
         }
     }
@@ -288,7 +303,7 @@ public class GameManagment : MonoBehaviour
     * @returns void
     * @author Callum Dunstone
     */
-    public void ToggleWalkableTilesFalse()
+    public void ToggleTileModifiersFalse()
     {
         foreach (Tiles tile in movableTiles)
         {
@@ -297,6 +312,18 @@ public class GameManagment : MonoBehaviour
                 tile.walkableHighLight.gameObject.SetActive(false);
             }
         }
+
+        foreach (Tiles tile in attackableTiles)
+        {
+            if (tile.attackRangeHighLight.gameObject.activeSelf == true)
+            {
+                tile.attackRangeHighLight.gameObject.SetActive(false);
+            }
+        }
+
+        movableTiles.Clear();
+        attackableTiles.Clear();
+
     }
 
 
@@ -424,8 +451,7 @@ public class GameManagment : MonoBehaviour
         selectedUnit = null;
 
         //stop showing walkable tiles
-        ToggleWalkableTilesFalse();
-        movableTiles.Clear();
+        ToggleTileModifiersFalse();
 
         //deselect the tiles
         startTile = null;

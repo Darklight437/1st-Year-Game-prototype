@@ -58,6 +58,9 @@ public class Tiles : MonoBehaviour
     //the gameobject that is used to show walkable that we can toggle on and off
     public GameObject walkableHighLight;
 
+    public GameObject attackRangePrefab;
+    public GameObject attackRangeHighLight;
+
     //unit that is on the tile
     public Unit unit = null;
 
@@ -171,11 +174,31 @@ public class Tiles : MonoBehaviour
         GenerateRandomTileVariant();
         pos = gameObject.transform.position;
 
+        GenerateTileModifiers();
+    }
+
+    /*
+    * GenerateTileModifiers
+    * public void function
+    * 
+    * this function generates the tile modifiers to show
+    * unit movmeant range and attack range
+    * 
+    * @returns nothing
+    */
+    public void GenerateTileModifiers()
+    {
         GameObject obj = Instantiate(walkablePrefab, new Vector3(0, 0, 0), Quaternion.identity);
         obj.transform.SetParent(gameObject.transform);
         walkableHighLight = obj;
         obj.transform.localPosition = new Vector3(0, 0, 0);
         obj.gameObject.SetActive(false);
+
+        GameObject obj2 = Instantiate(attackRangePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        obj2.transform.SetParent(gameObject.transform);
+        attackRangeHighLight = obj2;
+        obj2.transform.localPosition = new Vector3(0, 0, 0);
+        obj2.gameObject.SetActive(false);
     }
 
     /*
