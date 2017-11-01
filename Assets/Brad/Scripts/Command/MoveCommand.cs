@@ -90,7 +90,7 @@ public class MoveCommand : UnitCommand
 
             Vector3 relative = target - unit.transform.position;
 
-            if (relative.magnitude < 3.0f * Time.deltaTime)
+            if (relative.magnitude < unit.movementSpeed * Time.deltaTime)
             {
                 //this is a healing tile, heal the unit
                 if (nextTile.IsHealing)
@@ -108,7 +108,7 @@ public class MoveCommand : UnitCommand
             }
             else
             {
-                unit.transform.position += relative.normalized * 3.0f * Time.deltaTime;
+                unit.transform.position += relative.normalized * unit.movementSpeed * Time.deltaTime;
             }
         }
         else
@@ -116,7 +116,7 @@ public class MoveCommand : UnitCommand
             if (endTile.tileType == eTileType.DEFENSE)
             {
                 //defensive buff
-                unit.armour++;
+                unit.armour = unit.baseArmour + 1;
             }
             else
             {

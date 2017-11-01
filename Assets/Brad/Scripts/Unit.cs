@@ -20,6 +20,10 @@ public class Unit : MonoBehaviour
     public float health = 1000.0f;
     public float AOV = 1.0f;
 
+    public float movementSpeed = 3.0f;
+
+    //ratio to multiply the base damage by
+    public float attackMultiplier = 1.0f;
 
     //time it takes the unit to apply damage after "attacking"
     public float attackTime = 1.0f;
@@ -99,7 +103,7 @@ public class Unit : MonoBehaviour
     */
     public virtual void Attack(Unit target, float multiplier = 1.0f)
     {
-        target.Defend(damage * multiplier);
+        target.Defend(damage * multiplier * attackMultiplier);
     }
 
 
@@ -207,12 +211,13 @@ public class Unit : MonoBehaviour
 
     /*
     * OnCommandFinish
+    * virtual function
     * 
     * called when the unit's latest command finishes
     * 
     * @returns void
     */
-    public void OnCommandFinish()
+    public virtual void OnCommandFinish()
     {
         //remove the latest command
         commands.RemoveAt(0);

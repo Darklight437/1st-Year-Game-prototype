@@ -57,7 +57,7 @@ public class TileModifierCommand : UnitCommand
     public override void Update()
     {
         //can't modify a wall or change a tile being stood on
-        if (endTile.tileType == eTileType.IMPASSABLE || endTile.unit != null)
+        if (endTile.tileType != eTileType.NORMAL|| endTile.unit != null)
         {
             failedCallback();
             return;

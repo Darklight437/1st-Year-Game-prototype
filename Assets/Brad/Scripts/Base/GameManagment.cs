@@ -84,13 +84,71 @@ public class GameManagment : MonoBehaviour
 
         TurnUnitsOff();
 	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
 
-        
-	}
+    // Update is called once per frame
+    void Update()
+    {
+        activePlayer.CalculateKingPosition();
+
+        //search for the king
+        King king = null;
+
+        for (int i = 0; i < activePlayer.units.Count; i++)
+        {
+            //store in temp variable
+            Unit unit = activePlayer.units[i];
+
+            //if the unit is a king and hasn't already been removed
+            if (unit != null && unit is King)
+            {
+                king = unit as King;
+                break;
+            }
+        }
+
+        int unitsAdjacentToKing = 0;
+
+        //apply king buffs
+        for(int i = 0; i < activePlayer.units.Count; i++)
+        {
+            //store in temp variable
+            Unit unit = activePlayer.units[i];
+
+            //if the unit hasn't already been removed
+            if (unit != null)
+            {
+                //reset the multiplier
+                unit.attackMultiplier = 1.0f;
+
+                //relative vector from the unit to the king
+                Vector3 relative = king.transform.position - unit.transform.position;
+
+                //get the manhattan distance
+                float manhattan = Mathf.Abs(relative.x) + Mathf.Abs(relative.z);
+
+                //the king gets buffed from this
+                if (manhattan <= 1.0f)
+                {
+                    unitsAdjacentToKing++;
+                }
+
+                //close enough to the king to be buffed offensively
+                if (manhattan <= king.adjacentUnitRange)
+                {
+                    unit.attackMultiplier = 1.0f + king.flatDamageRatio;
+                }
+            }
+        }
+
+        //reset the multiplier
+        king.attackMultiplier = 1.0f;
+
+        //buff the king depending on how many units are near it
+        if (unitsAdjacentToKing > 0 && unitsAdjacentToKing <= king.kingDamageRatios.GetLength(0))
+        {
+            king.attackMultiplier = 1.0f + king.kingDamageRatios[unitsAdjacentToKing - 1];
+        }
+    }
 
 
     /*
@@ -243,6 +301,8 @@ public class GameManagment : MonoBehaviour
         }
     }
 
+
+
     /*
     * ToggleWalkableTilesActive 
     * 
@@ -264,6 +324,8 @@ public class GameManagment : MonoBehaviour
         }
     }
 
+
+
     /*
     * ToggleWalkableTilesFalse 
     * 
@@ -284,6 +346,8 @@ public class GameManagment : MonoBehaviour
             }
         }
     }
+
+
 
     /*
     * OnTileSelected 
@@ -380,6 +444,7 @@ public class GameManagment : MonoBehaviour
         }
     }
 
+    
 
     /*
     * OnActionSelected 
@@ -417,6 +482,8 @@ public class GameManagment : MonoBehaviour
 
     }
 
+
+
     /*
     * OnCameraFinished 
     * 
@@ -440,7 +507,4 @@ public class GameManagment : MonoBehaviour
         }
     }
 
-
-
-    
 }
