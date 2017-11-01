@@ -1,0 +1,3 @@
+Frames: 0-24 ------- Walk Cycle
+Frames: 25-49 ------ Un-Used Idle
+Frames: 50-74 ------ Used Idle
