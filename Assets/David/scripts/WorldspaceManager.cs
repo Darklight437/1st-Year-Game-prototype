@@ -22,7 +22,7 @@ public class WorldspaceManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, Camera.main.transform.eulerAngles.y, transform.eulerAngles.z);
+       // transform.eulerAngles = new Vector3(transform.eulerAngles.x, Camera.main.transform.eulerAngles.y, transform.eulerAngles.z);
 
         if (Input.GetMouseButtonDown(0))
         {
