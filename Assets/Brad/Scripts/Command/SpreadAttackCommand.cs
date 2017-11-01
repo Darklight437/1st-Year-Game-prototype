@@ -88,6 +88,8 @@ public class SpreadAttackCommand : UnitCommand
             }
         }
 
+        unit.hasAttacked = true;
+
         successCallback();
     }
 }
