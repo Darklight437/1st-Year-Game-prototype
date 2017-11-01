@@ -564,6 +564,37 @@ public class GameManagment : MonoBehaviour
 
 
     /*
+    * KillAll 
+    * 
+    * forces all units on all teams to die
+    * 
+    * @returns void 
+    */
+    public void KillAll()
+    {
+        //iterate through all players
+        foreach (Player p in players)
+        {
+            //iterate through all of the units, killing each
+            for (int i = 0; i < p.units.Count; i++)
+            {
+                //store in temp value for readability
+                Unit unit = p.units[i];
+
+                //check for a null reference
+                if (unit != null)
+                {
+                    //get the tile that the unit is standing on
+                    Tiles currentTile = map.GetTileAtPos(unit.transform.position);
+
+                    unit.Execute(eActionType.DEATH, currentTile, null, null);
+                }
+            }
+        }
+    }
+
+
+    /*
     * OnKingKilled
     * 
     * called when a king is slain 
