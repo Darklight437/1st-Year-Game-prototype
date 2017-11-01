@@ -20,6 +20,15 @@ public class Unit : MonoBehaviour
     public float health = 1000.0f;
     public float AOV = 1.0f;
 
+    //flags indicating what the unit has done in a particular turn
+    public int movementPoints = 0;
+    public bool hasAttacked = false;
+
+    //visual movement speed
+    public float movementSpeed = 3.0f;
+
+    //ratio to multiply the base damage by
+    public float attackMultiplier = 1.0f;
 
     //time it takes the unit to apply damage after "attacking"
     public float attackTime = 1.0f;
@@ -62,6 +71,10 @@ public class Unit : MonoBehaviour
         CreateAOVOBJ();
 
         baseArmour = armour;
+
+        //reset the real-time turn tracking
+        movementPoints = movementRange;
+        hasAttacked = false;
     }
 
     // Update is called once per frame
@@ -99,7 +112,7 @@ public class Unit : MonoBehaviour
     */
     public virtual void Attack(Unit target, float multiplier = 1.0f)
     {
-        target.Defend(damage * multiplier);
+        target.Defend(damage * multiplier * attackMultiplier);
     }
 
 
@@ -131,7 +144,7 @@ public class Unit : MonoBehaviour
         if (health <= 0.0f)
         {
             health = 0.0f;
-            Execute(GameManagment.eActionType.DEATH, currentTile, null);
+            Execute(GameManagment.eActionType.DEATH, currentTile, null, null);
         }
     }
 
@@ -171,9 +184,10 @@ public class Unit : MonoBehaviour
     * @param GameManagement.eActionType actionType - the type of action to execute
     * @param Tiles st - the first tile selected
     * @param Tiles et - the last tile selected
+    * @param UnitCommand.VoidFunc callback - function reference to invoke if the command completes
     * @returns void
     */
-    public virtual void Execute(GameManagment.eActionType actionType, Tiles st, Tiles et)
+    public virtual void Execute(GameManagment.eActionType actionType, Tiles st, Tiles et, UnitCommand.VoidFunc callback)
     {
 
     }
@@ -207,12 +221,13 @@ public class Unit : MonoBehaviour
 
     /*
     * OnCommandFinish
+    * virtual function
     * 
     * called when the unit's latest command finishes
     * 
     * @returns void
     */
-    public void OnCommandFinish()
+    public virtual void OnCommandFinish()
     {
         //remove the latest command
         commands.RemoveAt(0);
@@ -221,18 +236,19 @@ public class Unit : MonoBehaviour
 
 
     /*
-   * OnCommandFailed
-   * 
-   * called when the unit's latest command fails
-   * 
-   * @returns void
-   */
+    * OnCommandFailed
+    * 
+    * called when the unit's latest command fails
+    * 
+    * @returns void
+    */
     public void OnCommandFailed()
     {
         //remove all commands as they may depend on the one that just failed being successful
         commands.Clear();
     }
 
+   
     /*  
     *   HealthUpdate
     *   

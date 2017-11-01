@@ -22,21 +22,26 @@ public class Medic : Unit
     * @param GameManagement.eActionType actionType - the type of action to execute
     * @param Tiles st - the first tile selected
     * @param Tiles et - the last tile selected
+    * param UnitCommand.VoidFunc callback - function reference to invoke if the command completes
     * @returns void
     */
-    public override void Execute(GameManagment.eActionType actionType, Tiles st, Tiles et)
+    public override void Execute(GameManagment.eActionType actionType, Tiles st, Tiles et, UnitCommand.VoidFunc callback)
     {
+        //create a list of function references to execute
+        UnitCommand.VoidFunc callstack = OnCommandFinish;
+        callstack += callback;
+
         //movement command
         if (actionType == GameManagment.eActionType.MOVEMENT)
         {
-            MoveCommand mc = new MoveCommand(this, OnCommandFinish, OnCommandFailed, st, et);
+            MoveCommand mc = new MoveCommand(this, callstack, OnCommandFailed, st, et);
 
             commands.Add(mc);
         }
         //attack command
         else if (actionType == GameManagment.eActionType.ATTACK)
         {
-            AttackCommand ac = new AttackCommand(this, OnCommandFinish, OnCommandFailed, st, et);
+            AttackCommand ac = new AttackCommand(this, callstack, OnCommandFailed, st, et);
 
             ac.attackTimer = attackTime;
 
@@ -45,7 +50,7 @@ public class Medic : Unit
         //dying command
         else if (actionType == GameManagment.eActionType.DEATH)
         {
-            DeathCommand dc = new DeathCommand(this, OnCommandFinish, null, st, null);
+            DeathCommand dc = new DeathCommand(this, callstack, null, st, null);
 
             dc.deathTimer = deathTime;
 
@@ -54,7 +59,7 @@ public class Medic : Unit
         //ability command (special attack)
         else if (actionType == GameManagment.eActionType.SPECIAL)
         {
-            TileModifierCommand tmc = new TileModifierCommand(this, OnCommandFinish, null, st, et);
+            TileModifierCommand tmc = new TileModifierCommand(this, callstack, null, st, et);
 
             tmc.modifyType = TileModifierCommand.eModifyType.HEALING;
 

@@ -64,9 +64,12 @@ public class MoveCommand : UnitCommand
             //get the tile path to follow
             m_tilePath = AStar.GetAStarPath(startingTile, endTile);
 
-            //the path is clear
-            if (m_tilePath.Count > 0)
+            //the path is clear, and the unit can move there
+            if (m_tilePath.Count > 0 && m_tilePath.Count <= unit.movementPoints)
             {
+                //subtract the path distance from the movement points
+                unit.movementPoints -= m_tilePath.Count;
+
                 startingTile.unit = null;
                 endTile.unit = unit;
             }
@@ -90,7 +93,7 @@ public class MoveCommand : UnitCommand
 
             Vector3 relative = target - unit.transform.position;
 
-            if (relative.magnitude < 3.0f * Time.deltaTime)
+            if (relative.magnitude < unit.movementSpeed * Time.deltaTime)
             {
                 //this is a healing tile, heal the unit
                 if (nextTile.IsHealing)
@@ -108,7 +111,7 @@ public class MoveCommand : UnitCommand
             }
             else
             {
-                unit.transform.position += relative.normalized * 3.0f * Time.deltaTime;
+                unit.transform.position += relative.normalized * unit.movementSpeed * Time.deltaTime;
             }
         }
         else
@@ -116,13 +119,16 @@ public class MoveCommand : UnitCommand
             if (endTile.tileType == eTileType.DEFENSE)
             {
                 //defensive buff
-                unit.armour++;
+                unit.armour = unit.baseArmour + 1;
             }
             else
             {
                 //remove the defensive buff
                 unit.armour = unit.baseArmour;
             }
+
+            //set the unit moving
+
 
             successCallback();
             return;

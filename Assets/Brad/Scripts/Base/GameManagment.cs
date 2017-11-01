@@ -36,6 +36,9 @@ public class GameManagment : MonoBehaviour
     //list of all walkable tiles that the slected unit can walk to
     public List<Tiles> movableTiles = new List<Tiles>();
 
+    //list of all attackable tiles
+    public List<Tiles> attackableTiles = new List<Tiles>();
+
     //reference to the starting tile (first selection)
     public Tiles startTile = null;
 
@@ -84,13 +87,12 @@ public class GameManagment : MonoBehaviour
 
         TurnUnitsOff();
 	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
 
+    // Update is called once per frame
+    void Update()
+    {
         
-	}
+    }
 
 
     /*
@@ -114,17 +116,28 @@ public class GameManagment : MonoBehaviour
             //iterate through all units, removing null references
             for (int i = 0; i < p.units.Count; i++)
             {
-                if (p.units[i] == null)
-                {
+                //get the unit
+                Unit unit = p.units[i];
+
+                //check that the unit isn't a missing reference
+                if (unit == null)
+                { 
                     p.units.RemoveAt(i);
                     i--;
+                }
+                else
+                {
+                    //reset the real-time turn tracking
+                    unit.movementPoints = unit.movementRange;
+                    unit.hasAttacked = false;
                 }
             }
         }
 
         //turn off the action menu
-        worldUI.gameObject.GetComponent<Canvas>().enabled = false;
-
+        //worldUI.gameObject.GetComponent<Canvas>().enabled = false;
+        //replaced changing the canvas with the whole gameobject
+        worldUI.gameObject.SetActive(false);
         if (selectedUnit != null)
         {
             //turn off the unit selection glow
@@ -133,10 +146,9 @@ public class GameManagment : MonoBehaviour
 
         //deselect the unit
         selectedUnit = null;
-        
+
         //stop showing walkable tiles if thy where showing
-        ToggleWalkableTilesFalse();
-        movableTiles.Clear();
+        ToggleTileModifiersFalse();
 
         //increment the turn id
         turn++;
@@ -223,25 +235,34 @@ public class GameManagment : MonoBehaviour
             //the player is selecting a different unit, hide the menu
             if (selectedUnit != unit)
             {
-                worldUI.gameObject.GetComponent<Canvas>().enabled = false;
+                //worldUI.gameObject.GetComponent<Canvas>().enabled = false;
+                worldUI.gameObject.SetActive(false);
             }
 
             //stop showing walkable tiles if thy where showing
-            ToggleWalkableTilesFalse();
-            movableTiles.Clear();
+            ToggleTileModifiersFalse();
 
             selectedUnit = unit;
             selectedUnit.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Custom/WallThrough");
 
             //gather and show new walkable tiles
-            List<Tiles> holder = GetArea.GetAreaOfMoveable(map.GetTileAtPos(selectedUnit.transform.position), selectedUnit.movementRange);
+            List<Tiles> holder = GetArea.GetAreaOfMoveable(map.GetTileAtPos(selectedUnit.transform.position), selectedUnit.movementPoints);
+            List<Tiles> holder2 = GetArea.GetAreaOfAttack(map.GetTileAtPos(selectedUnit.transform.position), selectedUnit.attackRange);
+
             foreach (Tiles tile in holder)
             {
                 movableTiles.Add(tile);
             }
-            ToggleWalkableTilesActive();
+
+            foreach (Tiles tile in holder2)
+            {
+                attackableTiles.Add(tile);
+            }
+            ToggleTileModifiersActive();
         }
     }
+
+
 
     /*
     * ToggleWalkableTilesActive 
@@ -253,7 +274,7 @@ public class GameManagment : MonoBehaviour
     * @returns void
     * @author Callum Dunstone
     */
-    public void ToggleWalkableTilesActive()
+    public void ToggleTileModifiersActive()
     {
         foreach (Tiles tile in movableTiles)
         {
@@ -262,7 +283,17 @@ public class GameManagment : MonoBehaviour
                 tile.walkableHighLight.gameObject.SetActive(true);
             }
         }
+
+        foreach (Tiles tile in attackableTiles)
+        {
+            if(tile.attackRangeHighLight.gameObject.activeSelf == false)
+            {
+                tile.attackRangeHighLight.gameObject.SetActive(true);
+            }
+        }
     }
+
+
 
     /*
     * ToggleWalkableTilesFalse 
@@ -274,7 +305,7 @@ public class GameManagment : MonoBehaviour
     * @returns void
     * @author Callum Dunstone
     */
-    public void ToggleWalkableTilesFalse()
+    public void ToggleTileModifiersFalse()
     {
         foreach (Tiles tile in movableTiles)
         {
@@ -283,7 +314,21 @@ public class GameManagment : MonoBehaviour
                 tile.walkableHighLight.gameObject.SetActive(false);
             }
         }
+
+        foreach (Tiles tile in attackableTiles)
+        {
+            if (tile.attackRangeHighLight.gameObject.activeSelf == true)
+            {
+                tile.attackRangeHighLight.gameObject.SetActive(false);
+            }
+        }
+
+        movableTiles.Clear();
+        attackableTiles.Clear();
+
     }
+
+
 
     /*
     * OnTileSelected 
@@ -306,10 +351,18 @@ public class GameManagment : MonoBehaviour
 
                 endTile = tile;
 
+                //David 
+                //gonna change the Worldspace UI to screenspace set the position relative to the click
                 //set-up the world UI
-                worldUI.transform.position = new Vector3(endTile.pos.x, worldUI.transform.position.y, endTile.pos.z);
-                worldUI.gameObject.GetComponent<Canvas>().enabled = true;
+                worldUI.gameObject.SetActive(true);
+                worldUI.AttButton.SetActive(true);
+                worldUI.MoveButton.SetActive(true);
+                worldUI.SpcButton.SetActive(true);
 
+
+                worldUI.PosManager.position = Input.mousePosition;
+                //worldUI.transform.position = new Vector3(endTile.pos.x, worldUI.transform.position.y, endTile.pos.z);
+                //worldUI.gameObject.GetComponent<Canvas>().enabled = true;
                 //get the tile position of the unit
                 Vector3 unitTilePos = selectedUnit.transform.position - Vector3.up * selectedUnit.transform.position.y;
 
@@ -323,9 +376,9 @@ public class GameManagment : MonoBehaviour
                 manhattanDistanceSqr *= manhattanDistanceSqr;
 
                 //reset the buttons
-                worldUI.AttButton.SetActive(false);
-                worldUI.MoveButton.SetActive(false);
-                worldUI.SpcButton.SetActive(false);
+               // worldUI.AttButton.SetActive(false);
+              //  worldUI.MoveButton.SetActive(false);
+              //  worldUI.SpcButton.SetActive(false);
 
                 //because A* will consider this not passable
                 startTile.unit = null;
@@ -341,21 +394,33 @@ public class GameManagment : MonoBehaviour
                 pathDistanceSqr *= pathDistanceSqr;
 
                 //can the unit attack the tile
-                if (manhattanDistanceSqr <= selectedUnit.attackRange * selectedUnit.attackRange)
+                if (manhattanDistanceSqr <= selectedUnit.attackRange * selectedUnit.attackRange && !selectedUnit.hasAttacked)
                 {
                     worldUI.AttButton.SetActive(true);
                 }
+                else
+                {
+                    worldUI.AttButton.SetActive(false);
+                }
 
                 //can the unit move to the tile, also a movement range of 0 means the path couldn't be found
-                if (pathDistanceSqr <= selectedUnit.movementRange * selectedUnit.movementRange && pathDistanceSqr > 0.0f)
+                if (pathDistanceSqr <= selectedUnit.movementPoints * selectedUnit.movementPoints && pathDistanceSqr > 0.0f)
                 {
                     worldUI.MoveButton.SetActive(true);
                 }
+                else
+                {
+                    worldUI.MoveButton.SetActive(false);
+                }
 
                 //can the unit apply a special move to the tile
-                if (manhattanDistanceSqr <= selectedUnit.attackRange * selectedUnit.attackRange)
+                if (manhattanDistanceSqr <= selectedUnit.attackRange * selectedUnit.attackRange && !selectedUnit.hasAttacked)
                 {
                     worldUI.SpcButton.SetActive(true);
+                }
+                else
+                {
+                    worldUI.SpcButton.SetActive(false);
                 }
 
 
@@ -379,7 +444,7 @@ public class GameManagment : MonoBehaviour
             }
         }
     }
-
+    
 
     /*
     * OnActionSelected 
@@ -397,10 +462,11 @@ public class GameManagment : MonoBehaviour
         uiPressed = true;
 
         //turn off the action menu
-        worldUI.gameObject.GetComponent<Canvas>().enabled = false;
+        //worldUI.gameObject.GetComponent<Canvas>().enabled = false;
+        worldUI.gameObject.SetActive(false);
 
         //execute the action
-        selectedUnit.Execute(actionEvent, startTile, endTile);
+        selectedUnit.Execute(actionEvent, startTile, endTile, OnActionFinished);
 
         selectedUnit.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Custom/DefaultShader");
 
@@ -408,14 +474,14 @@ public class GameManagment : MonoBehaviour
         selectedUnit = null;
 
         //stop showing walkable tiles
-        ToggleWalkableTilesFalse();
-        movableTiles.Clear();
+        ToggleTileModifiersFalse();
 
         //deselect the tiles
         startTile = null;
         endTile = null;
 
     }
+
 
     /*
     * OnCameraFinished 
@@ -441,6 +507,128 @@ public class GameManagment : MonoBehaviour
     }
 
 
+    /*
+    * OnActionFinished 
+    * 
+    * callback when a unit finishes performing an action
+    * that was directly performed by the player
+    * 
+    * @returns void
+    */
+    public void OnActionFinished()
+    {
+        activePlayer.CalculateKingPosition();
 
-    
+        //search for the king
+        King king = null;
+
+        for (int i = 0; i < activePlayer.units.Count; i++)
+        {
+            //store in temp variable
+            Unit unit = activePlayer.units[i];
+
+            //if the unit is a king and hasn't already been removed
+            if (unit != null && unit is King)
+            {
+                king = unit as King;
+                break;
+            }
+        }
+
+        //there is no king because they have been killed
+        if (king == null)
+        {
+            OnKingKilled(turn);
+        }
+
+        int unitsAdjacentToKing = 0;
+
+        //apply king buffs
+        for (int i = 0; i < activePlayer.units.Count; i++)
+        {
+            //store in temp variable
+            Unit unit = activePlayer.units[i];
+
+            //if the unit hasn't already been removed
+            if (unit != null)
+            {
+                //reset the multiplier
+                unit.attackMultiplier = 1.0f;
+
+                //relative vector from the unit to the king
+                Vector3 relative = king.transform.position - unit.transform.position;
+
+                //get the manhattan distance
+                float manhattan = Mathf.Abs(relative.x) + Mathf.Abs(relative.z);
+
+                //the king gets buffed from this
+                if (manhattan <= 1.0f)
+                {
+                    unitsAdjacentToKing++;
+                }
+
+                //close enough to the king to be buffed offensively
+                if (manhattan <= king.adjacentUnitRange)
+                {
+                    unit.attackMultiplier = 1.0f + king.flatDamageRatio;
+                }
+            }
+        }
+
+        //reset the multiplier
+        king.attackMultiplier = 1.0f;
+
+        //buff the king depending on how many units are near it
+        if (unitsAdjacentToKing > 0 && unitsAdjacentToKing <= king.kingDamageRatios.GetLength(0))
+        {
+            king.attackMultiplier = 1.0f + king.kingDamageRatios[unitsAdjacentToKing - 1];
+        }
+    }
+
+
+    /*
+    * KillAll 
+    * 
+    * forces all units on all teams to die
+    * 
+    * @returns void 
+    */
+    public void KillAll()
+    {
+        //iterate through all players
+        foreach (Player p in players)
+        {
+            //iterate through all of the units, killing each
+            for (int i = 0; i < p.units.Count; i++)
+            {
+                //store in temp value for readability
+                Unit unit = p.units[i];
+
+                //check for a null reference
+                if (unit != null)
+                {
+                    //get the tile that the unit is standing on
+                    Tiles currentTile = map.GetTileAtPos(unit.transform.position);
+
+                    unit.Execute(eActionType.DEATH, currentTile, null, null);
+                }
+            }
+        }
+    }
+
+
+    /*
+    * OnKingKilled
+    * 
+    * called when a king is slain 
+    * 
+    * @param int playerID - the id of the player that had their king killed
+    * @returns void
+    */
+    public void OnKingKilled(int playerID)
+    {
+        Debug.Log(playerID.ToString() + "'s King has been slain!");
+    }
+
+
 }
