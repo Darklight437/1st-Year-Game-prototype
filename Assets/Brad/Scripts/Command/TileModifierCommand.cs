@@ -71,6 +71,8 @@ public class TileModifierCommand : UnitCommand
             case eModifyType.DEFENSE: endTile.tileType = eTileType.DEFENSE; endTile.GenerateRandomTileVariant(); break;
         }
 
+        unit.hasAttacked = true;
+
         successCallback();
     }
 }

@@ -64,9 +64,12 @@ public class MoveCommand : UnitCommand
             //get the tile path to follow
             m_tilePath = AStar.GetAStarPath(startingTile, endTile);
 
-            //the path is clear
-            if (m_tilePath.Count > 0)
+            //the path is clear, and the unit can move there
+            if (m_tilePath.Count > 0 && m_tilePath.Count <= unit.movementPoints)
             {
+                //subtract the path distance from the movement points
+                unit.movementPoints -= m_tilePath.Count;
+
                 startingTile.unit = null;
                 endTile.unit = unit;
             }
@@ -123,6 +126,9 @@ public class MoveCommand : UnitCommand
                 //remove the defensive buff
                 unit.armour = unit.baseArmour;
             }
+
+            //set the unit moving
+
 
             successCallback();
             return;
