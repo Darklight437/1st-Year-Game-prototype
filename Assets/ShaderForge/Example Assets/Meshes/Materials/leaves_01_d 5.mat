@@ -10,6 +10,9 @@ Material:
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _ALPHAPREMULTIPLY_ON
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 7da45fbd0dab0e67818f0f5e6a48a7ec3400c66c
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -53,6 +56,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
+<<<<<<< HEAD
+=======
 =======
   m_LightmapFlags: 5
   m_CustomRenderQueue: 3000
@@ -113,11 +118,15 @@ Material:
         name: _ParallaxMap
       second:
 >>>>>>> Development
+>>>>>>> 7da45fbd0dab0e67818f0f5e6a48a7ec3400c66c
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 7da45fbd0dab0e67818f0f5e6a48a7ec3400c66c
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -137,6 +146,8 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+<<<<<<< HEAD
+=======
 =======
     - first:
         name: _BumpScale
@@ -194,3 +205,4 @@ Material:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
 >>>>>>> Development
+>>>>>>> 7da45fbd0dab0e67818f0f5e6a48a7ec3400c66c
