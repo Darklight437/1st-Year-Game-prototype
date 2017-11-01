@@ -8,7 +8,7 @@ public class WorldspaceManager : MonoBehaviour {
     public GameObject MoveButton;
     public GameObject AttButton;
     public GameObject SpcButton;
-
+    public RectTransform PosManager;
     RaycastHit hit;
     
     // Use this for initialization
@@ -36,12 +36,12 @@ public class WorldspaceManager : MonoBehaviour {
         }
     }
 
-    //jumps the worldspace canvas to a location
-    void JumpToTile()
-    {
-        RectTransform Canvas = gameObject.GetComponent<RectTransform>();
-        Canvas.anchoredPosition3D = hit.transform.position;
-    }
+    //jumps the worldspace canvas to a location/ UNUSED
+    //void JumpToTile()
+    //{
+    //    RectTransform Canvas = gameObject.GetComponent<RectTransform>();
+    //    Canvas.anchoredPosition3D = hit.transform.position;
+    //}
 
 
 }

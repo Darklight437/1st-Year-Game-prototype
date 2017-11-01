@@ -123,8 +123,9 @@ public class GameManagment : MonoBehaviour
         }
 
         //turn off the action menu
-        worldUI.gameObject.GetComponent<Canvas>().enabled = false;
-
+        //worldUI.gameObject.GetComponent<Canvas>().enabled = false;
+        //replaced changing the canvas with the whole gameobject
+        worldUI.gameObject.SetActive(false);
         if (selectedUnit != null)
         {
             //turn off the unit selection glow
@@ -223,7 +224,8 @@ public class GameManagment : MonoBehaviour
             //the player is selecting a different unit, hide the menu
             if (selectedUnit != unit)
             {
-                worldUI.gameObject.GetComponent<Canvas>().enabled = false;
+                //worldUI.gameObject.GetComponent<Canvas>().enabled = false;
+                worldUI.gameObject.SetActive(false);
             }
 
             //stop showing walkable tiles if thy where showing
@@ -306,10 +308,18 @@ public class GameManagment : MonoBehaviour
 
                 endTile = tile;
 
+                //David 
+                //gonna change the Worldspace UI to screenspace set the position relative to the click
                 //set-up the world UI
-                worldUI.transform.position = new Vector3(endTile.pos.x, worldUI.transform.position.y, endTile.pos.z);
-                worldUI.gameObject.GetComponent<Canvas>().enabled = true;
+                worldUI.gameObject.SetActive(true);
+                worldUI.AttButton.SetActive(true);
+                worldUI.MoveButton.SetActive(true);
+                worldUI.SpcButton.SetActive(true);
 
+
+                worldUI.PosManager.position = Input.mousePosition;
+                //worldUI.transform.position = new Vector3(endTile.pos.x, worldUI.transform.position.y, endTile.pos.z);
+                //worldUI.gameObject.GetComponent<Canvas>().enabled = true;
                 //get the tile position of the unit
                 Vector3 unitTilePos = selectedUnit.transform.position - Vector3.up * selectedUnit.transform.position.y;
 
@@ -323,9 +333,9 @@ public class GameManagment : MonoBehaviour
                 manhattanDistanceSqr *= manhattanDistanceSqr;
 
                 //reset the buttons
-                worldUI.AttButton.SetActive(false);
-                worldUI.MoveButton.SetActive(false);
-                worldUI.SpcButton.SetActive(false);
+               // worldUI.AttButton.SetActive(false);
+              //  worldUI.MoveButton.SetActive(false);
+              //  worldUI.SpcButton.SetActive(false);
 
                 //because A* will consider this not passable
                 startTile.unit = null;
@@ -345,17 +355,29 @@ public class GameManagment : MonoBehaviour
                 {
                     worldUI.AttButton.SetActive(true);
                 }
+                else
+                {
+                    worldUI.AttButton.SetActive(false);
+                }
 
                 //can the unit move to the tile, also a movement range of 0 means the path couldn't be found
                 if (pathDistanceSqr <= selectedUnit.movementRange * selectedUnit.movementRange && pathDistanceSqr > 0.0f)
                 {
                     worldUI.MoveButton.SetActive(true);
                 }
+                else
+                {
+                    worldUI.MoveButton.SetActive(false);
+                }
 
                 //can the unit apply a special move to the tile
                 if (manhattanDistanceSqr <= selectedUnit.attackRange * selectedUnit.attackRange)
                 {
                     worldUI.SpcButton.SetActive(true);
+                }
+                else
+                {
+                    worldUI.SpcButton.SetActive(false);
                 }
 
 
@@ -397,7 +419,8 @@ public class GameManagment : MonoBehaviour
         uiPressed = true;
 
         //turn off the action menu
-        worldUI.gameObject.GetComponent<Canvas>().enabled = false;
+        //worldUI.gameObject.GetComponent<Canvas>().enabled = false;
+        worldUI.gameObject.SetActive(false);
 
         //execute the action
         selectedUnit.Execute(actionEvent, startTile, endTile);
