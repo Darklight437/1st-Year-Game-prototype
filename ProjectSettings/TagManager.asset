@@ -9,6 +9,7 @@ TagManager:
   - World
   - Fog
   - Walkable
+  - HPBar
   layers:
   - Default
   - TransparentFX
