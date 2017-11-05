@@ -1,9 +1,17 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: 9d7195a97cf80394388d1baf6a6be007
 timeCreated: 1509500886
 licenseType: Pro
 ModelImporter:
   serializedVersion: 21
+=======
+guid: db70ea468031f8f43b187a53b142dc21
+timeCreated: 1509919412
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+>>>>>>> Stashed changes
   fileIDToRecycleName:
     100000: Backpack
     100002: Heaed
@@ -273,8 +281,11 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+<<<<<<< Updated upstream
     rigImportErrors: 
     rigImportWarnings: 
+=======
+>>>>>>> Stashed changes
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -285,7 +296,10 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+<<<<<<< Updated upstream
     extraUserProperties: []
+=======
+>>>>>>> Stashed changes
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -293,10 +307,14 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+<<<<<<< Updated upstream
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+=======
+    importBlendShapes: 1
+>>>>>>> Stashed changes
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -312,7 +330,10 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
+<<<<<<< Updated upstream
     normalCalculationMode: 4
+=======
+>>>>>>> Stashed changes
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
