@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 114027832291448222}
   - component: {fileID: 54251117156755658}
   - component: {fileID: 135863022653734388}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Medic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1539628356900846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.616538, y: 0.5, z: -0.8595435}
+  m_LocalPosition: {x: 1.0911707, y: 0.5, z: 0.9127453}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224856860271748230}
@@ -214,14 +214,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerID: 0
-  movementRange: 7
+  movementRange: 9
   attackRange: 5
   armour: 0
   baseArmour: 0
   damage: 0
-  maxHealth: 10000
+  maxHealth: 3000
   health: 3000
-  AOV: 4
+  AOV: 5
   movementPoints: 0
   hasAttacked: 0
   movementSpeed: 3
@@ -231,7 +231,7 @@ MonoBehaviour:
   aovOBJ: []
   sightPrefab: {fileID: 1915189985047014, guid: e9d606d4ec06a2d49a22931b679b76cc,
     type: 2}
-  hpBar: {fileID: 224193740214914458}
+  hpBar: {fileID: 114451958031557162}
   hpNum: {fileID: 114074288445494440}
   armourBar: {fileID: 212902354374226216}
 --- !u!114 &114074288445494440
@@ -314,10 +314,10 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: b1e7b955522d9c84dacee06275571437, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0

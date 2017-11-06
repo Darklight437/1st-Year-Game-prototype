@@ -141,7 +141,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1096176911614446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.4189024, y: 0.5, z: -0.9633038}
+  m_LocalPosition: {x: 1.1493207, y: 0.5, z: 0.74524486}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224870882788027196}
@@ -292,10 +292,10 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: b1e7b955522d9c84dacee06275571437, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -338,11 +338,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerID: 0
-  movementRange: 3
+  movementRange: 6
   attackRange: 1
   armour: 3
   baseArmour: 0
-  damage: 600
+  damage: 1000
   maxHealth: 8000
   health: 8000
   AOV: 10
@@ -355,7 +355,7 @@ MonoBehaviour:
   aovOBJ: []
   sightPrefab: {fileID: 1915189985047014, guid: e9d606d4ec06a2d49a22931b679b76cc,
     type: 2}
-  hpBar: {fileID: 224030638030408926}
+  hpBar: {fileID: 114351225586381556}
   hpNum: {fileID: 114078513373952690}
   armourBar: {fileID: 212672136769699492}
 --- !u!114 &114831069162064744
