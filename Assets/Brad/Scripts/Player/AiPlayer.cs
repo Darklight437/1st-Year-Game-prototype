@@ -165,9 +165,9 @@ public class AiPlayer : BasePlayer
     }
 
 
-    public float EvalGroup(BaseInput)
+    public float EvalGroup(BaseInput i)
     {
-
+        return 0.0f;
     }
 
 
