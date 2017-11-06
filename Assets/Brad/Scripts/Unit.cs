@@ -86,8 +86,55 @@ public class Unit : MonoBehaviour
             commands[0].Update();
         }
         HealthUpdate();
+
+        if (Input.GetKey(KeyCode.F3) && Input.GetKey(KeyCode.S))
+        {
+            bool holder = sightHolder.activeSelf;
+            DestroySight();
+            CreateAOVOBJ();
+            Debug.Log("Reloaded Sight");
+            sightHolder.SetActive(holder);
+        }
     }
 
+    //called when the gameobject it is attached to is destroyed
+    public void OnDestroy()
+    {
+        DestroySight();
+    }
+
+    /*
+    * DestroySight 
+    * void function
+    * 
+    * destorys the units sight prefabs that lets the player see in the
+    * Fog of war
+    * 
+    * @returns void
+    * @Author Callum Dunstone
+    */
+    private void DestroySight()
+    {
+        if (sightHolder != null)
+        {
+            foreach (Transform tran in sightHolder.transform)
+            {
+                GameObject.Destroy(tran.gameObject);
+            }
+
+            GameObject.Destroy(sightHolder.gameObject);
+        }
+    }
+
+    /*
+    * CreateAOVOBJ 
+    * void function
+    * 
+    * creates the cubes used as the units area of sight in game
+    * 
+    * @returns void
+    * @Author Callum Dunstone
+    */
     private void CreateAOVOBJ()
     {
         GameObject holder = new GameObject();

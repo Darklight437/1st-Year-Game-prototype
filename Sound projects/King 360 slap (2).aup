@@ -1,0 +1,398 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="King 360 slap (2)_data" version="1.3.0" audacityversion="2.1.2" sel0="0.0000000000" sel1="0.0000000000" vpos="1280" h="0.0000000000" zoom="195.5782910336" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags/>
+	<wavetrack name="Drill-Cordless-DeWalt-DW 9072-Medium Distant-Drill-Wood-Low Speed" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="108670">
+				<waveblock start="0">
+					<simpleblockfile filename="e00003b8.au" len="108670" min="-0.213152" max="0.186087" rms="0.01605"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="1">
+				<controlpoint t="2.464149659864" val="1.000000000000"/>
+			</envelope>
+		</waveclip>
+		<waveclip offset="2.46417234">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="114707">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000e30.au" len="106403" min="-0.140174" max="0.160482" rms="0.016162"/>
+				</waveblock>
+				<waveblock start="106403">
+					<simpleblockfile filename="e0000526.au" len="8304" min="-0.00023" max="0.00016" rms="0.000017"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="5.06523711">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="235">
+				<waveblock start="0">
+					<simpleblockfile filename="e000001c.au" len="235" min="0.0" max="0.0" rms="0.0"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="1">
+				<controlpoint t="0.000000000000" val="1.000000000000"/>
+			</envelope>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Drill-Cordless-DeWalt-DW 9072-Medium Distant-Drill-Wood-Low Speed" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="108670">
+				<waveblock start="0">
+					<simpleblockfile filename="e00002b2.au" len="108670" min="-0.164852" max="0.231909" rms="0.017137"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="1">
+				<controlpoint t="2.464149659864" val="1.000000000000"/>
+			</envelope>
+		</waveclip>
+		<waveclip offset="2.46417234">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="114707">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000478.au" len="106403" min="-0.145601" max="0.183637" rms="0.016971"/>
+				</waveblock>
+				<waveblock start="106403">
+					<simpleblockfile filename="e0000270.au" len="8304" min="-0.000292" max="0.000188" rms="0.00002"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="5.06523711">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="235">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000c36.au" len="235" min="0.0" max="0.0" rms="0.0"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="1">
+				<controlpoint t="0.000000000000" val="1.000000000000"/>
+			</envelope>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Whoosh-Lrg-Slow Air" channel="2" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="19407">
+				<waveblock start="0">
+					<simpleblockfile filename="e00002e2.au" len="17485" min="-0.00671" max="0.0061" rms="0.00077"/>
+				</waveblock>
+				<waveblock start="17485">
+					<simpleblockfile filename="e0000747.au" len="1922" min="-0.000056" max="0.000003" rms="0.000003"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="1.59645376">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="5598">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000b08.au" len="5598" min="-0.025461" max="0.016501" rms="0.002053"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="1.72340136">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="145063">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000292.au" len="145063" min="-0.560372" max="0.598659" rms="0.098847"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Industrial_Air Tool_Connector Coupling_Air Release_Slow_HutchSFX" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="21888">
+				<waveblock start="0">
+					<simpleblockfile filename="e000096c.au" len="21888" min="-0.165724" max="0.16129" rms="0.010631"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="2.14583641">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="670">
+				<waveblock start="0">
+					<simpleblockfile filename="e00004d3.au" len="670" min="-0.000774" max="0.000715" rms="0.000035"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="3.99720395">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="15917">
+				<waveblock start="0">
+					<simpleblockfile filename="e00007b0.au" len="15917" min="-0.165724" max="0.16129" rms="0.010631"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="0.53686972">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="397">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000311.au" len="397" min="-0.000623" max="0.000776" rms="0.000028"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="0.57295095">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="59095">
+				<waveblock start="0">
+					<simpleblockfile filename="e000052b.au" len="59095" min="-0.062301" max="0.065809" rms="0.009716"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="4.46640102">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="61677">
+				<waveblock start="0">
+					<simpleblockfile filename="e000028e.au" len="61677" min="-0.062431" max="0.059553" rms="0.011873"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Industrial_Air Tool_Connector Coupling_Air Release_Slow_HutchSFX" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="21888">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000d6d.au" len="21888" min="-0.160172" max="0.171457" rms="0.010862"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="2.14583641">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="670">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000ca6.au" len="670" min="-0.000655" max="0.000517" rms="0.000028"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="3.99720395">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="15917">
+				<waveblock start="0">
+					<simpleblockfile filename="e000014e.au" len="15917" min="-0.160172" max="0.171457" rms="0.010862"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="0.53686972">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="397">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000e96.au" len="397" min="-0.000423" max="0.000672" rms="0.000023"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="0.57295095">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="59095">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000c2f.au" len="59095" min="-0.0997" max="0.091742" rms="0.010345"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="4.46640102">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="61677">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000cd9.au" len="61677" min="-0.06137" max="0.05582" rms="0.009716"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Mechanism - CargoDoorOpen_002" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="0.398107" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="18653">
+				<waveblock start="0">
+					<simpleblockfile filename="e000071e.au" len="928" min="-0.00006" max="0.000044" rms="0.000002"/>
+				</waveblock>
+				<waveblock start="928">
+					<simpleblockfile filename="e0000bf3.au" len="17725" min="-0.000054" max="0.000029" rms="0.000009"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="2.76484739">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="179491">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000e71.au" len="179491" min="-0.844854" max="0.932669" rms="0.075488"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Mechanism - CargoDoorOpen_002" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="0.398107" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="18653">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000e36.au" len="928" min="-0.000071" max="0.000041" rms="0.000002"/>
+				</waveblock>
+				<waveblock start="928">
+					<simpleblockfile filename="e00009fb.au" len="17725" min="-0.000051" max="0.000032" rms="0.000009"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="2.76484739">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="179491">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000e07.au" len="179491" min="-0.939749" max="0.944711" rms="0.081503"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Boom-Bodyfall-Car-Reverb 1" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="17852">
+				<waveblock start="0">
+					<simpleblockfile filename="e000020d.au" len="2870" min="-0.044045" max="0.060824" rms="0.003283"/>
+				</waveblock>
+				<waveblock start="2870">
+					<simpleblockfile filename="e0000e22.au" len="14982" min="-0.00314" max="0.003482" rms="0.000523"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="2.85578601">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="134212">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000068.au" len="134212" min="-0.772529" max="0.877593" rms="0.099995"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Boom-Bodyfall-Car-Reverb 1" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="17852">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000689.au" len="2870" min="-0.076157" max="0.067712" rms="0.004051"/>
+				</waveblock>
+				<waveblock start="2870">
+					<simpleblockfile filename="e00004ef.au" len="14982" min="-0.002682" max="0.002423" rms="0.000439"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="2.85578601">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="134212">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000167.au" len="134212" min="-0.781805" max="0.94305" rms="0.096679"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="OfficeChair_Hydraulics_02_08" channel="0" linked="1" mute="0" solo="1" height="150" minimized="0" isSelected="1" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="55296">
+				<waveblock start="0">
+					<simpleblockfile filename="e00000b7.au" len="55296" min="-0.84645" max="0.612796" rms="0.058457"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="OfficeChair_Hydraulics_02_08" channel="1" linked="0" mute="0" solo="1" height="150" minimized="0" isSelected="1" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="55296">
+				<waveblock start="0">
+					<simpleblockfile filename="e00008e8.au" len="55296" min="-0.832546" max="0.648293" rms="0.057405"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="175 hp Outboard Boat - Hydraulics-Trim Tab-Bow Up" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="157824">
+				<waveblock start="0">
+					<simpleblockfile filename="e00002df.au" len="157824" min="-0.232731" max="0.228755" rms="0.048273"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="4.16748299">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="157824">
+				<waveblock start="0">
+					<simpleblockfile filename="e00001e2.au" len="157824" min="-0.232731" max="0.228755" rms="0.048273"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="175 hp Outboard Boat - Hydraulics-Trim Tab-Bow Up" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="157824">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000718.au" len="157824" min="-0.192166" max="0.186465" rms="0.040406"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="4.16748299">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="157824">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000c26.au" len="157824" min="-0.192166" max="0.186465" rms="0.040406"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Metal lock clang 01" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="94872">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000b91.au" len="71479" min="-0.740284" max="0.781673" rms="0.042092"/>
+				</waveblock>
+				<waveblock start="71479">
+					<simpleblockfile filename="e00006f4.au" len="23393" min="-0.003687" max="0.003422" rms="0.00052"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="6.98952830">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="27284">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000428.au" len="27284" min="-1.082119" max="0.933868" rms="0.069004"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="7.60820637">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="27960">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000f40.au" len="27960" min="-0.152841" max="0.170972" rms="0.010323"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Metal lock clang 01" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="94872">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000f7b.au" len="71479" min="-0.907845" max="0.947607" rms="0.041794"/>
+				</waveblock>
+				<waveblock start="71479">
+					<simpleblockfile filename="e0000d4d.au" len="23393" min="-0.003785" max="0.003342" rms="0.000496"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="6.98952830">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="27284">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000ef6.au" len="27284" min="-0.937977" max="0.912707" rms="0.07011"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="7.60820637">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="27960">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000a59.au" len="27960" min="-0.174249" max="0.168675" rms="0.011056"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>

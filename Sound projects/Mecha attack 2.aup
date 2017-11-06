@@ -1,0 +1,321 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="Mecha attack 2_data" version="1.3.0" audacityversion="2.1.2" sel0="0.0000000000" sel1="0.0000000000" vpos="2544" h="0.0000000000" zoom="116.4748537412" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags>
+		<tag name="Encoded by" value="Lavf51.12.1"/>
+	</tags>
+	<wavetrack name="Mechanism -  Designed Mega Steam Lever-001" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="0.354813" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="92062">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000695.au" len="1587" min="-0.094072" max="0.0664" rms="0.00389"/>
+				</waveblock>
+				<waveblock start="1587">
+					<simpleblockfile filename="e0000f26.au" len="90475" min="-0.000717" max="0.000819" rms="0.000053"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="2.38451581">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="169442">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000535.au" len="169442" min="-1.316982" max="1.234797" rms="0.185773"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Mechanism -  Designed Mega Steam Lever-001" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="0.354813" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="92062">
+				<waveblock start="0">
+					<simpleblockfile filename="e00004fe.au" len="1587" min="-0.098243" max="0.071147" rms="0.00393"/>
+				</waveblock>
+				<waveblock start="1587">
+					<simpleblockfile filename="e000051a.au" len="90475" min="-0.000868" max="0.001116" rms="0.000058"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="2.38451581">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="169442">
+				<waveblock start="0">
+					<simpleblockfile filename="e00000ce.au" len="169442" min="-1.216843" max="1.15914" rms="0.185164"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Wind up toy cranking x2" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="122112">
+				<waveblock start="0">
+					<simpleblockfile filename="e00000f8.au" len="122112" min="-0.216336" max="0.264862" rms="0.011627"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Wind up toy cranking x2" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="122112">
+				<waveblock start="0">
+					<simpleblockfile filename="e000068b.au" len="122112" min="-0.273239" max="0.273732" rms="0.009303"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Hand Crank Lock_01" channel="2" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="59296">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000ce1.au" len="59296" min="-0.50246" max="0.413182" rms="0.039118"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="metal pipe slideB x8 (1)" channel="0" linked="1" mute="0" solo="0" height="133" minimized="0" isSelected="0" rate="44100" gain="0.794328" pan="0.0">
+		<waveclip offset="4.17931436">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="86861">
+				<waveblock start="0">
+					<simpleblockfile filename="e00004f4.au" len="86861" min="-0.278436" max="0.287206" rms="0.03616"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="metal pipe slideB x8 (1)" channel="1" linked="0" mute="0" solo="0" height="167" minimized="0" isSelected="0" rate="44100" gain="0.794328" pan="0.0">
+		<waveclip offset="4.17931436">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="86861">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000f3a.au" len="86861" min="-0.254277" max="0.260784" rms="0.033952"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Volkswagen Golf II 1.6 Diesel Engine Reverse Mono" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="0.177828" pan="0.0">
+		<waveclip offset="3.15716553">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="118773">
+				<waveblock start="0">
+					<simpleblockfile filename="e00009d5.au" len="118773" min="-1.0" max="0.906672" rms="0.259002"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Volkswagen Golf II 1.6 Diesel Engine Reverse Mono" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="0.177828" pan="0.0">
+		<waveclip offset="3.15716553">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="118773">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000e56.au" len="118773" min="-1.0" max="0.906672" rms="0.259002"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Levers_Sliders_011-ss" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="0.794328" pan="0.0">
+		<waveclip offset="2.55912793">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="173949">
+				<waveblock start="0">
+					<simpleblockfile filename="e000004d.au" len="173949" min="-0.142927" max="0.139389" rms="0.028416"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Levers_Sliders_011-ss" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="0.794328" pan="0.0">
+		<waveclip offset="2.55912793">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="173949">
+				<waveblock start="0">
+					<simpleblockfile filename="e00003fa.au" len="173949" min="-0.152296" max="0.179627" rms="0.033077"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Sound Design_Deep Metal Switch Impact_Stinger_HutchSFX" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="0.501187" pan="0.0">
+		<waveclip offset="5.19592942">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="18952">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000085.au" len="18952" min="-0.806627" max="0.816235" rms="0.073331"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="1">
+				<controlpoint t="0.429716841757" val="1.000000000000"/>
+			</envelope>
+		</waveclip>
+		<waveclip offset="5.62567998">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="18673">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000290.au" len="18673" min="-0.105973" max="0.133799" rms="0.011313"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="1">
+				<controlpoint t="0.000000000000" val="1.000000000000"/>
+			</envelope>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Sound Design_Deep Metal Switch Impact_Stinger_HutchSFX" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="0.501187" pan="0.0">
+		<waveclip offset="5.19592942">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="18952">
+				<waveblock start="0">
+					<simpleblockfile filename="e000085f.au" len="18952" min="-0.721348" max="0.809048" rms="0.068774"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="1">
+				<controlpoint t="0.429716841757" val="1.000000000000"/>
+			</envelope>
+		</waveclip>
+		<waveclip offset="5.62567998">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="18673">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000774.au" len="18673" min="-0.086389" max="0.109673" rms="0.012128"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="1">
+				<controlpoint t="0.000000000000" val="1.000000000000"/>
+			</envelope>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Mechanism - Source - Reload" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="0.251189" pan="0.0">
+		<waveclip offset="2.98442177">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="62236">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000c9d.au" len="62236" min="-0.983966" max="0.82612" rms="0.043046"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="5.68443798">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="34016">
+				<waveblock start="0">
+					<simpleblockfile filename="e000059d.au" len="34016" min="-0.424906" max="0.674359" rms="0.021308"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Mechanism - Source - Reload" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="0.251189" pan="0.0">
+		<waveclip offset="2.98442177">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="62236">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000ca5.au" len="62236" min="-0.983966" max="0.82612" rms="0.043046"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="5.68443798">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="34016">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000cc3.au" len="34016" min="-0.424906" max="0.674359" rms="0.021308"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="IMPACT HORSESHOE METAL RINGER 01" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="2.83235017">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="3428">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000453.au" len="3428" min="-0.00004" max="0.000013" rms="0.000004"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="IMPACT HORSESHOE METAL RINGER 01" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="2.83235017">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="3428">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000bbb.au" len="3428" min="-0.00004" max="0.000013" rms="0.000004"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Hydraulic pump machine short_BLASTWAVEFX_14535" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="1.95750407">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="37428">
+				<waveblock start="0">
+					<simpleblockfile filename="e000022a.au" len="37428" min="-0.549484" max="0.845186" rms="0.043545"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Hydraulic pump machine short_BLASTWAVEFX_14535" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="1.95750407">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="37428">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000672.au" len="37428" min="-0.549484" max="0.845186" rms="0.043545"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="lid off pop bottle hydraulic hiss" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="0.354813" pan="0.0">
+		<waveclip offset="1.68756752">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="5505">
+				<waveblock start="0">
+					<simpleblockfile filename="e000016d.au" len="5505" min="-0.00009" max="0.000068" rms="0.000005"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="3.49234229">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="2176">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000186.au" len="2176" min="-0.002585" max="0.005768" rms="0.000245"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="2.16594447">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="39551">
+				<waveblock start="0">
+					<simpleblockfile filename="e000027e.au" len="39551" min="-0.5069" max="0.50457" rms="0.057789"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="lid off pop bottle hydraulic hiss" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="0.354813" pan="0.0">
+		<waveclip offset="1.68756752">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="5505">
+				<waveblock start="0">
+					<simpleblockfile filename="e00007eb.au" len="5505" min="-0.000089" max="0.000067" rms="0.000005"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="3.49234229">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="2176">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000d5e.au" len="2176" min="-0.002536" max="0.005656" rms="0.000239"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+		<waveclip offset="2.16594447">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="39551">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000a03.au" len="39551" min="-0.501118" max="0.498385" rms="0.056899"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Metal pipe sliding strongly 6" channel="2" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="1" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="1.61408230">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="78377">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000554.au" len="78377" min="-0.417513" max="0.528028" rms="0.018553"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>
