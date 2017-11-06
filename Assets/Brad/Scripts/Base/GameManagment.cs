@@ -245,19 +245,28 @@ public class GameManagment : MonoBehaviour
             selectedUnit = unit;
             selectedUnit.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Custom/WallThrough");
 
-            //gather and show new walkable tiles
-            List<Tiles> holder = GetArea.GetAreaOfMoveable(map.GetTileAtPos(selectedUnit.transform.position), selectedUnit.movementPoints);
-            List<Tiles> holder2 = GetArea.GetAreaOfAttack(map.GetTileAtPos(selectedUnit.transform.position), selectedUnit.attackRange);
-
-            foreach (Tiles tile in holder)
+            //gather and show new walkable and attackable tiles
+            if (selectedUnit.movementPoints > 0)
             {
-                movableTiles.Add(tile);
+                List<Tiles> holder = GetArea.GetAreaOfMoveable(map.GetTileAtPos(selectedUnit.transform.position), selectedUnit.movementPoints);
+
+                foreach (Tiles tile in holder)
+                {
+                    movableTiles.Add(tile);
+                }
+            }
+            if (selectedUnit.hasAttacked == false)
+            {
+                List<Tiles> holder2 = GetArea.GetAreaOfAttack(map.GetTileAtPos(selectedUnit.transform.position), selectedUnit.attackRange);
+
+                foreach (Tiles tile in holder2)
+                {
+                    attackableTiles.Add(tile);
+                }
             }
 
-            foreach (Tiles tile in holder2)
-            {
-                attackableTiles.Add(tile);
-            }
+            Debug.Log("huh???");
+            
             ToggleTileModifiersActive();
         }
     }
@@ -276,19 +285,25 @@ public class GameManagment : MonoBehaviour
     */
     public void ToggleTileModifiersActive()
     {
-        foreach (Tiles tile in movableTiles)
+        if (selectedUnit.movementPoints > 0)
         {
-            if (tile.walkableHighLight.gameObject.activeSelf == false)
+            foreach (Tiles tile in movableTiles)
             {
-                tile.walkableHighLight.gameObject.SetActive(true);
+                if (tile.walkableHighLight.gameObject.activeSelf == false)
+                {
+                    tile.walkableHighLight.gameObject.SetActive(true);
+                }
             }
         }
 
-        foreach (Tiles tile in attackableTiles)
+        if (selectedUnit.hasAttacked == false)
         {
-            if(tile.attackRangeHighLight.gameObject.activeSelf == false)
+            foreach (Tiles tile in attackableTiles)
             {
-                tile.attackRangeHighLight.gameObject.SetActive(true);
+                if (tile.attackRangeHighLight.gameObject.activeSelf == false)
+                {
+                    tile.attackRangeHighLight.gameObject.SetActive(true);
+                }
             }
         }
     }
@@ -296,10 +311,10 @@ public class GameManagment : MonoBehaviour
 
 
     /*
-    * ToggleWalkableTilesFalse 
+    * ToggleTileModifiersFalse 
     * 
     * tells all tiles held in movableTiles to stop showing that they are
-    * walable
+    * walable and attackable
     * 
     * @param non
     * @returns void
@@ -473,7 +488,7 @@ public class GameManagment : MonoBehaviour
         //deselect the unit
         selectedUnit = null;
 
-        //stop showing walkable tiles
+        //stop showing walkable and attackable tiles tiles
         ToggleTileModifiersFalse();
 
         //deselect the tiles
