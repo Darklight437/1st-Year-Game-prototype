@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerID: 0
-  movementRange: 3
+  movementRange: 6
   attackRange: 1
   armour: 3
   baseArmour: 0
