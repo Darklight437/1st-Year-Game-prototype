@@ -19,4 +19,17 @@ public class FuzzyFunction
     //two function references to complete the fuzzy function
     public EvaluationFunc evaluation = null;
     public ExecutionFunc execution = null;
+
+    /*
+    * FuzzyFunction 
+    * constructor, writes default values
+    * 
+    * @param EvaluationFunc eval - the function reference to call when getting the score
+    * @param ExecutionFunc exec - the function refernce to call when this function has the highest score
+    */
+    public FuzzyFunction(EvaluationFunc eval, ExecutionFunc exec)
+    {
+        evaluation = eval;
+        execution = exec;
+    }
 }

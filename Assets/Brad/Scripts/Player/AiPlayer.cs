@@ -19,12 +19,20 @@ public class AiPlayer : BasePlayer
     //automated reference to the map
     private Map map = null;
 
+    //automated reference to the other player
+    private BasePlayer opponent = null;
+
     //fuzzy logic machine for making decisions and moves
     public FuzzyLogic logicMachine;
 
     //AI stats
-    public float advanceImportance = 0.5f;
-    public float fleeImportance = 0.5f;
+    public float advanceImportance = 1.0f; //scalar for scoring the benefits of moving up the map
+    public float fleeImportance = 1.0f; //scalar for scoring the benefits of fleeing a fight
+    public float attackImportance = 1.0f; //scalar for scoring the benefits of attacking enemies
+    public float healingImportance = 1.0f; //scalar for scoring the benefits of stepping on a healing tile
+    public float terrainImportance = 1.0f; //scalar for scoring the benefits of stepping on a defensive tile
+    public float groupImportance = 1.0f; //scalar for scoring the benefits of moving towards the average group position
+    public float kingBias = 20.0f; //additional points for the flee mechanic and penalty for the attack mechanic for the king only
 
     // Use this for initialization
     new void Start()
@@ -32,14 +40,51 @@ public class AiPlayer : BasePlayer
         isHuman = false;
         manager = Object.FindObjectOfType<GameManagment>();
         map = Object.FindObjectOfType<Map>();
+
+        //get the size of the players list
+        int playerSize = manager.players.Count;
+
+        //iterate through all of the players
+        for (int i = 0; i < playerSize; i++)
+        {
+            //store in a temp value for readability
+            BasePlayer p = manager.players[i];
+
+            //check that the current player isn't this one
+            if (p != this as BasePlayer)
+            {
+                opponent = p;
+                break;
+            }
+        }
+
+        FuzzyFunction advance = new FuzzyFunction(S, E);
+        FuzzyFunction flee = new FuzzyFunction(S, E);
+        FuzzyFunction attack = new FuzzyFunction(S, E);
+        FuzzyFunction healing = new FuzzyFunction(S, E);
+        FuzzyFunction terrain = new FuzzyFunction(S, E);
+        FuzzyFunction group = new FuzzyFunction(S, E);
     }
+
+    //temp function
+    //0000000000000000000000000000000000000000000000000000000
+    float S(BaseInput bi)
+    {
+        return 0;
+    }
+
+    void E(BaseInput bi)
+    {
+
+    }
+    //0000000000000000000000000000000000000000000000000000000
 
     // Update is called once per frame
     new void Update()
     {
 
     }
-
+    
 
     /*
     * UpdateTurn 
@@ -51,21 +96,45 @@ public class AiPlayer : BasePlayer
     */
     public override void UpdateTurn()
     {
-        Unit u = units[2];
-
-        if (u.movementPoints == u.movementRange)
-        {
-            MovePiece(u, u.transform.position + new Vector3(0, 0, -3));
-        }
-
+        
         manager.OnNextTurn();
       
     }
 
-    public void MovePiece(Unit target, Vector3 targetPosition)
+
+    /*
+    * Attack 
+    * 
+    * tells the game manager to apply an attacking action 
+    * given the unit to attack with and it's target
+    * 
+    * @param Unit target - the unit to attack with
+    * @param Vector3 targetPosition - the position to attack
+    * @returns void
+    */
+    public void Attack(Unit target, Vector3 targetPosition)
     {
+        manager.selectedUnit = target;
+        manager.startTile = map.GetTileAtPos(target.transform.position);
+        manager.endTile = map.GetTileAtPos(targetPosition);
+
+        //execute a movement
+        manager.OnActionSelected(0);
+    }
 
 
+    /*
+    * Move 
+    * 
+    * tells the game manager to move a unit given
+    * the unit to move and the target
+    * 
+    * @param Unit target - the unit to move
+    * @param Vector3 targetPosition - the position to move to
+    * @returns void
+    */
+    public void Move(Unit target, Vector3 targetPosition)
+    {
         manager.selectedUnit = target;
         manager.startTile = map.GetTileAtPos(target.transform.position);
         manager.endTile = map.GetTileAtPos(targetPosition);
@@ -73,5 +142,33 @@ public class AiPlayer : BasePlayer
         //execute a movement
         manager.OnActionSelected(1);
     }
+
+
+    /*
+    * Ability 
+    * 
+    * tells the game manager to make a unit use it's special ability
+    * given the unit to command and the target of the ability
+    * 
+    * @param Unit target - the unit to attack with
+    * @param Vector3 targetPosition - the position to attack
+    * @returns void
+    */
+    public void Ability(Unit target, Vector3 targetPosition)
+    {
+        manager.selectedUnit = target;
+        manager.startTile = map.GetTileAtPos(target.transform.position);
+        manager.endTile = map.GetTileAtPos(targetPosition);
+
+        //execute a movement
+        manager.OnActionSelected(2);
+    }
+
+
+    public float EvalGroup(BaseInput)
+    {
+
+    }
+
 
 }
