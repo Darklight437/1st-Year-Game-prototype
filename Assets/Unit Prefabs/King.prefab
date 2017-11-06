@@ -141,7 +141,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1819990178570322}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3828341, y: 0.5, z: -1.2281626}
+  m_LocalPosition: {x: -0.68814373, y: 0.5, z: -2.1845562}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224131603429487532}
@@ -333,7 +333,7 @@ MonoBehaviour:
   aovOBJ: []
   sightPrefab: {fileID: 1915189985047014, guid: e9d606d4ec06a2d49a22931b679b76cc,
     type: 2}
-  hpBar: {fileID: 224569019693044678}
+  hpBar: {fileID: 114263245242037088}
   hpNum: {fileID: 114931841216289506}
   armourBar: {fileID: 212476729375020390}
   adjacentUnitRange: 3

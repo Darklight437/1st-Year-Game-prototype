@@ -49,7 +49,7 @@ public class Unit : MonoBehaviour
 
     //David
     //the Health bar image reference
-    public RectTransform hpBar = null;
+    public Image hpBar = null;
 
     //the health bar number reference
     public Text hpNum = null;
@@ -288,11 +288,12 @@ public class Unit : MonoBehaviour
                 break;
         }
 
-        Vector3 tempVect = hpBar.localScale;
+        float hpPercent = 0;
+       
 
-        tempVect.x = health / maxHealth;
+        hpPercent = health / maxHealth;
 
-        hpBar.localScale = tempVect;
+        hpBar.fillAmount = hpPercent;
 
         hpNum.text = (int)health + " / " + (int)maxHealth;
 
