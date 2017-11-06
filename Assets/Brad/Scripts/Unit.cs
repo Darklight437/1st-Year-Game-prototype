@@ -45,9 +45,6 @@ public class Unit : MonoBehaviour
     //the game prefab that is used to make up the units area of sight
     public GameObject sightPrefab;
 
-    //holds this units sight
-    public GameObject sightHolder;
-
     //good bye BB
 
     //David
@@ -92,31 +89,15 @@ public class Unit : MonoBehaviour
 
     private void CreateAOVOBJ()
     {
-        GameObject holder = new GameObject();
-        holder.AddComponent<SightFollow>();
-        holder.transform.parent = transform;
-        holder.transform.localPosition = new Vector3(0,0,0);
-
         for (int i = 0; i <= AOV; i++)
         {
             GameObject obj = Instantiate(sightPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-            obj.transform.parent = holder.transform;
+            obj.transform.parent = transform;
             obj.transform.localPosition = new Vector3(0, 0, 0);
             obj.transform.localScale = new Vector3((i * 2) + 1, 1, (AOV * 2) + 1 - (i * 2));
             aovOBJ.Add(obj);
             obj.GetComponent<Sight>().myUnit = this;
         }
-
-        sightHolder = holder;
-    }
-
-    private void OnDestroy()
-    {
-        foreach (Transform tran in sightHolder.transform)
-        {
-            GameObject.Destroy(tran.gameObject);
-        }
-        GameObject.Destroy(sightHolder);
     }
 
     /*
