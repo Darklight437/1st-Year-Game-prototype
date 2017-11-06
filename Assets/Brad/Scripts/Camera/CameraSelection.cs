@@ -43,7 +43,7 @@ public class CameraSelection : MonoBehaviour
                     //get the tiles component (null if there isn't one)
                     Tiles tiles = hitObject.GetComponent<Tiles>();
 
-                    if (tiles != null)
+                    if (tiles != null && manager.activePlayer.isHuman)
                     {
                         manager.OnTileSelected(tiles);
                     }
