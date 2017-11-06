@@ -67,6 +67,11 @@ public class Tiles : MonoBehaviour
     //check if a tile is healing
     private bool m_isHealing = false;
 
+    private float originalY = 0.0f;
+    private float originalHeight = 0.0f;
+
+    private float elevatedHeight = 0.75f;
+
     //tile values for pathfinding purposes 
     private float m_gcost;
     public float GCost
@@ -175,6 +180,32 @@ public class Tiles : MonoBehaviour
         pos = gameObject.transform.position;
 
         GenerateTileModifiers();
+
+        originalY = pos.y;
+        originalHeight = GetComponent<BoxCollider>().size.y;
+    }
+
+    /*
+    * Update 
+    *  
+    * gets called once per frame
+    * 
+    * @returns void
+    */
+    private void Update()
+    {
+        BoxCollider box = GetComponent<BoxCollider>();
+
+        if (unit == null)
+        {
+            box.center = new Vector3(0.0f, originalY, 0.0f);
+            box.size = new Vector3(box.size.x, originalHeight, box.size.z);
+        }
+        else
+        {
+            box.center = new Vector3(0.0f, elevatedHeight * 0.5f + originalY, 0.0f);
+            box.size = new Vector3(box.size.x, elevatedHeight, box.size.z);
+        }
     }
 
     /*

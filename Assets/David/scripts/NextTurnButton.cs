@@ -50,6 +50,11 @@ public class NextTurnButton : MonoBehaviour
 
     public void Click()
     {
+        if (!manager.activePlayer.isHuman)
+        {
+            return;
+        }
+
         //toggle bool turn
         manager.OnNextTurn();
 

@@ -46,6 +46,8 @@ public class AttackCommand : UnitCommand
     */
     public override void Update()
     {
+        unit.hasAttacked = true;
+
         //count-down the attack timer
         attackTimer -= Time.deltaTime;
 
@@ -63,8 +65,6 @@ public class AttackCommand : UnitCommand
         //if the defending unit exists
         if (defendingUnit != null)
         {
-            unit.hasAttacked = true;
-
             unit.Attack(defendingUnit);
             successCallback();
         }
