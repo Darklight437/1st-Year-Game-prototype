@@ -18,7 +18,7 @@ public class GameManagment : MonoBehaviour
     public delegate void UnitFunc(Unit unit);
 
     //list of references to players
-    public List<Player> players = new List<Player>();
+    public List<BasePlayer> players = new List<BasePlayer>();
 
     //static reference to the statistics object
     public static Statistics stats = null;
@@ -28,7 +28,7 @@ public class GameManagment : MonoBehaviour
     public Map map = null;
 
     //reference to the active player
-    public Player activePlayer = null;
+    public BasePlayer activePlayer = null;
 
     //reference to the selected unit
     public Unit selectedUnit = null;
@@ -91,7 +91,7 @@ public class GameManagment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        activePlayer.UpdateTurn();
     }
 
 
@@ -111,7 +111,7 @@ public class GameManagment : MonoBehaviour
         }
 
         //remove all dead units
-        foreach (Player p in players)
+        foreach (BasePlayer p in players)
         {
             //iterate through all units, removing null references
             for (int i = 0; i < p.units.Count; i++)
@@ -192,6 +192,7 @@ public class GameManagment : MonoBehaviour
                 {
 
                     players[i].units[u].GetComponent<Renderer>().enabled = false;
+                    players[i].units[u].GetComponent<Unit>().sightHolder.SetActive(false);
                     foreach (Transform tran in players[i].units[u].transform)
                     {
                         tran.gameObject.SetActive(false);
@@ -204,6 +205,7 @@ public class GameManagment : MonoBehaviour
         foreach (Unit unit in activePlayer.units)
         {
             unit.GetComponent<Renderer>().enabled = true;
+            unit.sightHolder.gameObject.SetActive(true);
 
             foreach (Transform tran in unit.transform)
             {
@@ -245,19 +247,26 @@ public class GameManagment : MonoBehaviour
             selectedUnit = unit;
             selectedUnit.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Custom/WallThrough");
 
-            //gather and show new walkable tiles
-            List<Tiles> holder = GetArea.GetAreaOfMoveable(map.GetTileAtPos(selectedUnit.transform.position), selectedUnit.movementPoints);
-            List<Tiles> holder2 = GetArea.GetAreaOfAttack(map.GetTileAtPos(selectedUnit.transform.position), selectedUnit.attackRange);
-
-            foreach (Tiles tile in holder)
+            //gather and show new walkable and attackable tiles
+            if (selectedUnit.movementPoints > 0)
             {
-                movableTiles.Add(tile);
-            }
+                List<Tiles> holder = GetArea.GetAreaOfMoveable(map.GetTileAtPos(selectedUnit.transform.position), selectedUnit.movementPoints);
 
-            foreach (Tiles tile in holder2)
-            {
-                attackableTiles.Add(tile);
+                foreach (Tiles tile in holder)
+                {
+                    movableTiles.Add(tile);
+                }
             }
+            if (selectedUnit.hasAttacked == false)
+            {
+                List<Tiles> holder2 = GetArea.GetAreaOfAttack(map.GetTileAtPos(selectedUnit.transform.position), selectedUnit.attackRange);
+
+                foreach (Tiles tile in holder2)
+                {
+                    attackableTiles.Add(tile);
+                }
+            }
+            
             ToggleTileModifiersActive();
         }
     }
@@ -276,19 +285,25 @@ public class GameManagment : MonoBehaviour
     */
     public void ToggleTileModifiersActive()
     {
-        foreach (Tiles tile in movableTiles)
+        if (selectedUnit.movementPoints > 0)
         {
-            if (tile.walkableHighLight.gameObject.activeSelf == false)
+            foreach (Tiles tile in movableTiles)
             {
-                tile.walkableHighLight.gameObject.SetActive(true);
+                if (tile.walkableHighLight.gameObject.activeSelf == false)
+                {
+                    tile.walkableHighLight.gameObject.SetActive(true);
+                }
             }
         }
 
-        foreach (Tiles tile in attackableTiles)
+        if (selectedUnit.hasAttacked == false)
         {
-            if(tile.attackRangeHighLight.gameObject.activeSelf == false)
+            foreach (Tiles tile in attackableTiles)
             {
-                tile.attackRangeHighLight.gameObject.SetActive(true);
+                if (tile.attackRangeHighLight.gameObject.activeSelf == false)
+                {
+                    tile.attackRangeHighLight.gameObject.SetActive(true);
+                }
             }
         }
     }
@@ -296,10 +311,10 @@ public class GameManagment : MonoBehaviour
 
 
     /*
-    * ToggleWalkableTilesFalse 
+    * ToggleTileModifiersFalse 
     * 
     * tells all tiles held in movableTiles to stop showing that they are
-    * walable
+    * walable and attackable
     * 
     * @param non
     * @returns void
@@ -341,7 +356,6 @@ public class GameManagment : MonoBehaviour
     public void OnTileSelected(Tiles tile)
     {
 
-       
         //if a unit was already selected and an empty tile was selected
         if (selectedUnit != null)
         {
@@ -473,7 +487,7 @@ public class GameManagment : MonoBehaviour
         //deselect the unit
         selectedUnit = null;
 
-        //stop showing walkable tiles
+        //stop showing walkable and attackable tiles tiles
         ToggleTileModifiersFalse();
 
         //deselect the tiles
@@ -511,7 +525,7 @@ public class GameManagment : MonoBehaviour
     * OnActionFinished 
     * 
     * callback when a unit finishes performing an action
-    * that was directly performed by the player
+    * that was directly commanded by the player
     * 
     * @returns void
     */
@@ -596,7 +610,7 @@ public class GameManagment : MonoBehaviour
     public void KillAll()
     {
         //iterate through all players
-        foreach (Player p in players)
+        foreach (BasePlayer p in players)
         {
             //iterate through all of the units, killing each
             for (int i = 0; i < p.units.Count; i++)

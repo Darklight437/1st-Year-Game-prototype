@@ -47,6 +47,8 @@ public class SpreadAttackCommand : UnitCommand
     */
     public override void Update()
     {
+        unit.hasAttacked = true;
+
         //count-down the attack timer
         attackTimer -= Time.deltaTime;
 
@@ -87,8 +89,6 @@ public class SpreadAttackCommand : UnitCommand
                 
             }
         }
-
-        unit.hasAttacked = true;
 
         successCallback();
     }

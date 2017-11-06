@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+<<<<<<< HEAD
+guid: d7f8eb5caeb8b544da15e65ea2e287da
+timeCreated: 1509920847
+licenseType: Free
+=======
+<<<<<<< Updated upstream
+guid: a3357fc277673eb4cb21575b7aeda5a0
+timeCreated: 1509919525
+licenseType: Free
+=======
+guid: 672bc85d427a74447adf511d92cd5738
+timeCreated: 1509919412
+licenseType: Pro
+>>>>>>> Stashed changes
+>>>>>>> 3b720f7122a3e6d4cef08298ec4d340321df3fdf
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

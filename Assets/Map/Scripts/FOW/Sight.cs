@@ -12,6 +12,14 @@ public class Sight : MonoBehaviour
         if (other.GetComponent<Renderer>().enabled == false)
         {
             other.GetComponent<Renderer>().enabled = true;
+
+            foreach (Transform tran in other.transform)
+            {
+                if (tran.tag == "HPBar")
+                {
+                    tran.gameObject.SetActive(true);
+                }
+            }
         }
     }
 
@@ -20,6 +28,13 @@ public class Sight : MonoBehaviour
         if (other.GetComponent<Unit>().playerID != myUnit.playerID)
         {
             other.GetComponent<Renderer>().enabled = false;
+            foreach (Transform tran in other.transform)
+            {
+                if (tran.gameObject.activeSelf == true)
+                {
+                    tran.gameObject.SetActive(false);
+                }
+            }
         }
     }
 }
