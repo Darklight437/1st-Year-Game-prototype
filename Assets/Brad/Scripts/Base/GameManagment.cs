@@ -18,7 +18,7 @@ public class GameManagment : MonoBehaviour
     public delegate void UnitFunc(Unit unit);
 
     //list of references to players
-    public List<Player> players = new List<Player>();
+    public List<BasePlayer> players = new List<BasePlayer>();
 
     //static reference to the statistics object
     public static Statistics stats = null;
@@ -28,7 +28,7 @@ public class GameManagment : MonoBehaviour
     public Map map = null;
 
     //reference to the active player
-    public Player activePlayer = null;
+    public BasePlayer activePlayer = null;
 
     //reference to the selected unit
     public Unit selectedUnit = null;
@@ -91,7 +91,7 @@ public class GameManagment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        activePlayer.UpdateTurn();
     }
 
 
@@ -111,7 +111,7 @@ public class GameManagment : MonoBehaviour
         }
 
         //remove all dead units
-        foreach (Player p in players)
+        foreach (BasePlayer p in players)
         {
             //iterate through all units, removing null references
             for (int i = 0; i < p.units.Count; i++)
@@ -356,7 +356,6 @@ public class GameManagment : MonoBehaviour
     public void OnTileSelected(Tiles tile)
     {
 
-       
         //if a unit was already selected and an empty tile was selected
         if (selectedUnit != null)
         {
@@ -526,7 +525,7 @@ public class GameManagment : MonoBehaviour
     * OnActionFinished 
     * 
     * callback when a unit finishes performing an action
-    * that was directly performed by the player
+    * that was directly commanded by the player
     * 
     * @returns void
     */
@@ -611,7 +610,7 @@ public class GameManagment : MonoBehaviour
     public void KillAll()
     {
         //iterate through all players
-        foreach (Player p in players)
+        foreach (BasePlayer p in players)
         {
             //iterate through all of the units, killing each
             for (int i = 0; i < p.units.Count; i++)
