@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 33935735383024780}
   - component: {fileID: 23802982739302958}
   - component: {fileID: 114222087612126036}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ranger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1213222023256262}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8426571, y: 0.5, z: -0.85711116}
+  m_LocalPosition: {x: -1.5852634, y: 0.5, z: -1.2454612}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224848999935304412}
@@ -262,7 +262,7 @@ MonoBehaviour:
   aovOBJ: []
   sightPrefab: {fileID: 1915189985047014, guid: e9d606d4ec06a2d49a22931b679b76cc,
     type: 2}
-  hpBar: {fileID: 224016758753218010}
+  hpBar: {fileID: 114769885946720142}
   hpNum: {fileID: 114650063571952544}
   armourBar: {fileID: 212911930645241830}
   splashRange: 3
