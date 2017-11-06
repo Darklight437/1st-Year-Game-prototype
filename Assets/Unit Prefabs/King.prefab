@@ -318,11 +318,11 @@ MonoBehaviour:
   playerID: 0
   movementRange: 4
   attackRange: 1
-  armour: 1
+  armour: 2
   baseArmour: 0
-  damage: 1000
-  maxHealth: 3000
-  health: 3000
+  damage: 2000
+  maxHealth: 5000
+  health: 5000
   AOV: 6
   movementPoints: 0
   hasAttacked: 0

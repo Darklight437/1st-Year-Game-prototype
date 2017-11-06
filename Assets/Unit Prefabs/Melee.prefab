@@ -338,11 +338,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerID: 0
-  movementRange: 9
+  movementRange: 8
   attackRange: 1
   armour: 1
   baseArmour: 0
-  damage: 2000
+  damage: 1750
   maxHealth: 6000
   health: 6000
   AOV: 7
