@@ -192,6 +192,7 @@ public class GameManagment : MonoBehaviour
                 {
 
                     players[i].units[u].GetComponent<Renderer>().enabled = false;
+                    players[i].units[u].GetComponent<Unit>().sightHolder.SetActive(false);
                     foreach (Transform tran in players[i].units[u].transform)
                     {
                         tran.gameObject.SetActive(false);
@@ -204,6 +205,7 @@ public class GameManagment : MonoBehaviour
         foreach (Unit unit in activePlayer.units)
         {
             unit.GetComponent<Renderer>().enabled = true;
+            unit.sightHolder.gameObject.SetActive(true);
 
             foreach (Transform tran in unit.transform)
             {
@@ -264,8 +266,6 @@ public class GameManagment : MonoBehaviour
                     attackableTiles.Add(tile);
                 }
             }
-
-            Debug.Log("huh???");
             
             ToggleTileModifiersActive();
         }
