@@ -40,6 +40,7 @@ public class AiPlayer : BasePlayer
         isHuman = false;
         manager = Object.FindObjectOfType<GameManagment>();
         map = Object.FindObjectOfType<Map>();
+        logicMachine.input = GetComponent<ManagerInput>() as BaseInput;
 
         //get the size of the players list
         int playerSize = manager.players.Count;
@@ -58,33 +59,47 @@ public class AiPlayer : BasePlayer
             }
         }
 
-        FuzzyFunction advance = new FuzzyFunction(S, E);
-        FuzzyFunction flee = new FuzzyFunction(S, E);
-        FuzzyFunction attack = new FuzzyFunction(S, E);
-        FuzzyFunction healing = new FuzzyFunction(S, E);
-        FuzzyFunction terrain = new FuzzyFunction(S, E);
-        FuzzyFunction group = new FuzzyFunction(S, E);
+        FuzzyFunction advance = new FuzzyFunction(null, null);
+        FuzzyFunction flee = new FuzzyFunction(null, null);
+        FuzzyFunction attack = new FuzzyFunction(null, null);
+        FuzzyFunction healing = new FuzzyFunction(null, null);
+        FuzzyFunction terrain = new FuzzyFunction(null, null);
+        FuzzyFunction group = new FuzzyFunction(EvalGroup, ExecGroup);
+
+        //add all fuzzy functions to the fuzzy logic machine
+        //logicMachine.functions.Add(advance);
+        //logicMachine.functions.Add(flee);
+        //logicMachine.functions.Add(attack);
+        //logicMachine.functions.Add(healing);
+        //logicMachine.functions.Add(terrain);
+        logicMachine.functions.Add(group);
     }
 
-    //temp function
-    //0000000000000000000000000000000000000000000000000000000
-    float S(BaseInput bi)
-    {
-        return 0;
-    }
 
-    void E(BaseInput bi)
-    {
-
-    }
-    //0000000000000000000000000000000000000000000000000000000
 
     // Update is called once per frame
     new void Update()
     {
+        //get the size of the units list
+        int unitSize = units.Count;
 
+        //iterate through all units, making decisions about what to do with each
+        for (int i = 0; i < unitSize; i++)
+        {
+            //store in a temp value for readability
+            Unit unit = units[i];
+
+            //up-cast the base input
+            ManagerInput minput = logicMachine.input as ManagerInput;
+
+            //set the correct unit in the input
+            minput.unit = unit;
+
+            //this will invoke the most appropriate callback
+            logicMachine.Execute();
+        }
     }
-    
+
 
     /*
     * UpdateTurn 
@@ -96,9 +111,9 @@ public class AiPlayer : BasePlayer
     */
     public override void UpdateTurn()
     {
-        
+
         manager.OnNextTurn();
-      
+
     }
 
 
@@ -165,9 +180,58 @@ public class AiPlayer : BasePlayer
     }
 
 
-    public float EvalGroup(BaseInput i)
+    public float EvalGroup(BaseInput inp)
     {
-        return 0.0f;
+        //up-cast the base input
+        ManagerInput minp = inp as ManagerInput;
+
+        //get the length of the units list
+        int unitCount = units.Count;
+
+        //track the sum of all positions
+        Vector3 sum = Vector3.zero;
+
+        //get average position of the group
+        for (int i = 0; i < unitCount; i++)
+        {
+            sum += units[i].transform.position;
+        }
+
+        //average group position
+        Vector3 average = sum / unitCount;
+
+        //get the maximum difference that the average position can possibly have from the unit
+        float maxDifference = Mathf.Sqrt(map.width * map.width + map.height * map.height);
+
+        //relative vector from the unit to the average
+        Vector3 relative = average - minp.unit.transform.position;
+
+        //0 = at the centre of the group, 1 = maximum possible difference that can be achieved given the map size
+        return relative.magnitude / maxDifference;
+    }
+
+
+    public void ExecGroup(BaseInput inp)
+    {
+        //up-cast the base input
+        ManagerInput minp = inp as ManagerInput;
+
+        //get the length of the units list
+        int unitCount = units.Count;
+
+        //track the sum of all positions
+        Vector3 sum = Vector3.zero;
+
+        //get average position of the group
+        for (int i = 0; i < unitCount; i++)
+        {
+            sum += units[i].transform.position;
+        }
+
+        //average group position
+        Vector3 average = sum / unitCount;
+
+        Move(minp.unit, average);
     }
 
 
