@@ -17,15 +17,13 @@ public class UIManager : MonoBehaviour {
     //public GameObject UnitM = null;
 
     //the spare rectTransforms that the buttons will sit at
-    public RectTransform[] Buttons = new RectTransform[5];
+    public RectTransform[] ButtonPos = new RectTransform[5];
     //the core position that the buttons move to
     public GameObject MenuPosition;
 
     //the button Gameobjects
-    public GameObject MoveButton;
-    public GameObject AttackButton;
-    public GameObject SpecialButton;
-    public GameObject CancelButton;
+    public GameObject[] Buttons = new GameObject[4];
+
 
 
 	// Use this for initialization
@@ -124,41 +122,42 @@ public class UIManager : MonoBehaviour {
         {
 
             case eCommandState.MSC:
-                MoveButton.SetActive(true);
-                SpecialButton.SetActive(true);
-                CancelButton.SetActive(true);
+
+                Buttons[0].SetActive(true);
+                Buttons[2].SetActive(true);
+                Buttons[3].SetActive(true);
                 //move buttons to positions
-               //MoveButton. = Buttons[0];
+               
 
                 break;
 
             case eCommandState.ASC:
-                AttackButton.SetActive(true);
-                SpecialButton.SetActive(true);
-                CancelButton.SetActive(true);
+                Buttons[1].SetActive(true);
+                Buttons[2].SetActive(true);
+                Buttons[3].SetActive(true);
                 //moveButton();
                 break;
 
             case eCommandState.MC:
-                MoveButton.SetActive(true);
-                CancelButton.SetActive(true);
+                Buttons[0].SetActive(true);
+                Buttons[3].SetActive(true);
                 //moveButton();
                 break;
 
             case eCommandState.AC:
-                AttackButton.SetActive(true);
-                CancelButton.SetActive(true);
+                Buttons[1].SetActive(true);
+                Buttons[3].SetActive(true);
                 //moveButton();
                 break;
 
             case eCommandState.SC:
-                SpecialButton.SetActive(true);
-                CancelButton.SetActive(true);
+                Buttons[2].SetActive(true);
+                Buttons[3].SetActive(true);
                 //moveButton();
                 break;
 
             case eCommandState.C:
-                CancelButton.SetActive(true);
+                Buttons[3].SetActive(true);
                 //moveButton();
                 break;
         }
@@ -166,11 +165,41 @@ public class UIManager : MonoBehaviour {
 
     private void turnOffButtons()
     {
-        MoveButton.SetActive(false);
-        AttackButton.SetActive(false);
-        SpecialButton.SetActive(false);
-        CancelButton.SetActive(false);
+        Buttons[0].SetActive(false);
+        Buttons[1].SetActive(false);
+        Buttons[2].SetActive(false);
+        Buttons[3].SetActive(false);
 
+    }
+    private void moveButton()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (ButtonPos[0] == null)
+            {
+                foreach (GameObject Button in Buttons)
+                {
+                    if (Button.activeInHierarchy)
+                    {
+                        Button.GetComponent<RectTransform>().localPosition = ButtonPos[0].localPosition;
+                        break;
+                    }
+                }
+            }
+
+            if (ButtonPos[1] == null)
+            {
+                foreach (GameObject Button in Buttons)
+                {
+                    if (Button.activeInHierarchy)
+                    {
+                        Button.GetComponent<RectTransform>().localPosition = ButtonPos[1].localPosition;
+                        break;
+                    }
+                }
+            }
+
+        }
     }
    
 }
