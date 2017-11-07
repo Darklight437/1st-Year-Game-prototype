@@ -353,7 +353,8 @@ MonoBehaviour:
   attackTime: 1
   deathTime: 1
   aovOBJ: []
-  sightPrefab: {fileID: 0}
+  sightPrefab: {fileID: 1915189985047014, guid: e9d606d4ec06a2d49a22931b679b76cc,
+    type: 2}
   sightHolder: {fileID: 0}
   hpBar: {fileID: 0}
   hpNum: {fileID: 0}
