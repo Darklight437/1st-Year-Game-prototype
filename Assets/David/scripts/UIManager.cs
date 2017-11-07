@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour {
     public RectTransform[] Buttons = new RectTransform[5];
     //the core position that the buttons move to
     public GameObject MenuPosition;
+
     //the button Gameobjects
     public GameObject MoveButton;
     public GameObject AttackButton;
@@ -32,14 +33,13 @@ public class UIManager : MonoBehaviour {
     {
         resetUI();
         //make function that clears rect transforms of buttons
-
+        
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        //bool changed = false;
-        //check what UI state is
+        
         //switch on enum
         //enable / disable elements of ui & manage UI anims
 
@@ -118,5 +118,58 @@ public class UIManager : MonoBehaviour {
         Application.Quit();
     }
 
+    public void ButtonState()
+    {
+        switch(CurrentCommand)
+        {
+
+            case eCommandState.MSC:
+                MoveButton.SetActive(true);
+                SpecialButton.SetActive(true);
+                CancelButton.SetActive(true);
+                //moveButton();
+
+                break;
+
+            case eCommandState.ASC:
+                AttackButton.SetActive(true);
+                SpecialButton.SetActive(true);
+                CancelButton.SetActive(true);
+                //moveButton();
+                break;
+
+            case eCommandState.MC:
+                MoveButton.SetActive(true);
+                CancelButton.SetActive(true);
+                //moveButton();
+                break;
+
+            case eCommandState.AC:
+                AttackButton.SetActive(true);
+                CancelButton.SetActive(true);
+                //moveButton();
+                break;
+
+            case eCommandState.SC:
+                SpecialButton.SetActive(true);
+                CancelButton.SetActive(true);
+                //moveButton();
+                break;
+
+            case eCommandState.C:
+                CancelButton.SetActive(true);
+                //moveButton();
+                break;
+        }
+    }
+
+    private void turnOffButtons()
+    {
+        MoveButton.SetActive(false);
+        AttackButton.SetActive(false);
+        SpecialButton.SetActive(false);
+        CancelButton.SetActive(false);
+
+    }
    
 }
