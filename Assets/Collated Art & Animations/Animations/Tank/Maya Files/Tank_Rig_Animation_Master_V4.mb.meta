@@ -2,10 +2,14 @@ fileFormatVersion: 2
 <<<<<<< HEAD:Assets/Daniel/Animations/Tank/Tank_Rig_Animation_Master_V4.mb.meta
 guid: 3079134662d8b5a4bbf8f5da061ac4e5
 =======
+<<<<<<< HEAD:Assets/Daniel/Animations/Tank/Tank_Rig_Animation_Master_V4.mb.meta
+guid: 3079134662d8b5a4bbf8f5da061ac4e5
+=======
 guid: cd8f53cf685482b43905036c8ef328e0
 timeCreated: 1510013676
 licenseType: Pro
 >>>>>>> b8c15ebbb5dc681ed1ebbc4e135c2446812d5396:Assets/Collated Art & Animations/Animations/Tank/Maya Files/Tank_Rig_Animation_Master_V4.mb.meta
+>>>>>>> d22f85b5c836ef8ac3137b5c8bbd4037bbbfb5c7:Assets/Collated Art & Animations/Animations/Tank/Maya Files/Tank_Rig_Animation_Master_V4.mb.meta
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
