@@ -5,25 +5,27 @@ using UnityEngine;
 public class UIManager : MonoBehaviour {
 
     //enum of states for the UI
-    public enum eUIState {BASE, ACTIVEUNIT, ENDGAME, PAUSEMENU}
+    public enum eUIState {BASE, ENDGAME, PAUSEMENU}
     public eUIState currUIState;
 
 
     //all the UI elements in a play scene
     public GameObject PauseM = null;
-    public GameObject UnitM = null;
+    public GameObject EndM = null;
+    //public GameObject UnitM = null;
     
 
 	// Use this for initialization
 	void Start ()
     {
-		
+        resetUI();
 
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
+        //bool changed = false;
         //check what UI state is
         //switch on enum
         //enable / disable elements of ui & manage UI anims
@@ -31,7 +33,7 @@ public class UIManager : MonoBehaviour {
         //clear ui to base state
         if (currUIState == eUIState.BASE)
         {
-            resetUI();
+            
 
             if(Input.GetKeyDown(KeyCode.Escape))
             {
@@ -48,11 +50,18 @@ public class UIManager : MonoBehaviour {
                 stateSwitch();
                 return;
             }
+            
         }
-
-
-
-        stateSwitch();
+        if(currUIState == eUIState.ENDGAME)
+        {
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                currUIState = eUIState.BASE;
+                stateSwitch();
+                return;
+            }
+        }
+        
     }
 
     //will check which UI elements should be active
@@ -61,20 +70,17 @@ public class UIManager : MonoBehaviour {
         switch (currUIState)
         {
             case eUIState.BASE:
-
+                resetUI();
                 break;
-
-            case eUIState.ACTIVEUNIT:
-                /*  find out the active unit from GameManager
-                 *  do this
-                 *  unit.GetComponent<Renderer>().material.SetFloat("_Outline", 0.25f);
-
-                 */
-                break;
-
 
             case eUIState.PAUSEMENU:
+                resetUI();
                 PauseM.SetActive(true);
+                break;
+
+            case eUIState.ENDGAME:
+                resetUI();
+                EndM.SetActive(true);
                 break;
 
         }
@@ -86,10 +92,18 @@ public class UIManager : MonoBehaviour {
         {
             PauseM.SetActive(false);
         }
-        if(UnitM)
+        if (EndM)
         {
-            UnitM.SetActive(false);
+            EndM.SetActive(false);
         }
-        currUIState = eUIState.BASE;
+        
+        //currUIState = eUIState.BASE;
     }
+
+    public void QuitToDesktop()
+    {
+        Application.Quit();
+    }
+
+   
 }
