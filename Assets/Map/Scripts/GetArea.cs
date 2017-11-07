@@ -11,120 +11,237 @@ using UnityEngine;
 */
 public static class GetArea
 {
+    private static int[] closedSet = new int[5000];
+    public static int numUpTo = 0;
+
+    private static List<Tiles> openSet = new List<Tiles>();
+    private static List<Tiles> currSet = new List<Tiles>();
+
+    private static List<Tiles> tilesToReturn = new List<Tiles>();
+
     /*
     * GetAreaOfMoveable
-    * public List<Tiles> function (Tiles start, int radius)
+    * public List<Tiles> function (Tiles start, int radius, map)
     * 
     * this function gets all moveable tiles with in the radius given to it
     * around the tile also passed in. once it has all the tiles it returns it as a list
     * 
-    * @returns List<Tiles>
+    * @returns List<Tiles> - all movable tiles
     */
-    public static List<Tiles> GetAreaOfMoveable(Tiles start, int radius)
-    {
-        List<Tiles> openSet = new List<Tiles>();
-        List<Tiles> closedSet = new List<Tiles>();
 
+    public static List<Tiles> GetAreaOfMoveable(Tiles start, int radius, Map map)
+    {
+        //set the closed set back to being -1 by default for logic reason purposes
+        for (int i = 0; i < closedSet.Length; i++)
+        {
+            //we can stop when we hit -1 as there should not be any more changes needed
+            if (closedSet[i] == -1)
+            {
+                break;
+            }
+
+            closedSet[i] = -1;
+        }
+
+        //start up the open set
+        openSet.Clear();
         openSet.Add(start);
 
+        //set numUpto zero for latter logic reasons
+        numUpTo = 0;
+
+        //loop through the radius amount and gather all the movable tiles
         for (int i = 0; i <= radius; i++)
         {
-            List<Tiles> currTiles = new List<Tiles>();
+            //clear the current set
+            currSet.Clear();
 
-            foreach (Tiles tile in openSet)
+            //loop throught the open set and add there tiles into the current set
+            for (int u = 0; u < openSet.Count; u++)
             {
-                currTiles.Add(tile);
-            }
-
-            openSet.Clear();
-
-            foreach (Tiles tile in currTiles)
-            {
-                closedSet.Add(tile);
-            }
-
-            foreach (Tiles openTile in currTiles)
-            {
-                foreach (Tiles lookAtTile in openTile.tileEdges)
+                //make sure we are not adding duplicates
+                if (FindInContainerCurrent(openSet[u].indexPos) == false)
                 {
-                    if (lookAtTile.IsPassible && FindInContainer(closedSet, lookAtTile) == false)
+                    currSet.Add(openSet[u]);
+                }
+            }
+            
+            //clear the open set and ready it for new tiles
+            openSet.Clear();
+            
+            //add all the current tiles to the closed set
+            for (int u = 0; u < currSet.Count; u++)
+            {
+                //we use numUpTo here in order to keep track of where in the list we are up to in adding tiles
+                closedSet[numUpTo] = currSet[u].indexPos;
+                numUpTo++;
+            }
+            
+            //go through all the current tiles and there edges gathering there tiles then add them to the open list
+            for (int u = 0; u < currSet.Count; u++)
+            {
+                for (int y = 0; y < currSet[u].tileEdges.Count; y++)
+                {
+                    if (currSet[u].tileEdges[y].IsPassible && FindInContainerClosed(currSet[u].tileEdges[y].indexPos) == false)
                     {
-                        openSet.Add(lookAtTile);
+                        openSet.Add(currSet[u].tileEdges[y]);
                     }
                 }
             }
         }
 
-        return closedSet;
+        //make sure the list of tiles we want to return is empty
+        tilesToReturn.Clear();
+        numUpTo = 0;
+        //go through the closed list and gather the appropriate tiles from map and add them to the tilesToReturn
+        for (int i = 0; i < closedSet.Length; i++)
+        {
+            if (closedSet[i] == -1)
+            {
+                break;
+            }
+
+            tilesToReturn.Add(map.mapTiles[closedSet[i]]);
+            closedSet[i] = -1;
+        }
+        
+        //return the gathered tiles
+        return tilesToReturn;
     }
 
     /*
     * GetAreaOfAttack
-    * public List<Tiles> function (Tiles start, int radius)
+    * public List<Tiles> function (Tiles start, int radius, Map map)
     * 
     * this function gets all attackable tiles with in the radius given to it
     * around the tile also passed in. once it has all the tiles it returns it as a list
     * 
-    * @returns List<Tiles>
+    * @returns List<Tiles> - all attackable tiles
     */
-    public static List<Tiles> GetAreaOfAttack(Tiles start, int radius)
+    public static List<Tiles> GetAreaOfAttack(Tiles start, int radius, Map map)
     {
-        List<Tiles> openSet = new List<Tiles>();
-        List<Tiles> closedSet = new List<Tiles>();
+        //set the closed set back to being -1 by default for logic reason purposes
+        for (int i = 0; i < closedSet.Length; i++)
+        {
+            //we can stop when we hit -1 as there should not be any more changes needed
+            if (closedSet[i] == -1)
+            {
+                break;
+            }
 
+            closedSet[i] = -1;
+        }
+
+        //start up the open set
+        openSet.Clear();
         openSet.Add(start);
 
+        //set numUpto zero for latter logic reasons
+        numUpTo = 0;
+
+        //loop through the radius amount and gather all the movable tiles
         for (int i = 0; i <= radius; i++)
         {
-            List<Tiles> currTiles = new List<Tiles>();
+            //clear the current set
+            currSet.Clear();
 
-            foreach (Tiles tile in openSet)
+            //loop throught the open set and add there tiles into the current set
+            for (int u = 0; u < openSet.Count; u++)
             {
-                currTiles.Add(tile);
+                //make sure we are not adding duplicates
+                if (FindInContainerCurrent(openSet[u].indexPos) == false)
+                {
+                    currSet.Add(openSet[u]);
+                }
             }
 
+            //clear the open set and ready it for new tiles
             openSet.Clear();
 
-            foreach (Tiles tile in currTiles)
+            //add all the current tiles to the closed set
+            for (int u = 0; u < currSet.Count; u++)
             {
-                closedSet.Add(tile);
+                //we use numUpTo here in order to keep track of where in the list we are up to in adding tiles
+                closedSet[numUpTo] = currSet[u].indexPos;
+                numUpTo++;
             }
 
-            foreach (Tiles openTile in currTiles)
+            //go through all the current tiles and there edges gathering there tiles then add them to the open list
+            for (int u = 0; u < currSet.Count; u++)
             {
-                foreach (Tiles lookAtTile in openTile.tileEdges)
+                for (int y = 0; y < currSet[u].tileEdges.Count; y++)
                 {
-                    if (FindInContainer(closedSet, lookAtTile) == false)
+                    if (FindInContainerClosed(currSet[u].tileEdges[y].indexPos) == false)
                     {
-                        openSet.Add(lookAtTile);
+                        openSet.Add(currSet[u].tileEdges[y]);
                     }
                 }
             }
         }
 
-        return closedSet;
+        //make sure the list of tiles we want to return is empty
+        tilesToReturn.Clear();
+        numUpTo = 0;
+        //go through the closed list and gather the appropriate tiles from map and add them to the tilesToReturn
+        for (int i = 0; i < closedSet.Length; i++)
+        {
+            if (closedSet[i] == -1)
+            {
+                break;
+            }
+
+            tilesToReturn.Add(map.mapTiles[closedSet[i]]);
+            closedSet[i] = -1;
+        }
+
+        //return the gathered tiles
+        return tilesToReturn;
     }
 
     /*
-    * FindInContainer
-    * public bool function (List<Tiles> list, Tiles toFind)
+    * FindInContainerCurret
+    * public bool function (Int toFind)
     * 
-    * this goes through a list of tiles that is passed in and
-    * searches through it looking for the tile that was also passed it
-    * if it finds the tile it returns true else it returns false
+    * this checks the closedSet of values to find duplicates to not add them in
     * 
     * @returns bool
     */
-    public static bool FindInContainer(List<Tiles> list, Tiles toFind)
+    public static bool FindInContainerClosed(int toFind)
     {
-        foreach (Tiles tiles in list)
+        for (int i = 0; i < closedSet.Length; i++)
         {
-            if (tiles == toFind)
+            if (closedSet[i] == -1)
+            {
+                return false;
+            }
+
+            if (closedSet[i] == toFind)
             {
                 return true;
             }
         }
 
+        return false;
+    }
+
+
+    /*
+    * FindInContainerCurret
+    * public bool function (Int toFind)
+    * 
+    * this checks the currSet of tiles to find duplicates to not add them in
+    * 
+    * @returns bool
+    */
+    public static bool FindInContainerCurrent(int toFind)
+    {
+        for (int i = 0; i < currSet.Count; i++)
+        {
+            if (currSet[i].indexPos == toFind)
+            {
+                return true;
+            }
+        }
         return false;
     }
 }

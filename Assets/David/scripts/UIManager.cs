@@ -127,7 +127,8 @@ public class UIManager : MonoBehaviour {
                 MoveButton.SetActive(true);
                 SpecialButton.SetActive(true);
                 CancelButton.SetActive(true);
-                //moveButton();
+                //move buttons to positions
+               //MoveButton. = Buttons[0];
 
                 break;
 

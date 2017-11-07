@@ -357,7 +357,7 @@ public class GameManagment : MonoBehaviour
         //gather and show new walkable tiles
         if (selectedUnit.movementPoints > 0)
         {
-            List<Tiles> holder = GetArea.GetAreaOfMoveable(map.GetTileAtPos(selectedUnit.transform.position), selectedUnit.movementPoints);
+            List<Tiles> holder = GetArea.GetAreaOfMoveable(map.GetTileAtPos(selectedUnit.transform.position), selectedUnit.movementPoints, map);
 
             foreach (Tiles tile in holder)
             {
@@ -376,7 +376,7 @@ public class GameManagment : MonoBehaviour
         //gathewr and show all attackabe tiles
         if (selectedUnit.hasAttacked == false)
         {
-            List<Tiles> holder2 = GetArea.GetAreaOfAttack(map.GetTileAtPos(selectedUnit.transform.position), selectedUnit.attackRange);
+            List<Tiles> holder2 = GetArea.GetAreaOfAttack(map.GetTileAtPos(selectedUnit.transform.position), selectedUnit.attackRange, map);
 
             foreach (Tiles tile in holder2)
             {
@@ -562,7 +562,7 @@ public class GameManagment : MonoBehaviour
 
         //turn off the action menu
         //worldUI.gameObject.GetComponent<Canvas>().enabled = false;
-        worldUI.gameObject.SetActive(false);
+        //worldUI.gameObject.SetActive(false);
 
         //execute the action
         selectedUnit.Execute(actionEvent, startTile, endTile, OnActionFinished);

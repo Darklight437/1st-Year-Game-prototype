@@ -31,6 +31,11 @@ public class Map : MonoBehaviour
     void Start ()
     {
         SetTileEdges();
+
+        for (int i = 0; i < mapTiles.Count; i++)
+        {
+            mapTiles[i].indexPos = i;
+        }
     }
 
     /*

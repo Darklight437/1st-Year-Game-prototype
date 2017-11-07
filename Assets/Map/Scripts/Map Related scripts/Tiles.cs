@@ -72,6 +72,9 @@ public class Tiles : MonoBehaviour
 
     private float elevatedHeight = 0.75f;
 
+    //this is the position in the list on the map script where this tile is
+    public int indexPos;
+
     //tile values for pathfinding purposes 
     private float m_gcost;
     public float GCost
