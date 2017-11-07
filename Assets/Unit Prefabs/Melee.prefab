@@ -141,7 +141,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1991271546020698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3017516, y: 0.5, z: 0.7029984}
+  m_LocalPosition: {x: -1.9465007, y: 0.5, z: -0.6659336}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224732992298741538}
@@ -334,15 +334,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1991271546020698}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f031d69f410bf79499e03b81663372e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 585a3120116478347817f9734025db91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerID: 0
   movementRange: 8
   attackRange: 1
   armour: 1
-  baseArmour: 0
-  damage: 1750
+  baseArmour: 1
+  damage: 0
   maxHealth: 6000
   health: 6000
   AOV: 7
@@ -355,6 +355,7 @@ MonoBehaviour:
   aovOBJ: []
   sightPrefab: {fileID: 1915189985047014, guid: e9d606d4ec06a2d49a22931b679b76cc,
     type: 2}
+  sightHolder: {fileID: 0}
   hpBar: {fileID: 114395128567018594}
   hpNum: {fileID: 114562716748141024}
   armourBar: {fileID: 212630981226311762}

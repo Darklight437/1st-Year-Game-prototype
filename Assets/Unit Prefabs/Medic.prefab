@@ -141,7 +141,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1539628356900846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0911707, y: 0.5, z: 0.9127453}
+  m_LocalPosition: {x: -2.5484014, y: 0.5, z: -1.0146937}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224856860271748230}
@@ -210,11 +210,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1539628356900846}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea2bfff3b5b17a3469ee2681e3597c56, type: 3}
+  m_Script: {fileID: 11500000, guid: 3efc0f972fa48ac44b9c6dd512f97bd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerID: 0
-  movementRange: 9
+  movementRange: 8
   attackRange: 5
   armour: 0
   baseArmour: 0

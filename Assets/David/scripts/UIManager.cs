@@ -8,13 +8,17 @@ public class UIManager : MonoBehaviour {
     public enum eUIState {BASE, ENDGAME, PAUSEMENU}
     public eUIState currUIState;
 
+    public enum eCommandState { MSC,ASC,MC,AC,SC,C}
+    public eCommandState CurrentCommand;
 
     //all the UI elements in a play scene
     public GameObject PauseM = null;
     public GameObject EndM = null;
     //public GameObject UnitM = null;
-    
 
+    //the spare rectTransforms that the buttons will sit at
+    public RectTransform[] Buttons = new RectTransform[5];
+    
 	// Use this for initialization
 	void Start ()
     {
