@@ -4,3 +4,4 @@ Frames: 50-74 ------ Used Idle
 Frames: 75-204 ----- Attack Animation
 Frames: 205-388 ---- Death Animation
 Frames: 389-523 ---- Taking Damage Animation
+Frames: 524-696 ---- Placing a Tile
