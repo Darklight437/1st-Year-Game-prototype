@@ -1,6 +1,16 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 680d3bc0eb7ba3c46bc2e5f3433985bf
 timeCreated: 1510022596
+=======
+<<<<<<< Updated upstream
+guid: b14913825177606458a630fa8a6cee94
+timeCreated: 1510022080
+=======
+guid: f4a359852f613684c8a37ec0206aa162
+timeCreated: 1510022699
+>>>>>>> Stashed changes
+>>>>>>> a05a79b233e0346e3b62090915352e7609ac1c40
 licenseType: Pro
 ModelImporter:
   serializedVersion: 21
