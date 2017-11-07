@@ -241,7 +241,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1213222023256262}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6910f57d0ddc6554ab4c29f621a4818d, type: 3}
+  m_Script: {fileID: 11500000, guid: b204197aa9cf19c4b913705a4f466e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerID: 0
@@ -249,7 +249,7 @@ MonoBehaviour:
   attackRange: 8
   armour: 0
   baseArmour: 0
-  damage: 1500
+  damage: 500
   maxHealth: 3000
   health: 3000
   AOV: 5
@@ -260,11 +260,11 @@ MonoBehaviour:
   attackTime: 1
   deathTime: 1
   aovOBJ: []
-  sightPrefab: {fileID: 1915189985047014, guid: e9d606d4ec06a2d49a22931b679b76cc,
-    type: 2}
-  hpBar: {fileID: 114769885946720142}
-  hpNum: {fileID: 114650063571952544}
-  armourBar: {fileID: 212911930645241830}
+  sightPrefab: {fileID: 0}
+  sightHolder: {fileID: 0}
+  hpBar: {fileID: 0}
+  hpNum: {fileID: 0}
+  armourBar: {fileID: 0}
   splashRange: 3
 --- !u!114 &114650063571952544
 MonoBehaviour:

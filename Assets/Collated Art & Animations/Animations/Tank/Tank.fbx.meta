@@ -1,17 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: abe5f1e8675908248a470754b6e21866
-timeCreated: 1510022598
-=======
-<<<<<<< Updated upstream
-guid: b852605b46105d1469de2330a479de27
-timeCreated: 1510022080
-=======
-guid: 8d8b1291924843e4fa6ec6471cc3dd56
-timeCreated: 1510022694
->>>>>>> Stashed changes
->>>>>>> a05a79b233e0346e3b62090915352e7609ac1c40
-licenseType: Pro
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
