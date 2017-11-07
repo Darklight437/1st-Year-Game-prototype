@@ -342,7 +342,7 @@ MonoBehaviour:
   attackRange: 1
   armour: 1
   baseArmour: 1
-  damage: 0
+  damage: 1750
   maxHealth: 6000
   health: 6000
   AOV: 7
