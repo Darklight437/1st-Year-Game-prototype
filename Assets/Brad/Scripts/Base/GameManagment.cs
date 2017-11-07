@@ -56,8 +56,20 @@ public class GameManagment : MonoBehaviour
 
     //David's
     //reference to Main UI manager script
+    /*
+  * WorldUi is Depreciated
+  * use the state switch of UIManager to 
+  * control which buttons are visible
+  * UIManager.ButtonState(UIManager.eCommandState.OFF);
+  * turns off all buttons
+  * other button states are based off the board
+  * MSC 
+  * 
+  * 
+  */
     public UIManager UIManager = null;
 
+ 
     //type of action from the world space manager
     public eActionType actionEvent = eActionType.NULL;
 
@@ -138,9 +150,10 @@ public class GameManagment : MonoBehaviour
         }
 
         //turn off the action menu
-        //TODO link action mkenu to Main UI Manager
-        //replaced changing the canvas with the whole gameobject
-        //worldUI.gameObject.SetActive(false);
+        //TODO link action menu to Main UI Manager
+        //turn off the buttons
+
+        UIManager.ButtonState(UIManager.eCommandState.OFF);
         if (selectedUnit != null)
         {
             //turn off the unit selection glow
@@ -240,8 +253,8 @@ public class GameManagment : MonoBehaviour
             //the player is selecting a different unit, hide the menu
             if (selectedUnit != unit)
             {
-                //worldUI.gameObject.GetComponent<Canvas>().enabled = false;
-                //worldUI.gameObject.SetActive(false);
+
+                UIManager.ButtonState(UIManager.eCommandState.OFF);
             }
 
             //stop showing walkable tiles if thy where showing

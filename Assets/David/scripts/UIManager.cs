@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour {
+public class UIManager : MonoBehaviour
+{
 
     //enum of states for the UI
-    public enum eUIState {BASE, ENDGAME, PAUSEMENU}
+    public enum eUIState { BASE, ENDGAME, PAUSEMENU }
     public eUIState currUIState;
 
-    public enum eCommandState { MSC,ASC,MC,AC,SC,C}
+    public enum eCommandState { MSC, ASC, MC, AC, SC, C, OFF }
     public eCommandState CurrentCommand;
 
     //all the UI elements in a play scene
@@ -19,41 +20,41 @@ public class UIManager : MonoBehaviour {
     //the spare rectTransforms that the buttons will sit at
     public RectTransform[] ButtonPos = new RectTransform[5];
     //the core position that the buttons move to
-    public GameObject MenuPosition;
+    public RectTransform MenuPosition;
 
     //the button Gameobjects
     public GameObject[] Buttons = new GameObject[4];
 
 
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
         resetUI();
         //make function that clears rect transforms of buttons
-        
-	}
-	
-	// Update is called once per frame
-	void Update ()
+
+    }
+
+    // Update is called once per frame
+    void Update()
     {
-        
+
         //switch on enum
         //enable / disable elements of ui & manage UI anims
 
         //clear ui to base state
         if (currUIState == eUIState.BASE)
         {
-            
 
-            if(Input.GetKeyDown(KeyCode.Escape))
+
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 currUIState = eUIState.PAUSEMENU;
                 stateSwitch();
                 return;
             }
         }
-        if(currUIState == eUIState.PAUSEMENU)
+        if (currUIState == eUIState.PAUSEMENU)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -61,18 +62,18 @@ public class UIManager : MonoBehaviour {
                 stateSwitch();
                 return;
             }
-            
+
         }
-        if(currUIState == eUIState.ENDGAME)
+        if (currUIState == eUIState.ENDGAME)
         {
-            if(Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 currUIState = eUIState.BASE;
                 stateSwitch();
                 return;
             }
         }
-        
+
     }
 
     //will check which UI elements should be active
@@ -97,7 +98,7 @@ public class UIManager : MonoBehaviour {
         }
     }
     //turns off all of the ui elements currently active
-   public void resetUI()
+    public void resetUI()
     {
         if (PauseM)
         {
@@ -107,7 +108,7 @@ public class UIManager : MonoBehaviour {
         {
             EndM.SetActive(false);
         }
-        
+
         //currUIState = eUIState.BASE;
     }
 
@@ -116,49 +117,51 @@ public class UIManager : MonoBehaviour {
         Application.Quit();
     }
 
-    public void ButtonState()
+    public void ButtonState(eCommandState inComingCommand)
     {
-        switch(CurrentCommand)
+        CurrentCommand = inComingCommand;
+        switch (CurrentCommand)
         {
 
             case eCommandState.MSC:
-
                 Buttons[0].SetActive(true);
                 Buttons[2].SetActive(true);
                 Buttons[3].SetActive(true);
-                //move buttons to positions
-               
-
+                moveButton();
                 break;
 
             case eCommandState.ASC:
                 Buttons[1].SetActive(true);
                 Buttons[2].SetActive(true);
                 Buttons[3].SetActive(true);
-                //moveButton();
+                moveButton();
                 break;
 
             case eCommandState.MC:
                 Buttons[0].SetActive(true);
                 Buttons[3].SetActive(true);
-                //moveButton();
+                moveButton();
                 break;
 
             case eCommandState.AC:
                 Buttons[1].SetActive(true);
                 Buttons[3].SetActive(true);
-                //moveButton();
+                moveButton();
                 break;
 
             case eCommandState.SC:
                 Buttons[2].SetActive(true);
                 Buttons[3].SetActive(true);
-                //moveButton();
+                moveButton();
                 break;
 
             case eCommandState.C:
                 Buttons[3].SetActive(true);
-                //moveButton();
+                moveButton();
+                break;
+
+            case eCommandState.OFF:
+                turnOffButtons();
                 break;
         }
     }
@@ -173,33 +176,15 @@ public class UIManager : MonoBehaviour {
     }
     private void moveButton()
     {
+        int ButtonPositionIndex = 0;
+
         for (int i = 0; i < 4; i++)
         {
-            if (ButtonPos[0] == null)
+            if (Buttons[i].activeInHierarchy)
             {
-                foreach (GameObject Button in Buttons)
-                {
-                    if (Button.activeInHierarchy)
-                    {
-                        Button.GetComponent<RectTransform>().localPosition = ButtonPos[0].localPosition;
-                        break;
-                    }
-                }
+                Buttons[i].GetComponent<RectTransform>().localPosition = ButtonPos[ButtonPositionIndex].localPosition;
+                ButtonPositionIndex++;
             }
-
-            if (ButtonPos[1] == null)
-            {
-                foreach (GameObject Button in Buttons)
-                {
-                    if (Button.activeInHierarchy)
-                    {
-                        Button.GetComponent<RectTransform>().localPosition = ButtonPos[1].localPosition;
-                        break;
-                    }
-                }
-            }
-
         }
     }
-   
 }
