@@ -33,6 +33,12 @@ public class AttackCommand : UnitCommand
     {
         //find the map component
         map = GameObject.FindObjectOfType<Map>();
+
+        // Attacking the enemy unit Anim
+        unit.ArtLink.SetTrigger("Attack");
+
+        //Enemy Unit taking damage Anim
+        et.unit.ArtLink.SetTrigger("TakeDamage");
     }
 
 
@@ -72,5 +78,6 @@ public class AttackCommand : UnitCommand
         {
             failedCallback();
         }
+        unit.ArtLink.SetBool("ActionAvailable", false);
     }
 }
