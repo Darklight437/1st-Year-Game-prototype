@@ -14,9 +14,12 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: b0704c7b3eb190741bcd256783c7c8d4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Michael/_Scenes/main (2).unity
     guid: 2ac78a6c48165b84ca11fc17c547953b
   - enabled: 0
     path: Assets/Map/Scenes/Map.unity
     guid: e52b2be7913f6d948af90b95f203544b
+  - enabled: 1
+    path: Assets/!Master build/_Scenes/_Master_scene.unity
+    guid: b127b0f6f4475e4438fd4e94bfdba0eb
