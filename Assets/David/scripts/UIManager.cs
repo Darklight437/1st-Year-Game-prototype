@@ -18,11 +18,20 @@ public class UIManager : MonoBehaviour {
 
     //the spare rectTransforms that the buttons will sit at
     public RectTransform[] Buttons = new RectTransform[5];
-    
+    //the core position that the buttons move to
+    public GameObject MenuPosition;
+    //the button Gameobjects
+    public GameObject MoveButton;
+    public GameObject AttackButton;
+    public GameObject SpecialButton;
+    public GameObject CancelButton;
+
+
 	// Use this for initialization
 	void Start ()
     {
         resetUI();
+        //make function that clears rect transforms of buttons
 
 	}
 	
