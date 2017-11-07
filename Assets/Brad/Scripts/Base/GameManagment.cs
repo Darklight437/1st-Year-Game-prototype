@@ -562,7 +562,7 @@ public class GameManagment : MonoBehaviour
 
         //turn off the action menu
         //worldUI.gameObject.GetComponent<Canvas>().enabled = false;
-        worldUI.gameObject.SetActive(false);
+        //worldUI.gameObject.SetActive(false);
 
         //execute the action
         selectedUnit.Execute(actionEvent, startTile, endTile, OnActionFinished);
