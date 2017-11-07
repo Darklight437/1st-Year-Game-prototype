@@ -92,6 +92,13 @@ public class GameManagment : MonoBehaviour
     void Update()
     {
         activePlayer.UpdateTurn();
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            Debug.Log("pressed unit toggle");
+            ToggleBetweenActiveUnits();
+
+        }
     }
 
 
@@ -246,31 +253,96 @@ public class GameManagment : MonoBehaviour
 
             selectedUnit = unit;
             selectedUnit.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Custom/WallThrough");
-
-            //gather and show new walkable and attackable tiles
-            if (selectedUnit.movementPoints > 0)
-            {
-                List<Tiles> holder = GetArea.GetAreaOfMoveable(map.GetTileAtPos(selectedUnit.transform.position), selectedUnit.movementPoints);
-
-                foreach (Tiles tile in holder)
-                {
-                    movableTiles.Add(tile);
-                }
-            }
-            if (selectedUnit.hasAttacked == false)
-            {
-                List<Tiles> holder2 = GetArea.GetAreaOfAttack(map.GetTileAtPos(selectedUnit.transform.position), selectedUnit.attackRange);
-
-                foreach (Tiles tile in holder2)
-                {
-                    attackableTiles.Add(tile);
-                }
-            }
             
             ToggleTileModifiersActive();
         }
     }
 
+    /*
+    * ToggleBetweenActiveUnits
+    * void function
+    * 
+    * this goes through the active player units trying to find the next active unit
+    *  
+    * @param non
+    * @returns void
+    * @author Callum Dunstone
+    */
+    public void ToggleBetweenActiveUnits()
+    {
+        bool startSearch = false;
+
+        if (selectedUnit == null)
+        {
+            startSearch = true;
+        }
+
+        //look throught the list of units in the active player until we get to the currently selected unit
+        //then begin our search for the next inactive unit
+        foreach (Unit unit in activePlayer.units)
+        {
+            if (selectedUnit != null)
+            {
+                if (unit == selectedUnit)
+                {
+                    startSearch = true;
+                    continue;
+                }
+            }
+
+            if (startSearch == true)
+            {
+                if (CheckIfStillActive(unit))
+                {
+                    OnTileSelected(map.GetTileAtPos(unit.transform.position));
+                    Vector3 holder = new Vector3(selectedUnit.transform.position.x, 0.0f, selectedUnit.transform.position.z);
+                    cam.Goto(holder, cam.transform.eulerAngles, null);
+                    return;
+                }
+            }
+        }
+
+        //if no unit was found check the first half of the list for an inactive unit but if we wrap back round to the currently selected unit
+        //break out as there are no non inactive units left
+        foreach (Unit unit in activePlayer.units)
+        {
+            if(unit == selectedUnit)
+            {
+                return;
+            }
+
+            if (CheckIfStillActive(unit))
+            {
+                OnTileSelected(map.GetTileAtPos(unit.transform.position));
+                Vector3 holder = new Vector3(selectedUnit.transform.position.x, 0.0f, selectedUnit.transform.position.z);
+                cam.Goto(holder, cam.transform.eulerAngles, OnCameraFinished);
+                return;
+            }
+        }
+    }
+    
+    /*
+    * CheckIfStillActive
+    * bool function
+    * 
+    * checks if the unit can still walk or attack and returns true meaning they still have actions left
+    *  
+    * @param Unit - refrence to the unit we are checking if it can still do something
+    * @returns bool
+    * @author Callum Dunstone
+    */
+    public bool CheckIfStillActive(Unit unit)
+    {
+        if (unit.movementPoints > 0 || unit.hasAttacked == false)
+        {
+            if (unit.commands.Count == 0)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
 
     /*
@@ -285,8 +357,17 @@ public class GameManagment : MonoBehaviour
     */
     public void ToggleTileModifiersActive()
     {
+
+        //gather and show new walkable tiles
         if (selectedUnit.movementPoints > 0)
         {
+            List<Tiles> holder = GetArea.GetAreaOfMoveable(map.GetTileAtPos(selectedUnit.transform.position), selectedUnit.movementPoints);
+
+            foreach (Tiles tile in holder)
+            {
+                movableTiles.Add(tile);
+            }
+
             foreach (Tiles tile in movableTiles)
             {
                 if (tile.walkableHighLight.gameObject.activeSelf == false)
@@ -296,8 +377,16 @@ public class GameManagment : MonoBehaviour
             }
         }
 
+        //gathewr and show all attackabe tiles
         if (selectedUnit.hasAttacked == false)
         {
+            List<Tiles> holder2 = GetArea.GetAreaOfAttack(map.GetTileAtPos(selectedUnit.transform.position), selectedUnit.attackRange);
+
+            foreach (Tiles tile in holder2)
+            {
+                attackableTiles.Add(tile);
+            }
+
             foreach (Tiles tile in attackableTiles)
             {
                 if (tile.attackRangeHighLight.gameObject.activeSelf == false)
