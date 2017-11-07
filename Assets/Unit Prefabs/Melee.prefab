@@ -334,30 +334,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 1991271546020698}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f031d69f410bf79499e03b81663372e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 585a3120116478347817f9734025db91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerID: 0
   movementRange: 8
   attackRange: 1
   armour: 1
-  baseArmour: 0
+  baseArmour: 1
   damage: 1750
   maxHealth: 6000
   health: 6000
   AOV: 7
-  movementPoints: 0
+  movementPoints: 8
   hasAttacked: 0
   movementSpeed: 3
-  attackMultiplier: 1
+  attackMultiplier: 1.1
   attackTime: 1
   deathTime: 1
-  aovOBJ: []
+  aovOBJ:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   sightPrefab: {fileID: 1915189985047014, guid: e9d606d4ec06a2d49a22931b679b76cc,
     type: 2}
-  hpBar: {fileID: 114395128567018594}
-  hpNum: {fileID: 114562716748141024}
-  armourBar: {fileID: 212630981226311762}
+  sightHolder: {fileID: 0}
+  hpBar: {fileID: 0}
+  hpNum: {fileID: 0}
+  armourBar: {fileID: 0}
 --- !u!114 &114730600801865704
 MonoBehaviour:
   m_ObjectHideFlags: 1
