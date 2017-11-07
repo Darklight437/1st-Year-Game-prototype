@@ -54,9 +54,6 @@ public class GameManagment : MonoBehaviour
     //bool indicating if the game is in-between turns
     public bool transitioning = false;
 
-    //reference to the world space UI manager script
-    public WorldspaceManager worldUI = null;
-
     //David's
     //reference to Main UI manager script
     public UIManager UIManager = null;
@@ -141,9 +138,9 @@ public class GameManagment : MonoBehaviour
         }
 
         //turn off the action menu
-        //worldUI.gameObject.GetComponent<Canvas>().enabled = false;
+        //TODO link action mkenu to Main UI Manager
         //replaced changing the canvas with the whole gameobject
-        worldUI.gameObject.SetActive(false);
+        //worldUI.gameObject.SetActive(false);
         if (selectedUnit != null)
         {
             //turn off the unit selection glow
@@ -244,7 +241,7 @@ public class GameManagment : MonoBehaviour
             if (selectedUnit != unit)
             {
                 //worldUI.gameObject.GetComponent<Canvas>().enabled = false;
-                worldUI.gameObject.SetActive(false);
+                //worldUI.gameObject.SetActive(false);
             }
 
             //stop showing walkable tiles if thy where showing
@@ -456,13 +453,13 @@ public class GameManagment : MonoBehaviour
                 //David 
                 //gonna change the Worldspace UI to screenspace set the position relative to the click
                 //set-up the world UI
-                worldUI.gameObject.SetActive(true);
-                worldUI.AttButton.SetActive(true);
-                worldUI.MoveButton.SetActive(true);
-                worldUI.SpcButton.SetActive(true);
+                //worldUI.gameObject.SetActive(true);
+                //worldUI.AttButton.SetActive(true);
+                //worldUI.MoveButton.SetActive(true);
+                //worldUI.SpcButton.SetActive(true);
 
 
-                worldUI.PosManager.position = Input.mousePosition;
+                //worldUI.PosManager.position = Input.mousePosition;
                 //worldUI.transform.position = new Vector3(endTile.pos.x, worldUI.transform.position.y, endTile.pos.z);
                 //worldUI.gameObject.GetComponent<Canvas>().enabled = true;
                 //get the tile position of the unit
@@ -498,31 +495,31 @@ public class GameManagment : MonoBehaviour
                 //can the unit attack the tile
                 if (manhattanDistanceSqr <= selectedUnit.attackRange * selectedUnit.attackRange && !selectedUnit.hasAttacked)
                 {
-                    worldUI.AttButton.SetActive(true);
+                    //worldUI.AttButton.SetActive(true);
                 }
                 else
                 {
-                    worldUI.AttButton.SetActive(false);
+                    //worldUI.AttButton.SetActive(false);
                 }
 
                 //can the unit move to the tile, also a movement range of 0 means the path couldn't be found
                 if (pathDistanceSqr <= selectedUnit.movementPoints * selectedUnit.movementPoints && pathDistanceSqr > 0.0f)
                 {
-                    worldUI.MoveButton.SetActive(true);
+                    //worldUI.MoveButton.SetActive(true);
                 }
                 else
                 {
-                    worldUI.MoveButton.SetActive(false);
+                    //worldUI.MoveButton.SetActive(false);
                 }
 
                 //can the unit apply a special move to the tile
                 if (manhattanDistanceSqr <= selectedUnit.attackRange * selectedUnit.attackRange && !selectedUnit.hasAttacked)
                 {
-                    worldUI.SpcButton.SetActive(true);
+                    //worldUI.SpcButton.SetActive(true);
                 }
                 else
                 {
-                    worldUI.SpcButton.SetActive(false);
+                    //worldUI.SpcButton.SetActive(false);
                 }
 
 
