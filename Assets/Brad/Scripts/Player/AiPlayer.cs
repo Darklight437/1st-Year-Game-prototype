@@ -76,10 +76,23 @@ public class AiPlayer : BasePlayer
     }
 
 
-
     // Update is called once per frame
     new void Update()
     {
+    }
+
+    /*
+    * UpdateTurn 
+    * overrides BasePlayers' UpdateTurn()
+    * 
+    * called once per frame while the player is active
+    * 
+    * @returns void
+    */
+    public override void UpdateTurn()
+    {
+
+
         //get the size of the units list
         int unitSize = units.Count;
 
@@ -98,19 +111,6 @@ public class AiPlayer : BasePlayer
             //this will invoke the most appropriate callback
             logicMachine.Execute();
         }
-    }
-
-
-    /*
-    * UpdateTurn 
-    * overrides BasePlayers' UpdateTurn()
-    * 
-    * called once per frame while the player is active
-    * 
-    * @returns void
-    */
-    public override void UpdateTurn()
-    {
 
         manager.OnNextTurn();
 
