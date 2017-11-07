@@ -59,8 +59,7 @@ public class GameManagment : MonoBehaviour
 
     //David's
     //reference to Main UI manager script
-    //will probably need this later, not active right now
-    //public UIManager UIManager = null;
+    public UIManager UIManager = null;
 
     //type of action from the world space manager
     public eActionType actionEvent = eActionType.NULL;
@@ -731,6 +730,8 @@ public class GameManagment : MonoBehaviour
     public void OnKingKilled(int playerID)
     {
         Debug.Log(playerID.ToString() + "'s King has been slain!");
+        //sets the UI to display the victory splashscreen
+        UIManager.currUIState = UIManager.eUIState.ENDGAME;
     }
 
 
