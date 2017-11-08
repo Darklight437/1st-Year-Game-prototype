@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
     public eUIState currUIState;
 
     public enum eCommandState { MSC, ASC, MC, AC, SC, C, OFF }
-    public eCommandState CurrentCommand;
+    private eCommandState CurrentCommand = eCommandState.OFF;
 
     //all the UI elements in a play scene
     public GameObject PauseM = null;
@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
     //the spare rectTransforms that the buttons will sit at
     public RectTransform[] ButtonPos = new RectTransform[5];
     //the core position that the buttons move to
-    public RectTransform MenuPosition;
+    public GameObject MenuPosition;
 
     //the button Gameobjects
     public GameObject[] Buttons = new GameObject[4];
@@ -124,6 +124,7 @@ public class UIManager : MonoBehaviour
         {
 
             case eCommandState.MSC:
+                turnOffButtons();
                 Buttons[0].SetActive(true);
                 Buttons[2].SetActive(true);
                 Buttons[3].SetActive(true);
@@ -131,6 +132,7 @@ public class UIManager : MonoBehaviour
                 break;
 
             case eCommandState.ASC:
+                turnOffButtons();
                 Buttons[1].SetActive(true);
                 Buttons[2].SetActive(true);
                 Buttons[3].SetActive(true);
@@ -138,24 +140,28 @@ public class UIManager : MonoBehaviour
                 break;
 
             case eCommandState.MC:
+                turnOffButtons();
                 Buttons[0].SetActive(true);
                 Buttons[3].SetActive(true);
                 moveButton();
                 break;
 
             case eCommandState.AC:
+                turnOffButtons();
                 Buttons[1].SetActive(true);
                 Buttons[3].SetActive(true);
                 moveButton();
                 break;
 
             case eCommandState.SC:
+                turnOffButtons();
                 Buttons[2].SetActive(true);
                 Buttons[3].SetActive(true);
                 moveButton();
                 break;
 
             case eCommandState.C:
+                turnOffButtons();
                 Buttons[3].SetActive(true);
                 moveButton();
                 break;

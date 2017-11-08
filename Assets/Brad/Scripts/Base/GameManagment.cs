@@ -63,7 +63,7 @@ public class GameManagment : MonoBehaviour
   * UIManager.ButtonState(UIManager.eCommandState.OFF);
   * turns off all buttons
   * other button states are based off the board
-  * MSC 
+  * MSC etcetera
   * 
   * 
   */
@@ -150,9 +150,7 @@ public class GameManagment : MonoBehaviour
         }
 
         //turn off the action menu
-        //TODO link action menu to Main UI Manager
-        //turn off the buttons
-
+        
         UIManager.ButtonState(UIManager.eCommandState.OFF);
         if (selectedUnit != null)
         {
@@ -253,8 +251,9 @@ public class GameManagment : MonoBehaviour
             //the player is selecting a different unit, hide the menu
             if (selectedUnit != unit)
             {
-
+                //not intended
                 UIManager.ButtonState(UIManager.eCommandState.OFF);
+                UIManager.MenuPosition.SetActive(false);
             }
 
             //stop showing walkable tiles if thy where showing
@@ -386,7 +385,7 @@ public class GameManagment : MonoBehaviour
             }
         }
 
-        //gathewr and show all attackabe tiles
+        //gather and show all attackabe tiles
         if (selectedUnit.hasAttacked == false)
         {
             List<Tiles> holder2 = GetArea.GetAreaOfAttack(map.GetTileAtPos(selectedUnit.transform.position), selectedUnit.attackRange, map);
@@ -466,15 +465,16 @@ public class GameManagment : MonoBehaviour
                 //David 
                 //gonna change the Worldspace UI to screenspace set the position relative to the click
                 //set-up the world UI
-                //worldUI.gameObject.SetActive(true);
-                //worldUI.AttButton.SetActive(true);
-                //worldUI.MoveButton.SetActive(true);
-                //worldUI.SpcButton.SetActive(true);
 
 
-                //worldUI.PosManager.position = Input.mousePosition;
-                //worldUI.transform.position = new Vector3(endTile.pos.x, worldUI.transform.position.y, endTile.pos.z);
-                //worldUI.gameObject.GetComponent<Canvas>().enabled = true;
+                //turn on UI
+                UIManager.MenuPosition.SetActive(true);
+
+                //set UI to mouse position
+                UIManager.MenuPosition.GetComponent<RectTransform>().position = Input.mousePosition;
+                
+
+                
                 //get the tile position of the unit
                 Vector3 unitTilePos = selectedUnit.transform.position - Vector3.up * selectedUnit.transform.position.y;
 
@@ -488,9 +488,9 @@ public class GameManagment : MonoBehaviour
                 manhattanDistanceSqr *= manhattanDistanceSqr;
 
                 //reset the buttons
-               // worldUI.AttButton.SetActive(false);
-              //  worldUI.MoveButton.SetActive(false);
-              //  worldUI.SpcButton.SetActive(false);
+                // worldUI.AttButton.SetActive(false);
+                // worldUI.MoveButton.SetActive(false);
+                // worldUI.SpcButton.SetActive(false);
 
                 //because A* will consider this not passable
                 startTile.unit = null;
@@ -505,36 +505,50 @@ public class GameManagment : MonoBehaviour
                 float pathDistanceSqr = path.Count;
                 pathDistanceSqr *= pathDistanceSqr;
 
+                //Buttonshow Block 
+
+                bool move;
+                bool attack;
+                bool special;
+
                 //can the unit attack the tile
                 if (manhattanDistanceSqr <= selectedUnit.attackRange * selectedUnit.attackRange && !selectedUnit.hasAttacked)
                 {
                     //worldUI.AttButton.SetActive(true);
+                    attack = true;
                 }
                 else
                 {
                     //worldUI.AttButton.SetActive(false);
+                    attack = false;
                 }
 
                 //can the unit move to the tile, also a movement range of 0 means the path couldn't be found
                 if (pathDistanceSqr <= selectedUnit.movementPoints * selectedUnit.movementPoints && pathDistanceSqr > 0.0f)
                 {
                     //worldUI.MoveButton.SetActive(true);
+                    move = true;
                 }
                 else
                 {
                     //worldUI.MoveButton.SetActive(false);
+                    move = false;
                 }
 
                 //can the unit apply a special move to the tile
                 if (manhattanDistanceSqr <= selectedUnit.attackRange * selectedUnit.attackRange && !selectedUnit.hasAttacked)
                 {
                     //worldUI.SpcButton.SetActive(true);
+                    special = true;
                 }
                 else
                 {
                     //worldUI.SpcButton.SetActive(false);
+                    special = true;
                 }
-
+                //sets the button state in the UI manager to show the appropriate buttons
+                UIManager.ButtonState(getvalidButtons(move, attack, special));
+                
 
             }
 
@@ -557,6 +571,48 @@ public class GameManagment : MonoBehaviour
         }
     }
     
+
+    /*
+     * getValidButtons
+     * 
+     * @param bool move, bool attack, bool special: wether each button should be shown
+     * @returns the correct enum forthe current state of button combinations
+     * @author David Passlow
+     */
+   private UIManager.eCommandState getvalidButtons(bool mov, bool att, bool spec)
+    {
+        if (mov && spec)
+        {
+            return UIManager.eCommandState.MSC;
+        }
+        if (att && spec)
+        {
+            return UIManager.eCommandState.ASC;
+        }
+        if (mov)
+        {
+            return UIManager.eCommandState.MC;
+        }
+        if (att)
+        {
+            return UIManager.eCommandState.AC;
+        }
+        if (spec)
+        {
+            return UIManager.eCommandState.SC;
+        }
+        if (!mov && !spec && !att)
+        {
+            return UIManager.eCommandState.C;
+        }
+        if (mov && att)
+        {
+            return UIManager.eCommandState.AC;
+        }
+
+
+        return UIManager.eCommandState.C;
+    }
 
     /*
     * OnActionSelected 

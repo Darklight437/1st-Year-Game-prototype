@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 241574186}
   - component: {fileID: 241574185}
   m_Layer: 0
-  m_Name: Magic UI
+  m_Name: ManagerMachine
   m_TagString: Untagged
   m_Icon: {fileID: 8220585740371884164, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -373,6 +373,13 @@ MonoBehaviour:
   CurrentCommand: 0
   PauseM: {fileID: 1119795726}
   EndM: {fileID: 607061528}
+  ButtonPos:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  MenuPosition: {fileID: 2144851144}
   Buttons:
   - {fileID: 0}
   - {fileID: 0}
@@ -1311,7 +1318,22 @@ Prefab:
       propertyPath: m_Name
       value: MainUI
       objectReference: {fileID: 0}
+    - target: {fileID: 114987812177809552, guid: 8aad3d6cf55e96540867216870b23bd6,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114987812177809552, guid: 8aad3d6cf55e96540867216870b23bd6,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnActionSelected
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114868958474548270, guid: 8aad3d6cf55e96540867216870b23bd6, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 8aad3d6cf55e96540867216870b23bd6, type: 2}
   m_IsPrefabParent: 0
+--- !u!224 &2144851144 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 224301084665724230, guid: 8aad3d6cf55e96540867216870b23bd6,
+    type: 2}
+  m_PrefabInternal: {fileID: 2144851143}
