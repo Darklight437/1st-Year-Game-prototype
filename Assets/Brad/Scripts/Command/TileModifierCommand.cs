@@ -23,12 +23,6 @@ public class TileModifierCommand : UnitCommand
     //the type of modification to apply
     public eModifyType modifyType = eModifyType.HEALING;
 
-    public void Start()
-    {
-
-    }
-
-
     /*
     * TileModifierCommand()
     * 
@@ -42,7 +36,10 @@ public class TileModifierCommand : UnitCommand
     */
     public TileModifierCommand(Unit u, VoidFunc scb, VoidFunc fcb, Tiles st, Tiles et) : base(u, scb, fcb, st, et)
     {
-        unit.ArtLink.SetTrigger("SAttack");
+        if (unit.ArtLink != null)
+        {
+            unit.ArtLink.SetTrigger("SAttack");
+        }
     }
 
 
@@ -72,8 +69,10 @@ public class TileModifierCommand : UnitCommand
         }
 
         unit.hasAttacked = true;
-        unit.ArtLink.SetBool("ActionsAvailable", false);
-
+        if (unit.ArtLink != null)
+        {
+            unit.ArtLink.SetBool("ActionsAvailable", false);
+        }
         successCallback();
     }
 }
