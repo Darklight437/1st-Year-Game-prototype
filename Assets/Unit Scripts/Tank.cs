@@ -36,9 +36,7 @@ public class Tank : Unit
         if (actionType == GameManagment.eActionType.MOVEMENT)
         {
             MoveCommand mc = new MoveCommand(this, callstack, OnCommandFailed, st, et);
-
-            ArtLink.SetBool("IsWalking", true);
-
+            
             commands.Add(mc);
         }
         //attack command
@@ -46,8 +44,7 @@ public class Tank : Unit
         {
             AttackCommand ac = new AttackCommand(this, callstack, OnCommandFailed, st, et);
 
-            //take damage
-            //et.unit.ArtLink.
+            
 
             ac.attackTimer = attackTime;
 

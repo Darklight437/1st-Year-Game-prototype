@@ -35,10 +35,15 @@ public class AttackCommand : UnitCommand
         map = GameObject.FindObjectOfType<Map>();
 
         // Attacking the enemy unit Anim
-        unit.ArtLink.SetTrigger("Attack");
-
+        if (unit.ArtLink != null)
+        {
+            unit.ArtLink.SetTrigger("Attack");
+        }
         //Enemy Unit taking damage Anim
-        et.unit.ArtLink.SetTrigger("TakeDamage");
+        if (unit.ArtLink != null)
+        {
+            et.unit.ArtLink.SetTrigger("TakeDamage");
+        }
     }
 
 
@@ -78,6 +83,9 @@ public class AttackCommand : UnitCommand
         {
             failedCallback();
         }
-        unit.ArtLink.SetBool("ActionAvailable", false);
+        if (unit.ArtLink != null)
+        {
+            unit.ArtLink.SetBool("ActionAvailable", false);
+        }
     }
 }

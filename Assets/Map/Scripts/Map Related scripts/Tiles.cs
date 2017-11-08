@@ -58,8 +58,16 @@ public class Tiles : MonoBehaviour
     //the gameobject that is used to show walkable that we can toggle on and off
     public GameObject walkableHighLight;
 
+    //prefabe used to show your units attack range
     public GameObject attackRangePrefab;
+    //the refrence the the gameobject to show the units attack range
     public GameObject attackRangeHighLight;
+    
+    //the prefab to show the area an enemy could attack you on there turn
+    public GameObject dangerZoneRangePrefab;
+    //the variable that holds the tile modifier that shows you where you can be attacked
+    public GameObject dangerZoneRangeHighLight;
+
 
     //unit that is on the tile
     public Unit unit = null;
@@ -233,6 +241,12 @@ public class Tiles : MonoBehaviour
         attackRangeHighLight = obj2;
         obj2.transform.localPosition = new Vector3(0, 0, 0);
         obj2.gameObject.SetActive(false);
+
+        GameObject obj3 = Instantiate(dangerZoneRangePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        obj3.transform.SetParent(gameObject.transform);
+        dangerZoneRangeHighLight = obj3;
+        obj3.transform.localPosition = new Vector3(0, 0, 0);
+        obj3.gameObject.SetActive(false);
     }
 
     /*

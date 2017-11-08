@@ -34,6 +34,18 @@ public class SpreadAttackCommand : UnitCommand
     {
         //find the map component
         map = GameObject.FindObjectOfType<Map>();
+
+        // Attacking the enemy unit Anim
+        if (unit.ArtLink != null)
+        {
+            unit.ArtLink.SetTrigger("Attack");
+        }
+        //Enemy Unit taking damage Anim
+        if (unit.ArtLink != null)
+        {
+            et.unit.ArtLink.SetTrigger("TakeDamage");
+        }
+
     }
 
 
@@ -86,10 +98,14 @@ public class SpreadAttackCommand : UnitCommand
                 float ratio = 1 - ((float)(manhattDistance - 1)  / (float)maxDistance);
 
                 unit.Attack(defendingUnit, ratio);
-                
-            }
-        }
 
+            }
+            
+        }
+        if (unit.ArtLink != null)
+        {
+            unit.ArtLink.SetBool("ActionAvailable", false);
+        }
         successCallback();
     }
 }

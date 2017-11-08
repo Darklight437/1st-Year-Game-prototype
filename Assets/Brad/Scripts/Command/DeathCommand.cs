@@ -34,7 +34,10 @@ public class DeathCommand : UnitCommand
     */
     public DeathCommand(Unit u, VoidFunc scb, VoidFunc fcb, Tiles st, Tiles et) : base(u, scb, fcb, st, et)
     {
-        unit.ArtLink.SetTrigger("Death");
+        if (unit.ArtLink != null)
+        {
+            unit.ArtLink.SetTrigger("Death");
+        }
         //disconnect the unit from the grid
         startTile.unit = null;
     }

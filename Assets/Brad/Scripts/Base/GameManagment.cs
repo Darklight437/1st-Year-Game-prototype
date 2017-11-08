@@ -39,6 +39,9 @@ public class GameManagment : MonoBehaviour
     //list of all attackable tiles
     public List<Tiles> attackableTiles = new List<Tiles>();
 
+    //list of all tiles that an enemy could attack you in
+    public List<Tiles> dangerTiles = new List<Tiles>();
+
     //reference to the starting tile (first selection)
     public Tiles startTile = null;
 
@@ -155,9 +158,9 @@ public class GameManagment : MonoBehaviour
         if (selectedUnit != null)
         {
             //turn off the unit selection glow
-            selectedUnit.GetComponent<Renderer>().material.shader = Shader.Find("Custom/DefaultShader");
+           // selectedUnit.GetComponent<Renderer>().material.shader = Shader.Find("Custom/DefaultShader");
         }
-
+		 
         //deselect the unit
         selectedUnit = null;
 
@@ -205,7 +208,7 @@ public class GameManagment : MonoBehaviour
                 for (int u = 0; u < players[i].units.Count; u++)
                 {
 
-                    players[i].units[u].GetComponent<Renderer>().enabled = false;
+                  //  players[i].units[u].GetComponent<Renderer>().enabled = false;
                     players[i].units[u].GetComponent<Unit>().sightHolder.SetActive(false);
                     foreach (Transform tran in players[i].units[u].transform)
                     {
@@ -218,7 +221,7 @@ public class GameManagment : MonoBehaviour
         //go through all active player units and make sure they are active
         foreach (Unit unit in activePlayer.units)
         {
-            unit.GetComponent<Renderer>().enabled = true;
+           // unit.GetComponent<Renderer>().enabled = true;
             unit.sightHolder.gameObject.SetActive(true);
 
             foreach (Transform tran in unit.transform)
@@ -238,11 +241,11 @@ public class GameManagment : MonoBehaviour
     * @returns void
     */
     public void OnUnitSelected(Unit unit)
-    {
+    { 
 
         if (selectedUnit != null)
         {
-            selectedUnit.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Custom/DefaultShader");
+           // selectedUnit.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Custom/DefaultShader");
         }
         
         //there are no units selected
@@ -260,7 +263,7 @@ public class GameManagment : MonoBehaviour
             ToggleTileModifiersFalse();
 
             selectedUnit = unit;
-            selectedUnit.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Custom/WallThrough");
+           // selectedUnit.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Custom/WallThrough");
             
             ToggleTileModifiersActive();
         }
@@ -365,9 +368,8 @@ public class GameManagment : MonoBehaviour
     */
     public void ToggleTileModifiersActive()
     {
-
         //gather and show new walkable tiles
-        if (selectedUnit.movementPoints > 0)
+        if (selectedUnit != null && selectedUnit.movementPoints > 0)
         {
             List<Tiles> holder = GetArea.GetAreaOfMoveable(map.GetTileAtPos(selectedUnit.transform.position), selectedUnit.movementPoints, map);
 
@@ -386,7 +388,7 @@ public class GameManagment : MonoBehaviour
         }
 
         //gather and show all attackabe tiles
-        if (selectedUnit.hasAttacked == false)
+        if (selectedUnit != null && selectedUnit.hasAttacked == false && selectedUnit != null)
         {
             List<Tiles> holder2 = GetArea.GetAreaOfAttack(map.GetTileAtPos(selectedUnit.transform.position), selectedUnit.attackRange, map);
 
@@ -401,6 +403,16 @@ public class GameManagment : MonoBehaviour
                 {
                     tile.attackRangeHighLight.gameObject.SetActive(true);
                 }
+            }
+        }
+
+        if (dangerTiles.Count > 0)
+        {
+            Debug.Log(dangerTiles.Count);
+
+            for (int i = 0; i < dangerTiles.Count; i++)
+            {
+                dangerTiles[i].dangerZoneRangeHighLight.gameObject.SetActive(true);
             }
         }
     }
@@ -435,9 +447,14 @@ public class GameManagment : MonoBehaviour
             }
         }
 
+        for (int i = 0; i < dangerTiles.Count; i++)
+        {
+            dangerTiles[i].dangerZoneRangeHighLight.SetActive(false);
+        }
+
         movableTiles.Clear();
         attackableTiles.Clear();
-
+        dangerTiles.Clear();
     }
 
 
@@ -488,6 +505,7 @@ public class GameManagment : MonoBehaviour
                 manhattanDistanceSqr *= manhattanDistanceSqr;
 
                 //reset the buttons
+               
                 // worldUI.AttButton.SetActive(false);
                 // worldUI.MoveButton.SetActive(false);
                 // worldUI.SpcButton.SetActive(false);
@@ -568,6 +586,21 @@ public class GameManagment : MonoBehaviour
                 startTile = tile;
                 OnUnitSelected(tile.unit);
             }
+        }
+
+        if (tile.unit != null && tile.unit.playerID != activePlayer.playerID)
+        {
+            ToggleTileModifiersFalse();
+
+            List<Tiles> holder = GetArea.GetAreaOfAttack(tile, tile.unit.movementRange + tile.unit.attackRange, map);
+
+            for (int i = 0; i < holder.Count; i++)
+            {
+                dangerTiles.Add(holder[i]);
+            }
+
+            ToggleTileModifiersActive();
+
         }
     }
     

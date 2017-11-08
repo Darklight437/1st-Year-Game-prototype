@@ -33,8 +33,10 @@ public class MoveCommand : UnitCommand
     */
     public MoveCommand(Unit u, VoidFunc scb, VoidFunc fcb, Tiles st, Tiles et) : base(u, scb, fcb, st, et)
     {
-
-        unit.ArtLink.SetBool ("IsWalking", true);
+        if (unit.ArtLink != null)
+        {
+            unit.ArtLink.SetBool("IsWalking", true);
+        }
         //find the map component
         map = GameObject.FindObjectOfType<Map>();
     }
@@ -69,13 +71,19 @@ public class MoveCommand : UnitCommand
                 startingTile.unit = null;
                 endTile.unit = unit;
 
-/*_________________________________________________________Testing____________________________________________________*/ //Stop walking Anim
-/*_________________________________________________________Testing____________________________________________________*/ unit.ArtLink.SetBool("IsWalking", false);
+                                                                        //testing                                           //Stop walking Anim
+                                                                                                                          if (unit.ArtLink != null)
+                                                                                                                          {
+                                                                                                                              unit.ArtLink.SetBool("IsWalking", false);
+                                                                                                                          }
             }
             else
             {
                 //Stop walking Anim
-                unit.ArtLink.SetBool("IsWalking", false);
+                if (unit.ArtLink != null)
+                {
+                    unit.ArtLink.SetBool("IsWalking", false);
+                }
 
                 //the path failed
                 startingTile.unit = unit;
@@ -105,7 +113,10 @@ public class MoveCommand : UnitCommand
                 //this is a trap tile, it could kill the unit
                 if (nextTile.tileType == eTileType.DAMAGE)
                 {
-                    unit.ArtLink.SetTrigger("TakeDamage");
+                    if (unit.ArtLink != null)
+                    {
+                        unit.ArtLink.SetTrigger("TakeDamage");
+                    }
                     unit.Defend(GameManagment.stats.trapTileDamage);
                 }
 
@@ -135,8 +146,10 @@ public class MoveCommand : UnitCommand
             successCallback();
 
             //Stop walking Anim
-            unit.ArtLink.SetBool("IsWalking", false);
-
+            if (unit.ArtLink != null)
+            {
+                unit.ArtLink.SetBool("IsWalking", false);
+            }
             return;
         }
     }
