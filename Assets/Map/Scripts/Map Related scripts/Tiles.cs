@@ -68,6 +68,8 @@ public class Tiles : MonoBehaviour
     //the variable that holds the tile modifier that shows you where you can be attacked
     public GameObject dangerZoneRangeHighLight;
 
+    //the statistics used for random number logic
+    public Statistics statistics;
 
     //unit that is on the tile
     public Unit unit = null;
@@ -311,9 +313,7 @@ public class Tiles : MonoBehaviour
         //and make sure the tile is positioned in the right position
         if (useTileSet.tileTypes.Length > 1)
         {
-            int r = UnityEngine.Random.Range(0, useTileSet.tileTypes.Length);
-            
-            GameObject tileSpawn = Instantiate(useTileSet.tileTypes[r], new Vector3(0, 0, 0), Quaternion.identity);
+            GameObject tileSpawn = Instantiate(useTileSet.tileTypes[statistics.RandomNum(tileType)], new Vector3(0, 0, 0), Quaternion.identity);
             tileSpawn.transform.SetParent(gameObject.transform);
 
             tileSpawn.transform.localPosition = new Vector3(0, 0, 0);

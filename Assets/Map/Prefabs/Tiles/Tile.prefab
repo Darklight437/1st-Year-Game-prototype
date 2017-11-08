@@ -106,6 +106,7 @@ MonoBehaviour:
   dangerZoneRangePrefab: {fileID: 1860215358487846, guid: d75f418e2dfa8ca44aadd10608bdd9d8,
     type: 2}
   dangerZoneRangeHighLight: {fileID: 0}
+  statistics: {fileID: 11400000, guid: a6a2d0191422fe4478fda186bbba7e3e, type: 2}
   unit: {fileID: 0}
   indexPos: 0
   parent: {fileID: 0}
