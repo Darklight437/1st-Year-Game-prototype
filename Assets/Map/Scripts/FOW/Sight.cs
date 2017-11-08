@@ -9,7 +9,7 @@ public class Sight : MonoBehaviour
     
     public void OnTriggerStay(Collider other)
     {
-        if (other.GetComponent<Renderer>().enabled == false)
+       /* if (other.GetComponent<Renderer>().enabled == false)
         {
             other.GetComponent<Renderer>().enabled = true;
 
@@ -20,12 +20,12 @@ public class Sight : MonoBehaviour
                     tran.gameObject.SetActive(true);
                 }
             }
-        }
+        }*/
     }
 
     public void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<Unit>().playerID != myUnit.playerID)
+       /* if (other.GetComponent<Unit>().playerID != myUnit.playerID)
         {
             other.GetComponent<Renderer>().enabled = false;
             foreach (Transform tran in other.transform)
@@ -35,6 +35,6 @@ public class Sight : MonoBehaviour
                     tran.gameObject.SetActive(false);
                 }
             }
-        }
+        }*/
     }
 }
