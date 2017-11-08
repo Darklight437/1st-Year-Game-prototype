@@ -103,6 +103,10 @@ MonoBehaviour:
   attackRangePrefab: {fileID: 1231367070330346, guid: f3bdafb20eff6a745a4db28b8f0dc911,
     type: 2}
   attackRangeHighLight: {fileID: 0}
+  dangerZoneRangePrefab: {fileID: 1860215358487846, guid: d75f418e2dfa8ca44aadd10608bdd9d8,
+    type: 2}
+  dangerZoneRangeHighLight: {fileID: 0}
   unit: {fileID: 0}
+  indexPos: 0
   parent: {fileID: 0}
   pos: {x: 0, y: 0, z: 0}

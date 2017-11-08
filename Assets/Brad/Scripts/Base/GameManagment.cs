@@ -39,6 +39,9 @@ public class GameManagment : MonoBehaviour
     //list of all attackable tiles
     public List<Tiles> attackableTiles = new List<Tiles>();
 
+    //list of all tiles that an enemy could attack you in
+    public List<Tiles> dangerTiles = new List<Tiles>();
+
     //reference to the starting tile (first selection)
     public Tiles startTile = null;
 
@@ -353,9 +356,8 @@ public class GameManagment : MonoBehaviour
     */
     public void ToggleTileModifiersActive()
     {
-
         //gather and show new walkable tiles
-        if (selectedUnit.movementPoints > 0)
+        if (selectedUnit != null && selectedUnit.movementPoints > 0)
         {
             List<Tiles> holder = GetArea.GetAreaOfMoveable(map.GetTileAtPos(selectedUnit.transform.position), selectedUnit.movementPoints, map);
 
@@ -374,7 +376,7 @@ public class GameManagment : MonoBehaviour
         }
 
         //gathewr and show all attackabe tiles
-        if (selectedUnit.hasAttacked == false)
+        if (selectedUnit != null && selectedUnit.hasAttacked == false && selectedUnit != null)
         {
             List<Tiles> holder2 = GetArea.GetAreaOfAttack(map.GetTileAtPos(selectedUnit.transform.position), selectedUnit.attackRange, map);
 
@@ -389,6 +391,16 @@ public class GameManagment : MonoBehaviour
                 {
                     tile.attackRangeHighLight.gameObject.SetActive(true);
                 }
+            }
+        }
+
+        if (dangerTiles.Count > 0)
+        {
+            Debug.Log(dangerTiles.Count);
+
+            for (int i = 0; i < dangerTiles.Count; i++)
+            {
+                dangerTiles[i].dangerZoneRangeHighLight.gameObject.SetActive(true);
             }
         }
     }
@@ -423,9 +435,14 @@ public class GameManagment : MonoBehaviour
             }
         }
 
+        for (int i = 0; i < dangerTiles.Count; i++)
+        {
+            dangerTiles[i].dangerZoneRangeHighLight.SetActive(false);
+        }
+
         movableTiles.Clear();
         attackableTiles.Clear();
-
+        dangerTiles.Clear();
     }
 
 
@@ -541,6 +558,21 @@ public class GameManagment : MonoBehaviour
                 startTile = tile;
                 OnUnitSelected(tile.unit);
             }
+        }
+
+        if (tile.unit != null && tile.unit.playerID != activePlayer.playerID)
+        {
+            ToggleTileModifiersFalse();
+
+            List<Tiles> holder = GetArea.GetAreaOfAttack(tile, tile.unit.movementRange + tile.unit.attackRange, map);
+
+            for (int i = 0; i < holder.Count; i++)
+            {
+                dangerTiles.Add(holder[i]);
+            }
+
+            ToggleTileModifiersActive();
+
         }
     }
     
