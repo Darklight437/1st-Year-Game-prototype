@@ -144,9 +144,9 @@ public class GameManagment : MonoBehaviour
         if (selectedUnit != null)
         {
             //turn off the unit selection glow
-            selectedUnit.GetComponent<Renderer>().material.shader = Shader.Find("Custom/DefaultShader");
+           // selectedUnit.GetComponent<Renderer>().material.shader = Shader.Find("Custom/DefaultShader");
         }
-
+		 
         //deselect the unit
         selectedUnit = null;
 
@@ -194,7 +194,7 @@ public class GameManagment : MonoBehaviour
                 for (int u = 0; u < players[i].units.Count; u++)
                 {
 
-                    players[i].units[u].GetComponent<Renderer>().enabled = false;
+                  //  players[i].units[u].GetComponent<Renderer>().enabled = false;
                     players[i].units[u].GetComponent<Unit>().sightHolder.SetActive(false);
                     foreach (Transform tran in players[i].units[u].transform)
                     {
@@ -207,7 +207,7 @@ public class GameManagment : MonoBehaviour
         //go through all active player units and make sure they are active
         foreach (Unit unit in activePlayer.units)
         {
-            unit.GetComponent<Renderer>().enabled = true;
+           // unit.GetComponent<Renderer>().enabled = true;
             unit.sightHolder.gameObject.SetActive(true);
 
             foreach (Transform tran in unit.transform)
@@ -227,11 +227,11 @@ public class GameManagment : MonoBehaviour
     * @returns void
     */
     public void OnUnitSelected(Unit unit)
-    {
+    { 
 
         if (selectedUnit != null)
         {
-            selectedUnit.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Custom/DefaultShader");
+           // selectedUnit.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Custom/DefaultShader");
         }
         
         //there are no units selected
@@ -248,7 +248,7 @@ public class GameManagment : MonoBehaviour
             ToggleTileModifiersFalse();
 
             selectedUnit = unit;
-            selectedUnit.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Custom/WallThrough");
+           // selectedUnit.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Custom/WallThrough");
             
             ToggleTileModifiersActive();
         }
