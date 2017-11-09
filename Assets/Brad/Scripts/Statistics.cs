@@ -14,19 +14,32 @@ public class Statistics : ScriptableObject
     //amount of damage a trap tile does when stepped on
     public float trapTileDamage = 100.0f;
 
+    //the amount and list of normal tiles that are still useable for random logic
     public int normalTileTypeAmount;
     private List<int> m_normalTileVariantUnused;
 
+    //the amount and list of damage tiles that are still useable for random logic
     public int damageTileTypeAmount;
     private List<int> m_damageTileVariantUnused;
 
+    //the amount and list of impassable tiles that are still useable for random logic
     public int impassableTileTypeAmount;
     private List<int> m_impassableTileVariantUnused;
 
+    //the amount and list of defense tiles that are still useable for random logic
     public int defenseTileTypeAmount;
     private List<int> m_defenseTileVariantUnused;
 
-    public int RandomNum(eTileType type)
+    /*
+    * RandomTileNum 
+    * int function
+    * 
+    * this is used for shuffle bag logic random number generation used for tile type varient generation
+    * 
+    * @returns int - returns an int used as an indext to get a new random tile
+    * @Author Callum Dunstone
+    */
+    public int RandomTileNum(eTileType type)
     {
         RestockTileVarientsUnsused();
         int num = 0;
@@ -70,6 +83,15 @@ public class Statistics : ScriptableObject
         return 0;
     }
 
+    /*
+    * RestockTileVarientsUnsused 
+    * void function
+    * 
+    * this checks all the list used for the shuffle bag to see if any has run out and restocks it if so
+    * 
+    * @returns void
+    * @Author Callum Dunstone
+    */
     public void RestockTileVarientsUnsused()
     {
         if (m_normalTileVariantUnused.Count == 0)
@@ -101,6 +123,96 @@ public class Statistics : ScriptableObject
             for (int i = 0; i < impassableTileTypeAmount; i++)
             {
                 m_impassableTileVariantUnused.Add(i);
+            }
+        }
+    }
+
+    //the amount and list of normal tiles that are still useable for random logic
+    public int normalChunkTypeAmount;
+    private List<int> m_normalChunkVariantUnused;
+
+    //the amount and list of damage tiles that are still useable for random logic
+    public int damageChunkTypeAmount;
+    private List<int> m_damageChunkVariantUnused;
+
+    //the amount and list of impassable tiles that are still useable for random logic
+    public int impassableChunkTypeAmount;
+    private List<int> m_impassableChunkVariantUnused;
+
+    //the amount and list of defense tiles that are still useable for random logic
+    public int defenseChunkTypeAmount;
+    private List<int> m_defenseChunkVariantUnused;
+
+    public int RandomChunkNum(eChunkTypes type)
+    {
+        RestockChunkLists();
+
+        int num = 0;
+
+        switch (type)
+        {
+            case eChunkTypes.NORMAL:
+                num = Random.Range(0, m_normalChunkVariantUnused.Count);
+                num = m_normalChunkVariantUnused[num];
+                m_normalChunkVariantUnused.Remove(num);
+                return num;
+
+            case eChunkTypes.DAMAGE:
+                num = Random.Range(0, m_damageChunkVariantUnused.Count);
+                num = m_damageChunkVariantUnused[num];
+                m_damageChunkVariantUnused.Remove(num);
+                return num;
+
+            case eChunkTypes.DEFENSE:
+                num = Random.Range(0, m_defenseChunkVariantUnused.Count);
+                num = m_defenseChunkVariantUnused[num];
+                m_defenseChunkVariantUnused.Remove(num);
+                return num;
+
+            case eChunkTypes.IMPASSABLE:
+                num = Random.Range(0, m_impassableChunkVariantUnused.Count);
+                num = m_impassableChunkVariantUnused[num];
+                m_impassableChunkVariantUnused.Remove(num);
+                return num;
+
+            default:
+                return num;
+        }
+        
+        return num;
+    }
+
+    public void RestockChunkLists()
+    {
+        if (m_normalChunkVariantUnused.Count == 0)
+        {
+            for (int i = 0; i < normalChunkTypeAmount; i++)
+            {
+                m_normalChunkVariantUnused.Add(i);
+            }
+        }
+
+        if (m_damageChunkVariantUnused.Count == 0)
+        {
+            for (int i = 0; i < damageChunkTypeAmount; i++)
+            {
+                m_damageChunkVariantUnused.Add(i);
+            }
+        }
+
+        if (m_defenseChunkVariantUnused.Count == 0)
+        {
+            for (int i = 0; i < defenseChunkTypeAmount; i++)
+            {
+                m_defenseChunkVariantUnused.Add(i);
+            }
+        }
+
+        if (m_impassableChunkVariantUnused.Count == 0)
+        {
+            for (int i = 0; i < impassableChunkTypeAmount; i++)
+            {
+                m_impassableChunkVariantUnused.Add(i);
             }
         }
     }

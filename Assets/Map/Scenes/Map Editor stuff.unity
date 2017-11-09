@@ -262,7 +262,7 @@ MonoBehaviour:
   mapTiles: []
   width: 5
   height: 5
-  mapChunkPrefab: {fileID: 1113916537842718, guid: 56b5c04c6f451364eb78e8bcb6ae8cd9,
+  mapChunkPrefab: {fileID: 1203163268213146, guid: 7ed2ffa744df56448a8d06e70a016b0c,
     type: 2}
   mapChunks: []
 --- !u!4 &862279565

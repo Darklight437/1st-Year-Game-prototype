@@ -8,9 +8,9 @@ TagManager:
   - Tile
   - World
   - Fog
-  - Walkable
   - HPBar
   - MapChunk
+  - TileModifier
   layers:
   - Default
   - TransparentFX

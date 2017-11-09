@@ -6,7 +6,7 @@ public class RandomMap : Map
 {
     public GameObject mapChunkPrefab;
 
-    public List<MapChunk> mapChunks = new List<MapChunk>();
+    public List<Chunk> mapChunks = new List<Chunk>();
 
     public override void SetUp()
     {
@@ -25,13 +25,17 @@ public class RandomMap : Map
                 holder.transform.parent = transform;
                 holder.transform.localPosition = new Vector3(x * 5, 0, z * 5);
 
-                MapChunk chunk = holder.GetComponent<MapChunk>();
+                Chunk chunk = holder.GetComponent<Chunk>();
+
+                chunk.chunkType = (eChunkTypes)Random.Range(0, 4);
+                chunk.GenerateRandomChunkVariant();
+
 
                 mapChunks.Add(chunk);
 
-                for (int i = 0; i < chunk.chunkTiles.Length; i++)
+                for (int i = 0; i < chunk.myChunk.chunkTiles.Length; i++)
                 {
-                    mapTiles.Add(chunk.chunkTiles[i]);
+                    mapTiles.Add(chunk.myChunk.chunkTiles[i]);
                 }
             }
         }

@@ -6,6 +6,8 @@ public class MapChunk : MonoBehaviour
 {
     public Tiles[] chunkTiles = new Tiles[5 * 5];
 
+
+
     public Tiles GetTileAtPos(Vector3 pos)
     {
         for (int i = 0; i < chunkTiles.Length; i++)

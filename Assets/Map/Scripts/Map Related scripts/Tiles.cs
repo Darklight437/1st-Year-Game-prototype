@@ -313,7 +313,7 @@ public class Tiles : MonoBehaviour
         //and make sure the tile is positioned in the right position
         if (useTileSet.tileTypes.Length > 1)
         {
-            GameObject tileSpawn = Instantiate(useTileSet.tileTypes[statistics.RandomNum(tileType)], new Vector3(0, 0, 0), Quaternion.identity);
+            GameObject tileSpawn = Instantiate(useTileSet.tileTypes[statistics.RandomTileNum(tileType)], new Vector3(0, 0, 0), Quaternion.identity);
             tileSpawn.transform.SetParent(gameObject.transform);
 
             tileSpawn.transform.localPosition = new Vector3(0, 0, 0);

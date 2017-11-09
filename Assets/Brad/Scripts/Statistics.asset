@@ -35,3 +35,7 @@ MonoBehaviour:
   damageTileTypeAmount: 4
   impassableTileTypeAmount: 8
   defenseTileTypeAmount: 2
+  normalChunkTypeAmount: 1
+  damageChunkTypeAmount: 2
+  impassableChunkTypeAmount: 2
+  defenseChunkTypeAmount: 2
