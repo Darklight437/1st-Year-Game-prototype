@@ -18,17 +18,19 @@ public class Map : MonoBehaviour
     //maps width and height
     public int width;
     public int height;
-    
-    /*
-    * Start
-    * public void function
-    * 
-    * this function is called at the start of the scripts life
-    * in play mode
-    * 
-    * @returns nothing
-    */
-    void Start ()
+
+    protected bool setUp = false;
+
+    private void Update()
+    {
+        if (setUp == false)
+        {
+            SetUp();
+            setUp = true;
+        }
+    }
+
+    public virtual void SetUp()
     {
         SetTileEdges();
 
@@ -37,7 +39,7 @@ public class Map : MonoBehaviour
             mapTiles[i].indexPos = i;
         }
     }
-
+    
     /*
     * SetTileEdges
     * public void function

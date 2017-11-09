@@ -10,6 +10,7 @@ TagManager:
   - Fog
   - Walkable
   - HPBar
+  - MapChunk
   layers:
   - Default
   - TransparentFX

@@ -251,5 +251,46 @@ public class MapEditorScript : MonoBehaviour
 
         world.GetComponent<Map>().mapTiles = newTiles;
     }
+
+    /*
+    * GenerateMapChunk
+    * public void function
+    * 
+    * this funcktion generates a simple 5,5 map chunk
+    * 
+    * @returns nothing
+    */
+    public void GenerateMapChunk()
+    {
+        //new world obj
+        world = new GameObject();
+
+        //sets up the chunk obj
+        world.name = "Map Chunk";
+        world.tag = "MapChunk";
+        MapChunk map = world.AddComponent<MapChunk>();
+
+        int num = 0;
+
+        //nestd for loop to instantiate the map
+        for (int x = 0; x < 5; x++)
+        {
+            for (int z = 0; z < 5; z++)
+            {
+                GameObject mapTile = Instantiate(tileObj, new Vector3(x, 0, z), Quaternion.identity);
+
+                //set parent of tile to the world obj and there tile type to a bland one
+                //then spawns the moddle in
+                mapTile.transform.SetParent(world.transform);
+                mapTile.GetComponent<Tiles>().tileType = eTileType.NORMAL;
+                mapTile.GetComponent<Tiles>().GenerateBaseTile();
+
+                //adds the tile to the map chunk script of tiles
+                map.chunkTiles[num] = mapTile.GetComponent<Tiles>();
+
+                num++;
+            }
+        }
+    }
 }
 #endif

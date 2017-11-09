@@ -40,6 +40,12 @@ public class MapEditor : Editor
             myScript.GenerateBasMap();
         }
 
+        //this button will call a function to make a simple 5,5 chunk of tiles
+        if (GUILayout.Button("Generate Map Chunk"))
+        {
+            myScript.GenerateMapChunk();
+        }
+
         //this button calls a function in MapEditorScript to toggle on and off paint mode
         if (GUILayout.Button("Toggle paint mode"))
         {
