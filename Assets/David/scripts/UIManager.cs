@@ -174,6 +174,7 @@ public class UIManager : MonoBehaviour
 
     private void turnOffButtons()
     {
+        //Buttons[0].GetComponent<RectTransform>().
         Buttons[0].SetActive(false);
         Buttons[1].SetActive(false);
         Buttons[2].SetActive(false);
@@ -188,7 +189,7 @@ public class UIManager : MonoBehaviour
         {
             if (Buttons[i].activeInHierarchy)
             {
-                Buttons[i].GetComponent<RectTransform>().localPosition = ButtonPos[ButtonPositionIndex].localPosition;
+                Buttons[i].GetComponent<RectTransform>().position = ButtonPos[ButtonPositionIndex].position;
                 ButtonPositionIndex++;
             }
         }
