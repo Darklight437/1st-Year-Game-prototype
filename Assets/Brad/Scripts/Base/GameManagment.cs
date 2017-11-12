@@ -97,7 +97,10 @@ public class GameManagment : MonoBehaviour
         }
 
         TurnUnitsOff();
-	}
+
+        UIManager = GetComponent<UIManager>();
+
+    }
 
     // Update is called once per frame
     void Update()
@@ -251,6 +254,7 @@ public class GameManagment : MonoBehaviour
         //there are no units selected
         if (unit.playerID == activePlayer.playerID)
         {
+            
             //the player is selecting a different unit, hide the menu
             if (selectedUnit != unit)
             {
@@ -263,8 +267,8 @@ public class GameManagment : MonoBehaviour
             ToggleTileModifiersFalse();
 
             selectedUnit = unit;
-           // selectedUnit.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Custom/WallThrough");
-            
+            // selectedUnit.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Custom/WallThrough");
+
             ToggleTileModifiersActive();
         }
     }
@@ -470,6 +474,13 @@ public class GameManagment : MonoBehaviour
     public void OnTileSelected(Tiles tile)
     {
 
+        //don't do anything if the UI was pressed
+        if (uiPressed)
+        {
+            uiPressed = false;
+            return;
+        }
+
         //if a unit was already selected and an empty tile was selected
         if (selectedUnit != null)
         {
@@ -663,19 +674,20 @@ public class GameManagment : MonoBehaviour
         uiPressed = true;
 
         //turn off the action menu
-        //worldUI.gameObject.GetComponent<Canvas>().enabled = false;
-        //worldUI.gameObject.SetActive(false);
+        UIManager.ButtonState(UIManager.eCommandState.OFF);
 
         //execute the action
         selectedUnit.Execute(actionEvent, startTile, endTile, OnActionFinished);
+
+        //stop showing walkable and attackable tiles tiles
+        ToggleTileModifiersFalse();
 
         selectedUnit.gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Custom/DefaultShader");
 
         //deselect the unit
         selectedUnit = null;
 
-        //stop showing walkable and attackable tiles tiles
-        ToggleTileModifiersFalse();
+        
 
         //deselect the tiles
         startTile = null;
