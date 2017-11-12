@@ -69,3 +69,10 @@ MonoBehaviour:
     - {fileID: 1380885250141026, guid: a3a28aef8ac4e094280f7fc858b19559, type: 2}
   statistics: {fileID: 11400000, guid: a6a2d0191422fe4478fda186bbba7e3e, type: 2}
   myChunk: {fileID: 0}
+  chunkVarience:
+  - {fileID: 1005471814842874, guid: a44ce02b12e54ea45aa38b6143c925b3, type: 2}
+  - {fileID: 1949905423495046, guid: 9d24386dbbcc7c14ca38c83671e07d4f, type: 2}
+  - {fileID: 1601533389555864, guid: bd11dcfa93fbf754d8ca9f3d1103832d, type: 2}
+  - {fileID: 1777935290770398, guid: 51a62039fd97fd74b8fa198a6b743126, type: 2}
+  chunkNumType: 0
+  pos: {x: 0, y: 0, z: 0}

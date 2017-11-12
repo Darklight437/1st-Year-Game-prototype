@@ -100,7 +100,6 @@ public class Chunk : MonoBehaviour
             myChunk = chunkSpawn.GetComponent<MapChunk>();
         }
     }
-
 }
 
 [System.Serializable]
